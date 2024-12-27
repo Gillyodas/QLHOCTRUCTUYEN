@@ -3,11 +3,7 @@
   "WorkspaceRootPath": "E:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|e:\\qlhoctructuyen\\qlhoctructuyen\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|solutionrelative:form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|e:\\qlhoctructuyen\\qlhoctructuyen\\control\\controlusers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|E:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\control\\controlusers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|solutionrelative:control\\controlusers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -35,18 +31,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Form2.cs [Design]",
-              "DocumentMoniker": "E:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\Form2.cs",
-              "RelativeDocumentMoniker": "Form2.cs",
-              "ToolTip": "E:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\Form2.cs [Design]",
-              "RelativeToolTip": "Form2.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-27T16:45:14.67Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "ControlUsers.cs",
               "DocumentMoniker": "E:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\Control\\ControlUsers.cs",
               "RelativeDocumentMoniker": "Control\\ControlUsers.cs",
@@ -59,7 +43,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Users.cs",
               "DocumentMoniker": "E:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\Model\\Users.cs",
               "RelativeDocumentMoniker": "Model\\Users.cs",
@@ -71,7 +55,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "FormDangKy.cs",
               "DocumentMoniker": "E:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\View\\FormDangKy.cs",
               "RelativeDocumentMoniker": "View\\FormDangKy.cs",
@@ -83,7 +67,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "FormDangKy.cs [Design]",
               "DocumentMoniker": "E:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\View\\FormDangKy.cs",
               "RelativeDocumentMoniker": "View\\FormDangKy.cs",
