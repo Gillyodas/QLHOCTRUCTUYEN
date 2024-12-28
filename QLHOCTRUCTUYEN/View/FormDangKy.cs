@@ -19,12 +19,12 @@ namespace QLHOCTRUCTUYEN
     {
         private string connStr = ConfigurationManager.ConnectionStrings["QLHOCTRUCTUYEN"].ConnectionString;
         private bool isValidHoTen = false, isValidEmail = false, isValidPass = false, isValidReEnterPass = false;
-        public event SentDataSighUpUser sentdata;
-        private ControlUsers ControlUsers;
+        //public event SentDataSighUpUser sentdata;
+        //private ControlUsers ControlUsers;
         public FormDangKy()
         {
             InitializeComponent();
-            ControlUsers = new ControlUsers(this);
+            //ControlUsers = new ControlUsers(this);
             UpdateBtnDangKyState();
         }
 
@@ -49,14 +49,25 @@ namespace QLHOCTRUCTUYEN
 
         private void btnDangKy_Click(object sender, EventArgs e)
         {
-            if (sentdata != null)
+            Control.ControlUsers.ControlCreateUser(txtHoTen.Text, txtEmail.Text, txtPass.Text);
+            //if (sentdata != null)
+            //{
+            //    DataSentSighUp args = new DataSentSighUp(txtHoTen.Text, txtEmail.Text, txtPass.Text);
+            //    sentdata(this, args);
+            //    btnDangKy.Enabled = false;
+            //    btnDangKy.Visible = true;
+            //}
+            //else MessageBox.Show("Loi");
+
+        }
+
+        public void DangKyThanhCong(bool success)
+        {
+            if (success)
             {
-                DataSentSighUp args = new DataSentSighUp(txtHoTen.Text, txtEmail.Text, txtPass.Text);
-                sentdata(this, args);
-                btnDangKy.Enabled = false;
-                btnDangKy.Visible = true;
+                MessageBox.Show("Thanh cong");
             }
-            else MessageBox.Show("Loi");
+            else MessageBox.Show("That bai");
         }
 
         private void txtEmailIsValid(object sender, EventArgs e)

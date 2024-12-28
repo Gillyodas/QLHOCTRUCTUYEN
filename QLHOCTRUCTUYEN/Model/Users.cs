@@ -7,6 +7,8 @@ using System.Configuration;
 using System.Data.SqlTypes;
 using Microsoft.Data.SqlClient;
 using System.Security.Cryptography;
+using System.Runtime.InteropServices;
+using System.Diagnostics.Eventing.Reader;
 
 namespace QLHOCTRUCTUYEN.Model
 {
@@ -114,31 +116,50 @@ namespace QLHOCTRUCTUYEN.Model
                 return 'U' + index;
             }
         }
-        public static void CreateUser (string ten, string email, string pass)
+
+        private static bool EmailIsNotUsed(string email)
         {
-            string id = CreateID();
-            (byte[] salt, byte[] hash) = PasswordHasher.HashPassword(pass);
             using (SqlConnection conn = new SqlConnection(connSql))
             {
                 conn.Open();
-
-                string SqlQueryStr = "INSERT INTO USERS " +
-                                     "VALUES (@Id, @Ten, @Email, 1, 'R1', @Salt, @HPass)";
-
-                SqlCommand SqlCmd = new SqlCommand(SqlQueryStr,conn);
-
-                SqlCmd.Parameters.AddWithValue("@Id", id);
-                SqlCmd.Parameters.AddWithValue("@Ten", ten);
-                SqlCmd.Parameters.AddWithValue("@Email", email);
-                SqlCmd.Parameters.AddWithValue("@Salt", salt);
-                SqlCmd.Parameters.AddWithValue("@HPass", hash);
-                int rowsAffected = SqlCmd.ExecuteNonQuery();
-                if (rowsAffected > 0)
+                string SqlQueryStr = "SELECT COUNT(*) FROM USERS WHERE EMAIL = @email";
+                SqlCommand sqlCmd = new SqlCommand(SqlQueryStr, conn);
+                sqlCmd.Parameters.AddWithValue("@email", email);
+                int index = Convert.ToInt32(sqlCmd.ExecuteScalar());
+                if (index == 0)
                 {
-                    SqlCmd.Parameters.Clear();
-
-                }
+                    return true;
+                } else return false;
             }
+        }
+        public static bool CreateUser (string ten, string email, string pass)
+        {
+            if (EmailIsNotUsed(email))
+            {
+                string id = CreateID();
+                (byte[] salt, byte[] hash) = PasswordHasher.HashPassword(pass);
+                using (SqlConnection conn = new SqlConnection(connSql))
+                {
+                    conn.Open();
+
+                    string SqlQueryStr = "INSERT INTO USERS " +
+                                         "VALUES (@Id, @Ten, @Email, 1, 'R1', @Salt, @HPass)";
+
+                    SqlCommand SqlCmd = new SqlCommand(SqlQueryStr, conn);
+
+                    SqlCmd.Parameters.AddWithValue("@Id", id);
+                    SqlCmd.Parameters.AddWithValue("@Ten", ten);
+                    SqlCmd.Parameters.AddWithValue("@Email", email);
+                    SqlCmd.Parameters.AddWithValue("@Salt", salt);
+                    SqlCmd.Parameters.AddWithValue("@HPass", hash);
+                    int rowsAffected = SqlCmd.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        return true;
+                    }
+                    else return false;
+                }
+            } return false;
         }
 
     }

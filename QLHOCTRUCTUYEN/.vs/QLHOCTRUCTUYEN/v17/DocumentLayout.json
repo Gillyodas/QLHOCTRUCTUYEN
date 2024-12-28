@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "E:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|E:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\control\\controlusers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|solutionrelative:control\\controlusers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|E:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\model\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|e:\\qlhoctructuyen\\qlhoctructuyen\\model\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|solutionrelative:model\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|E:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\view\\formdangky.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|solutionrelative:view\\formdangky.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|E:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\control\\controlusers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|solutionrelative:control\\controlusers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|E:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\view\\formdangky.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -26,42 +26,42 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "ControlUsers.cs",
               "DocumentMoniker": "E:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\Control\\ControlUsers.cs",
               "RelativeDocumentMoniker": "Control\\ControlUsers.cs",
               "ToolTip": "E:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\Control\\ControlUsers.cs",
               "RelativeToolTip": "Control\\ControlUsers.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAuAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABkAAABKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-26T11:59:55.502Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-26T11:59:55.502Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Users.cs",
               "DocumentMoniker": "E:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\Model\\Users.cs",
               "RelativeDocumentMoniker": "Model\\Users.cs",
               "ToolTip": "E:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\Model\\Users.cs",
               "RelativeToolTip": "Model\\Users.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAcwAoAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-26T10:27:01.929Z"
+              "WhenOpened": "2024-12-26T10:27:01.929Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "FormDangKy.cs",
               "DocumentMoniker": "E:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\View\\FormDangKy.cs",
               "RelativeDocumentMoniker": "View\\FormDangKy.cs",
               "ToolTip": "E:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\View\\FormDangKy.cs",
               "RelativeToolTip": "View\\FormDangKy.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAADIAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAABkAAAAAAAAAAAAQwBEAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-25T20:03:22.137Z"
             },
