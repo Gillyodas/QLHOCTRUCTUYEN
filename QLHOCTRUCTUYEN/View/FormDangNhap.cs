@@ -16,5 +16,27 @@ namespace QLHOCTRUCTUYEN
         {
             InitializeComponent();
         }
+
+        private void btnDangKy_Click(object sender, EventArgs e)
+        {
+            FormDangKy formDangKy = new FormDangKy();
+            formDangKy.Show();
+            this.Close();
+        }
+
+        private void btnDangNhap_Click(object sender, EventArgs e)
+        {
+            Control.ControlUsers.ControlLogin(txtEmail.Text, txtPass.Text);
+        }
+
+        public void DangNhapThanhcong(bool success)
+        {
+            if (success)
+            {
+                this.Hide();
+                FormBTTrenLop formBTTrenLop = new FormBTTrenLop();
+                formBTTrenLop.Show();
+            }
+        }
     }
 }

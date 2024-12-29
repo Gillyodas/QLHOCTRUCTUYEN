@@ -180,11 +180,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Control\ControlUsers.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="View\FormBTTrenLop.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="View\FormBTTrenLop.Designer.cs">
+      <DependentUpon>FormBTTrenLop.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Roles.cs" />
     <Compile Include="Model\Users.cs" />
@@ -208,8 +208,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="View\FormBTTrenLop.resx">
+      <DependentUpon>FormBTTrenLop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormDangKy.resx">
       <DependentUpon>FormDangKy.cs</DependentUpon>

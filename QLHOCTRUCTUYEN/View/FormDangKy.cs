@@ -11,7 +11,6 @@ using System.Configuration;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Text.RegularExpressions;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
-using QLHOCTRUCTUYEN.Control;
 
 namespace QLHOCTRUCTUYEN
 {
@@ -68,6 +67,18 @@ namespace QLHOCTRUCTUYEN
                 MessageBox.Show("Thanh cong");
             }
             else MessageBox.Show("That bai");
+        }
+
+        private void btnDangNhap_Click(object sender, EventArgs e)
+        {
+            FormDangNhap formDN = new FormDangNhap();
+            formDN.Show();
+            this.Hide();
+        }
+
+        private void lblQuenMK_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void txtEmailIsValid(object sender, EventArgs e)

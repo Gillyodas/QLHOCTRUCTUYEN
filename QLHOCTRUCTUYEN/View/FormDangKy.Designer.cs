@@ -43,6 +43,7 @@
             this.lblUnvalidPass = new System.Windows.Forms.Label();
             this.lblUnvalidReEnterPass = new System.Windows.Forms.Label();
             this.lblBatBuocHoTen = new System.Windows.Forms.Label();
+            this.lblQuenMK = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -92,6 +93,7 @@
             // 
             this.txtPass.Location = new System.Drawing.Point(108, 132);
             this.txtPass.Name = "txtPass";
+            this.txtPass.PasswordChar = '*';
             this.txtPass.Size = new System.Drawing.Size(129, 22);
             this.txtPass.TabIndex = 9;
             this.txtPass.TextChanged += new System.EventHandler(this.txtPassIsValid);
@@ -109,6 +111,7 @@
             // 
             this.txtReEnterPass.Location = new System.Drawing.Point(108, 178);
             this.txtReEnterPass.Name = "txtReEnterPass";
+            this.txtReEnterPass.PasswordChar = '*';
             this.txtReEnterPass.Size = new System.Drawing.Size(129, 22);
             this.txtReEnterPass.TabIndex = 11;
             this.txtReEnterPass.TextChanged += new System.EventHandler(this.txtReEnterPassIsValid);
@@ -124,9 +127,9 @@
             // 
             // btnDangKy
             // 
-            this.btnDangKy.Location = new System.Drawing.Point(144, 234);
+            this.btnDangKy.Location = new System.Drawing.Point(154, 234);
             this.btnDangKy.Name = "btnDangKy";
-            this.btnDangKy.Size = new System.Drawing.Size(93, 39);
+            this.btnDangKy.Size = new System.Drawing.Size(101, 39);
             this.btnDangKy.TabIndex = 12;
             this.btnDangKy.Text = "Đăng ký";
             this.btnDangKy.UseVisualStyleBackColor = true;
@@ -136,10 +139,11 @@
             // 
             this.btnDangNhap.Location = new System.Drawing.Point(48, 234);
             this.btnDangNhap.Name = "btnDangNhap";
-            this.btnDangNhap.Size = new System.Drawing.Size(90, 39);
+            this.btnDangNhap.Size = new System.Drawing.Size(92, 39);
             this.btnDangNhap.TabIndex = 13;
             this.btnDangNhap.Text = "Đăng nhập";
             this.btnDangNhap.UseVisualStyleBackColor = true;
+            this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
             // 
             // lblUnvalidEmail
             // 
@@ -181,11 +185,22 @@
             this.lblBatBuocHoTen.TabIndex = 17;
             this.lblBatBuocHoTen.Text = "*";
             // 
+            // lblQuenMK
+            // 
+            this.lblQuenMK.AutoSize = true;
+            this.lblQuenMK.Location = new System.Drawing.Point(160, 215);
+            this.lblQuenMK.Name = "lblQuenMK";
+            this.lblQuenMK.Size = new System.Drawing.Size(96, 16);
+            this.lblQuenMK.TabIndex = 18;
+            this.lblQuenMK.Text = "Quên mật khẩu";
+            this.lblQuenMK.Click += new System.EventHandler(this.lblQuenMK_Click);
+            // 
             // FormDangKy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(363, 285);
+            this.Controls.Add(this.lblQuenMK);
             this.Controls.Add(this.lblBatBuocHoTen);
             this.Controls.Add(this.lblUnvalidReEnterPass);
             this.Controls.Add(this.lblUnvalidPass);
@@ -224,5 +239,6 @@
         private System.Windows.Forms.Label lblUnvalidPass;
         private System.Windows.Forms.Label lblUnvalidReEnterPass;
         private System.Windows.Forms.Label lblBatBuocHoTen;
+        private System.Windows.Forms.Label lblQuenMK;
     }
 }

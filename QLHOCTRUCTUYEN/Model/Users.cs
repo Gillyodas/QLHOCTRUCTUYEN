@@ -17,12 +17,17 @@ namespace QLHOCTRUCTUYEN.Model
         private string ID_USER;
         private string TENUSER;
         private string EMAIL;
-        private string PASSWORD_HASH;
         private bool TRANGTHAI;
-
-        //Foreign key
+        // Foreign key
         private string ID_ROLE;
+
+        public string IdUser { get; set; }
+        public string TenUser { get; set; }
+        public string Email { get; set; }
+        public bool TrangThai { get; set; }
+        public string IdRole { get; set; }
     }
+
 
     public class PasswordHasher
     {
@@ -54,48 +59,28 @@ namespace QLHOCTRUCTUYEN.Model
             }
         }
 
-        // Hàm kiểm tra mật khẩu nhập vào có khớp với mật khẩu hash không
-        //public static bool VerifyPassword(string password, string hashedPassword)
-        //{
-        //    // Tách chuỗi hash đã lưu thành các thành phần
-        //    string[] parts = hashedPassword.Split(':');
-        //    if (parts.Length != 3)
-        //    {
-        //        return false; // Định dạng hash không hợp lệ
-        //    }
+        //Hàm kiểm tra mật khẩu nhập vào có khớp với mật khẩu hash không
+        private static bool FixedTimeEquals(byte[] a, byte[] b)
+        {
+            if (a.Length != b.Length)
+                return false;
 
-        //    int iterations;
-        //    if (!int.TryParse(parts[0], out iterations))
-        //    {
-        //        return false; // Số lần lặp không hợp lệ
-        //    }
+            int result = 0;
+            for (int i = 0; i < a.Length; i++)
+            {
+                result |= a[i] ^ b[i];
+            }
+            return result == 0;
+        }
 
-        //    byte[] salt;
-        //    try
-        //    {
-        //        salt = Convert.FromBase64String(parts[1]);
-        //    }
-        //    catch (FormatException)
-        //    {
-        //        return false; // Định dạng salt không hợp lệ
-        //    }
+        public static bool VerifyPassword(string password, byte[] saltBase64, byte[] hashBase64)
+        {
+            // Hash mật khẩu nhập vào với salt đã lưu
+            byte[] testHash = HashPassword(password, saltBase64, Iterations, HashSize);
 
-        //    byte[] hash;
-        //    try
-        //    {
-        //        hash = Convert.FromBase64String(parts[2]);
-        //    }
-        //    catch (FormatException)
-        //    {
-        //        return false; // Định dạng hash không hợp lệ
-        //    }
-
-        //    // Băm mật khẩu được cung cấp với salt và số lần lặp đã lưu
-        //    byte[] testHash = HashPassword(password, salt, iterations, HashSize);
-
-        //    // So sánh hash được tạo với hash đã lưu
-        //    return CryptographicOperations.FixedTimeEquals(hash, testHash);
-        //}
+            // So sánh testHash với hash đã lưu
+            return FixedTimeEquals(hashBase64, testHash);
+        }
     }
 
     public class ManageUsers
@@ -161,6 +146,50 @@ namespace QLHOCTRUCTUYEN.Model
                 }
             } return false;
         }
+
+    }
+
+    public class UserLoginHandler
+    {
+        private static string connSql = ConfigurationManager.ConnectionStrings["QLHOCTRUCTUYEN"].ConnectionString;
+        public static Users ValidLogin(string email, string pass)
+        {
+            using (SqlConnection conn = new SqlConnection(connSql))
+            {
+                conn.Open();
+
+                SqlCommand SqlCmd = new SqlCommand("SELECT * FROM USERS WHERE EMAIL = @email", conn);
+                SqlCmd.Parameters.AddWithValue("@email", email);
+
+                using (SqlDataReader reader = SqlCmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        byte[] salt = new byte[16];
+                        byte[] hash = new byte[32];
+
+                        long bytesReadSalt = reader.GetBytes(reader.GetOrdinal("SALT"), 0, salt, 0, salt.Length);
+                        long bytesReadHash = reader.GetBytes(reader.GetOrdinal("HASHPASSWORD"), 0, hash, 0, hash.Length);
+
+                        if ( PasswordHasher.VerifyPassword(pass, salt, hash) )
+                        {
+                            Users user = new Users
+                            {
+                                IdUser = reader.GetString(0),
+                                TenUser = reader.GetString(1),
+                                Email = reader.GetString(2),
+                                TrangThai = reader.GetBoolean(3),
+                                IdRole = reader.GetString(4),
+                            };
+
+                            return user;
+                        }
+                    } return null;
+                }
+
+            }
+        }
+
 
     }
 }

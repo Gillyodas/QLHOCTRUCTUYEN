@@ -24,6 +24,17 @@ namespace QLHOCTRUCTUYEN.Control
         public static void ControlCreateUser(string Ten, string Email, string Pass)
         {
             bool success = Model.ManageUsers.CreateUser(Ten, Email, Pass);
+            FormDangKy formDK = new FormDangKy();
+            formDK.DangKyThanhCong(success);
+        }
+
+        public static void ControlLogin(string email, string pass)
+        {
+            FormDangNhap formDN = new FormDangNhap();
+
+            if (Model.UserLoginHandler.ValidLogin(email, pass) != null)
+                formDN.DangNhapThanhcong(true);
+            else formDN.DangNhapThanhcong(false);
         }
         
     }
