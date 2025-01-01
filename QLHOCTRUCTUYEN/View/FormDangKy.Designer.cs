@@ -246,7 +246,7 @@
             this.panDangNhap.Controls.Add(this.lblMatKhauDN);
             this.panDangNhap.Controls.Add(this.txtEmailDN);
             this.panDangNhap.Controls.Add(this.lblEmailDN);
-            this.panDangNhap.Location = new System.Drawing.Point(12, 12);
+            this.panDangNhap.Location = new System.Drawing.Point(428, 12);
             this.panDangNhap.Name = "panDangNhap";
             this.panDangNhap.Size = new System.Drawing.Size(365, 379);
             this.panDangNhap.TabIndex = 20;
@@ -348,7 +348,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(389, 402);
+            this.ClientSize = new System.Drawing.Size(899, 402);
             this.Controls.Add(this.panDangNhap);
             this.Controls.Add(this.panDangKy);
             this.Name = "FormDangKy";
