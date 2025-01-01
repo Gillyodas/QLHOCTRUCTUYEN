@@ -94,11 +94,12 @@ namespace QLHOCTRUCTUYEN.Model
                 conn.Open();
                 string SqlQueryStr = "SELECT COUNT(*) FROM USERS";
 
-                SqlCommand SqlCmd = new SqlCommand(SqlQueryStr, conn);
+                using (SqlCommand SqlCmd = new SqlCommand(SqlQueryStr, conn))
+                {
+                    string index = Convert.ToString(SqlCmd.ExecuteScalar());
 
-                string index = Convert.ToString(SqlCmd.ExecuteScalar());
-
-                return 'U' + index;
+                    return 'U' + index;
+                }
             }
         }
 
@@ -108,13 +109,16 @@ namespace QLHOCTRUCTUYEN.Model
             {
                 conn.Open();
                 string SqlQueryStr = "SELECT COUNT(*) FROM USERS WHERE EMAIL = @email";
-                SqlCommand sqlCmd = new SqlCommand(SqlQueryStr, conn);
-                sqlCmd.Parameters.AddWithValue("@email", email);
-                int index = Convert.ToInt32(sqlCmd.ExecuteScalar());
-                if (index == 0)
+                using (SqlCommand sqlCmd = new SqlCommand(SqlQueryStr, conn))
                 {
-                    return true;
-                } else return false;
+                    sqlCmd.Parameters.AddWithValue("@email", email);
+                    int index = Convert.ToInt32(sqlCmd.ExecuteScalar());
+                    if (index == 0)
+                    {
+                        return true;
+                    }
+                    else return false;
+                }
             }
         }
         public static bool CreateUser (string ten, string email, string pass)
@@ -130,19 +134,20 @@ namespace QLHOCTRUCTUYEN.Model
                     string SqlQueryStr = "INSERT INTO USERS " +
                                          "VALUES (@Id, @Ten, @Email, 1, 'R1', @Salt, @HPass)";
 
-                    SqlCommand SqlCmd = new SqlCommand(SqlQueryStr, conn);
-
-                    SqlCmd.Parameters.AddWithValue("@Id", id);
-                    SqlCmd.Parameters.AddWithValue("@Ten", ten);
-                    SqlCmd.Parameters.AddWithValue("@Email", email);
-                    SqlCmd.Parameters.AddWithValue("@Salt", salt);
-                    SqlCmd.Parameters.AddWithValue("@HPass", hash);
-                    int rowsAffected = SqlCmd.ExecuteNonQuery();
-                    if (rowsAffected > 0)
+                    using (SqlCommand SqlCmd = new SqlCommand(SqlQueryStr, conn))
                     {
-                        return true;
+                        SqlCmd.Parameters.AddWithValue("@Id", id);
+                        SqlCmd.Parameters.AddWithValue("@Ten", ten);
+                        SqlCmd.Parameters.AddWithValue("@Email", email);
+                        SqlCmd.Parameters.AddWithValue("@Salt", salt);
+                        SqlCmd.Parameters.AddWithValue("@HPass", hash);
+                        int rowsAffected = SqlCmd.ExecuteNonQuery();
+                        if (rowsAffected > 0)
+                        {
+                            return true;
+                        }
+                        else return false;
                     }
-                    else return false;
                 }
             } return false;
         }
@@ -158,35 +163,37 @@ namespace QLHOCTRUCTUYEN.Model
             {
                 conn.Open();
 
-                SqlCommand SqlCmd = new SqlCommand("SELECT * FROM USERS WHERE EMAIL = @email", conn);
-                SqlCmd.Parameters.AddWithValue("@email", email);
-
-                using (SqlDataReader reader = SqlCmd.ExecuteReader())
+                using (SqlCommand SqlCmd = new SqlCommand("SELECT * FROM USERS WHERE EMAIL = @email", conn))
                 {
-                    if (reader.Read())
+                    SqlCmd.Parameters.AddWithValue("@email", email);
+
+                    using (SqlDataReader reader = SqlCmd.ExecuteReader())
                     {
-                        byte[] salt = new byte[16];
-                        byte[] hash = new byte[32];
-
-                        long bytesReadSalt = reader.GetBytes(reader.GetOrdinal("SALT"), 0, salt, 0, salt.Length);
-                        long bytesReadHash = reader.GetBytes(reader.GetOrdinal("HASHPASSWORD"), 0, hash, 0, hash.Length);
-
-                        if ( PasswordHasher.VerifyPassword(pass, salt, hash) )
+                        if (reader.Read())
                         {
-                            Users user = new Users
+                            byte[] salt = new byte[16];
+                            byte[] hash = new byte[32];
+
+                            long bytesReadSalt = reader.GetBytes(reader.GetOrdinal("SALT"), 0, salt, 0, salt.Length);
+                            long bytesReadHash = reader.GetBytes(reader.GetOrdinal("HASHPASSWORD"), 0, hash, 0, hash.Length);
+
+                            if (PasswordHasher.VerifyPassword(pass, salt, hash))
                             {
-                                IdUser = reader.GetString(0),
-                                TenUser = reader.GetString(1),
-                                Email = reader.GetString(2),
-                                TrangThai = reader.GetBoolean(3),
-                                IdRole = reader.GetString(4),
-                            };
+                                Users user = new Users
+                                {
+                                    IdUser = reader.GetString(0),
+                                    TenUser = reader.GetString(1),
+                                    Email = reader.GetString(2),
+                                    TrangThai = reader.GetBoolean(3),
+                                    IdRole = reader.GetString(4),
+                                };
 
-                            return user;
+                                return user;
+                            }
                         }
-                    } return null;
+                        return null;
+                    }
                 }
-
             }
         }
 

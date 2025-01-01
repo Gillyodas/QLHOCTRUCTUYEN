@@ -30,11 +30,10 @@ namespace QLHOCTRUCTUYEN.Control
 
         public static void ControlLogin(string email, string pass)
         {
-            FormDangNhap formDN = new FormDangNhap();
-
+            FormDangKy formDK = new FormDangKy();
             if (Model.UserLoginHandler.ValidLogin(email, pass) != null)
-                formDN.DangNhapThanhcong(true);
-            else formDN.DangNhapThanhcong(false);
+                formDK.DangNhapThanhcong(true);
+            else formDK.DangNhapThanhcong(false);
         }
         
     }

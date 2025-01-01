@@ -17,6 +17,6 @@ namespace QLHOCTRUCTUYEN.View
             InitializeComponent();
         }
 
-      
+        
     }
 }
