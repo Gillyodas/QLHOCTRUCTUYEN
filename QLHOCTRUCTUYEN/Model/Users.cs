@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 using System.Data.SqlTypes;
-using Microsoft.Data.SqlClient;
+using System.Data.SqlClient;
 using System.Security.Cryptography;
 using System.Runtime.InteropServices;
 using System.Diagnostics.Eventing.Reader;
@@ -20,7 +20,6 @@ namespace QLHOCTRUCTUYEN.Model
         private bool TRANGTHAI;
         // Foreign key
         private string ID_ROLE;
-
         public string IdUser { get; set; }
         public string TenUser { get; set; }
         public string Email { get; set; }
@@ -142,11 +141,7 @@ namespace QLHOCTRUCTUYEN.Model
                         SqlCmd.Parameters.AddWithValue("@Salt", salt);
                         SqlCmd.Parameters.AddWithValue("@HPass", hash);
                         int rowsAffected = SqlCmd.ExecuteNonQuery();
-                        if (rowsAffected > 0)
-                        {
-                            return true;
-                        }
-                        else return false;
+                        return rowsAffected > 0;
                     }
                 }
             } return false;

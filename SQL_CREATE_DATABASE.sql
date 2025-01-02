@@ -1,4 +1,4 @@
-CREATE DATABASE QLHOCTRUCTUYEN
+﻿CREATE DATABASE QLHOCTRUCTUYEN
 USE QLHOCTRUCTUYEN
 
 CREATE TABLE PHONGHOC (
@@ -63,12 +63,7 @@ CREATE TABLE TAINGUYENHOCTAP (
 	URL_TAINGUYEN TEXT NOT NULL,
 	MOTA TEXT NULL,
 	TRANGTHAI BIT DEFAULT 1,
-	ID_USER NVARCHAR(5) NOT NULL,
-
-	CONSTRAINT PK_TAINGUYENHOCTAP PRIMARY KEY (ID_TAINGUYEN),
-	CONSTRAINT FK_TANGUYENTHOCTAP FOREIGN KEY (ID_USER) REFERENCES USERS (ID_USER)
-	ON DELETE NO ACTION
-	ON UPDATE CASCADE
+	CONSTRAINT PK_TAINGUYENHOCTAP PRIMARY KEY (ID_TAINGUYEN)
 );
 
 CREATE TABLE KETQUAHOCTAP (
@@ -104,3 +99,55 @@ ADD CONSTRAINT FK_TAINGUYENHOCTAP_PHONGHOC FOREIGN KEY (ID_PHONGHOC)
     REFERENCES PHONGHOC (ID_PHONGHOC) 
     ON DELETE NO ACTION 
     ON UPDATE CASCADE;
+
+ALTER TABLE TAINGUYENHOCTAP
+ADD	ID_USER NVARCHAR(5) NOT NULL
+
+ALTER TABLE TAINGUYENHOCTAP
+ADD THOIHAN DATETIME NULL
+NGAYDANG DATETIME NULL
+
+DELETE FROM TAINGUYENHOCTAP
+	
+
+ALTER TABLE TAINGUYENHOCTAP
+ADD CONSTRAINT FK_TAINGUYENTHOCTAP_USERS FOREIGN KEY (ID_USER) 
+REFERENCES USERS (ID_USER)
+ON DELETE NO ACTION
+ON UPDATE CASCADE
+	
+
+
+
+INSERT INTO PHONGHOC (ID_PHONGHOC, TENPHONGHOC, MAPHONG, MOTA, TRANGTHAI)
+VALUES 
+('P001', 'Phòng học A1', 'A1-001', 'Phòng học lý thuyết', 1),
+('P002', 'Phòng học B1', 'B1-002', 'Phòng học thực hành', 1),
+('P003', 'Phòng học C1', 'C1-003', 'Phòng học đa năng', 1);
+
+INSERT INTO LOAITAINGUYEN (ID_LOAITN, TENLOAITN, TRANGTHAI)
+VALUES 
+('L001', 'Tài liệu tham khảo', 1),
+('L002', 'Bài giảng', 1),
+('L003', 'Video học tập', 1);
+
+INSERT INTO TAINGUYENHOCTAP (ID_TAINGUYEN, TENTAINGUYEN, URL_TAINGUYEN, MOTA, TRANGTHAI, ID_USER, ID_LOAITN, ID_PHONGHOC, THOIHAN, NGAYDANG)
+VALUES
+('T001', 'Tài liệu Toán 1', 'http://example.com/math1', 'Tài liệu học toán lớp 1', 1, 'U0', 'L001', 'P001', DATEADD(MONTH, 1, GETDATE()), GETDATE()),
+('T002', 'Video Sinh học', 'http://example.com/bio', 'Video học sinh học lớp 6', 1, 'U0', 'L003', 'P002', DATEADD(MONTH, 1, GETDATE()), GETDATE()),
+('T003', 'Bài giảng Vật lý', 'http://example.com/physics', 'Bài giảng vật lý lớp 10', 1, 'U0', 'L002', 'P003', DATEADD(MONTH, 1, GETDATE()), GETDATE()),
+('T004', 'Tài liệu Hóa học', 'http://example.com/chemistry', 'Tài liệu học hóa lớp 12', 1, 'U0', 'L001', 'P002', DATEADD(MONTH, 1, GETDATE()), GETDATE()),
+('T005', 'Video Lịch sử', 'http://example.com/history', 'Video học lịch sử lớp 9', 1, 'U0', 'L003', 'P001', DATEADD(MONTH, 1, GETDATE()), GETDATE()),
+('T006', 'Bài giảng Địa lý', 'http://example.com/geography', 'Bài giảng địa lý lớp 8', 1, 'U1', 'L002', 'P003', DATEADD(MONTH, 1, GETDATE()), GETDATE()),
+('T007', 'Tài liệu Ngữ văn', 'http://example.com/literature', 'Tài liệu ngữ văn lớp 11', 1, 'U0', 'L001', 'P003', DATEADD(MONTH, 1, GETDATE()), GETDATE()),
+('T008', 'Video Tiếng Anh', 'http://example.com/english', 'Video học tiếng Anh giao tiếp', 1, 'U1', 'L003', 'P002', DATEADD(MONTH, 1, GETDATE()), GETDATE()),
+('T009', 'Bài giảng Tin học', 'http://example.com/it', 'Bài giảng tin học cơ bản', 1, 'U1', 'L001', 'P001', DATEADD(MONTH, 1, GETDATE()), GETDATE()),
+('T010', 'Tài liệu Thể dục', 'http://example.com/pe', 'Tài liệu hướng dẫn thể dục', 1, 'U1', 'L001', 'P003', DATEADD(MONTH, 1, GETDATE()), GETDATE());
+
+
+
+SELECT * FROM TAINGUYENHOCTAP
+
+ALTER TABLE TAINGUYENHOCTAP
+DROP CONSTRAINT FK_TAINGUYENTHOCTAP;
+

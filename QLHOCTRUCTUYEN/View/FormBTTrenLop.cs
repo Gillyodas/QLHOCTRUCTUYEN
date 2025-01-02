@@ -15,6 +15,16 @@ namespace QLHOCTRUCTUYEN
         public FormBTTrenLop()
         {
             InitializeComponent();
+            Control.ControlTaiNguyenHocTap.ControlLoadListTNHT("P001");
+        }
+
+        public void LoadListTaiNguyenHocTap(DataTable dsTNHT)
+        {
+            foreach (DataRow dr in dsTNHT.Rows)
+            {
+                ListViewItem item = new ListViewItem(dr["TENTAINGUYEN"].ToString());
+                lsvDSBaiTap.Items.Add(item);
+            }
         }
     }
 }
