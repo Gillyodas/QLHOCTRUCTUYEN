@@ -19,6 +19,8 @@ namespace QLHOCTRUCTUYEN
         private string connStr = ConfigurationManager.ConnectionStrings["QLHOCTRUCTUYEN"].ConnectionString;
         private bool isValidHoTen = false, isValidEmail = false, isValidPass = false, isValidReEnterPass = false;
         private bool isValidEmailDN = false, isValidPassDN = false;
+        public static Model.Users CurrentUser;
+        private static bool HideFormDK = false;
         //public event SentDataSighUpUser sentdata;
         //private ControlUsers ControlUsers;
         public FormDangKy()
@@ -27,6 +29,10 @@ namespace QLHOCTRUCTUYEN
             //ControlUsers = new ControlUsers(this);
             UpdateBtnDangKyState();
             UpdateBtnDangNhapState();
+            if (HideFormDK)
+            {
+                this.Hide();
+            }
         }
         private void UpdateBtnDangKyState()
         {
@@ -102,17 +108,16 @@ namespace QLHOCTRUCTUYEN
             }
             else MessageBox.Show("That bai");
         }
-        public void DangNhapThanhcong(bool success)
+        public static void DangNhapThanhcong(bool success, Model.Users user)
         {
             if (success)
             {
-
+                //this.Hide();
+                CurrentUser = user;
                 FormBTTrenLop formBTTrenLop = new FormBTTrenLop();
                 formBTTrenLop.Show();
-
             }
             else MessageBox.Show("Dang nhap that bai");
-            this.Hide(); // Đóng Form 2 từ Form 3.
         }
         private void btnChuyenSangFormDK_Click(object sender, EventArgs e)
         {

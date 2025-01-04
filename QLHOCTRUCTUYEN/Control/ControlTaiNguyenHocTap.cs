@@ -10,8 +10,8 @@ namespace QLHOCTRUCTUYEN.Control
     {
         public static void ControlLoadListTNHT(string id_Phong)
         {
-            FormBTTrenLop formBTTrenLop = new FormBTTrenLop();
-            formBTTrenLop.LoadListTaiNguyenHocTap(Model.ManageTaiNguyenHocTap.loadListTaiNguyenHocTap_PhongHoc(id_Phong));
+            //FormBTTrenLop.LoadListTaiNguyenHocTap(Model.ManageTaiNguyenHocTap.loadListTaiNguyenHocTap_PhongHoc(id_Phong));
+            FormBTTrenLop.listTNHT = Model.ManageTaiNguyenHocTap.loadListTaiNguyenHocTap_PhongHoc(id_Phong);
         }
     }
 }

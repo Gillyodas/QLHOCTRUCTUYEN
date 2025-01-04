@@ -17,7 +17,15 @@ namespace QLHOCTRUCTUYEN
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormDangKy());
+            FormDangKy formDK = new FormDangKy();
+            if (formDK.ShowDialog() == DialogResult.OK)
+            {
+                Application.Run(new FormBTTrenLop());
+            }
+            else
+            {
+                Environment.Exit(0);
+            }
         }
     }
 }
