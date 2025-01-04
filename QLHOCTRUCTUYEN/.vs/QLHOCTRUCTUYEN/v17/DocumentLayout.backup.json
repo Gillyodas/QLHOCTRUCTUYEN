@@ -1,17 +1,17 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\",
+  "WorkspaceRootPath": "D:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|E:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\model\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|d:\\qlhoctructuyen\\qlhoctructuyen\\qlhoctructuyen\\model\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|solutionrelative:model\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|e:\\qlhoctructuyen\\qlhoctructuyen\\model\\tainguyenhoctap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|D:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\model\\tainguyenhoctap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|solutionrelative:model\\tainguyenhoctap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|e:\\qlhoctructuyen\\qlhoctructuyen\\model\\]ketquahoctap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|D:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\model\\]ketquahoctap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|solutionrelative:model\\]ketquahoctap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -28,37 +28,35 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "TaiNguyenHocTap.cs",
-              "DocumentMoniker": "E:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\Model\\TaiNguyenHocTap.cs",
+              "DocumentMoniker": "D:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\Model\\TaiNguyenHocTap.cs",
               "RelativeDocumentMoniker": "Model\\TaiNguyenHocTap.cs",
-              "ToolTip": "E:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\Model\\TaiNguyenHocTap.cs",
+              "ToolTip": "D:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\Model\\TaiNguyenHocTap.cs",
               "RelativeToolTip": "Model\\TaiNguyenHocTap.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAAcAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-04T12:41:05.907Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-04T12:41:05.907Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "]KetQuaHocTap.cs",
-              "DocumentMoniker": "E:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\Model\\]KetQuaHocTap.cs",
+              "DocumentMoniker": "D:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\Model\\]KetQuaHocTap.cs",
               "RelativeDocumentMoniker": "Model\\]KetQuaHocTap.cs",
-              "ToolTip": "E:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\Model\\]KetQuaHocTap.cs",
+              "ToolTip": "D:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\Model\\]KetQuaHocTap.cs",
               "RelativeToolTip": "Model\\]KetQuaHocTap.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-03T13:35:21.536Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-03T13:35:21.536Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Users.cs",
-              "DocumentMoniker": "E:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\Model\\Users.cs",
+              "DocumentMoniker": "D:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\Model\\Users.cs",
               "RelativeDocumentMoniker": "Model\\Users.cs",
-              "ToolTip": "E:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\Model\\Users.cs",
+              "ToolTip": "D:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\Model\\Users.cs",
               "RelativeToolTip": "Model\\Users.cs",
-              "ViewState": "AgIAAIsAAAAAAAAAAAAowJkAAAAtAAAAAAAAAA==",
+              "ViewState": "AgIAAHoAAAAAAAAAAAAgwJEAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-03T13:37:31.332Z",
               "EditorCaption": ""
