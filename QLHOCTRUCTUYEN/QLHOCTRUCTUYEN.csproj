@@ -204,6 +204,7 @@
     <Compile Include="Model\LoaiTN.cs" />
     <Compile Include="Model\TaiNguyenHocTap.cs" />
     <Compile Include="Model\]KetQuaHocTap.cs" />
+    <Compile Include="View\aithaythixoagium.cs" />
     <Compile Include="View\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
