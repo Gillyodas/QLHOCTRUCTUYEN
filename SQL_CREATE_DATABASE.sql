@@ -151,3 +151,45 @@ SELECT * FROM TAINGUYENHOCTAP
 ALTER TABLE TAINGUYENHOCTAP
 DROP CONSTRAINT FK_TAINGUYENTHOCTAP;
 
+INSERT INTO ROLES (ID_ROLE, TENROLE, TRANGTHAI)
+VALUES
+('R001', 'Học viên', 1),
+('R002', 'Giảng viên', 1),
+('R003', 'Quản trị viên', 1);
+
+INSERT INTO PHONGHOCTHAMGIA (ID_PHONGHOC, ID_USER, VAITRO)
+VALUES
+('P001', 'U0', 1), -- Học viên tham gia Phòng học A1
+('P001', 'U1', 2), -- Giảng viên tham gia Phòng học B1
+('P001', 'U2', 2); -- Giảng viên tham gia Phòng học C1
+
+SELECT * FROM KETQUAHOCTAP
+
+INSERT INTO KETQUAHOCTAP (ID_USER, ID_TAINGUYEN, KETQUA, TIENTRINH)
+VALUES
+('U0', 'T001', 8.5, 1), -- Học viên A hoàn thành Tài liệu Toán 1
+('U0', 'T002', 7.0, 1), -- Học viên A hoàn thành Video Sinh học
+('U1', 'T003', 9.0, 1), -- Giảng viên B hoàn thành Bài giảng Vật lý
+('U1', 'T004', NULL, 0), -- Giảng viên B chưa hoàn thành Tài liệu Hóa học
+('U2', 'T005', 10.0, 1); -- Quản trị viên C hoàn thành Video Lịch sử
+
+INSERT INTO KETQUAHOCTAP (ID_USER, ID_TAINGUYEN, KETQUA, TIENTRINH)
+VALUES
+-- Học viên A (U0)
+('U0', 'T003', 8.0, 1),
+('U0', 'T004', 7.5, 1),
+
+-- Học viên B (U1)
+('U1', 'T006', 9.5, 1),
+('U1', 'T002', NULL, 0),
+('U1', 'T001', 10.0, 1),
+
+-- Học viên C (U2)
+('U2', 'T001', NULL, 0),
+('U2', 'T002', 6.0, 1),
+('U2', 'T003', 7.0, 1),
+('U2', 'T004', 8.5, 1),
+('U2', 'T006', 9.0, 1);
+
+
+

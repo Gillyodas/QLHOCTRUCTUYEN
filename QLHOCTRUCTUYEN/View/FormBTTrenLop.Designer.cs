@@ -54,9 +54,7 @@ namespace QLHOCTRUCTUYEN
             this.colThoiHan = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabMoiNguoi = new System.Windows.Forms.TabPage();
             this.tabDiem = new System.Windows.Forms.TabPage();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.colSinhVien = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colDiem1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.dgvKQHT = new System.Windows.Forms.DataGridView();
             this.header = new System.Windows.Forms.SplitContainer();
             this.panelHead = new System.Windows.Forms.Panel();
             this.btnThemBT = new System.Windows.Forms.Button();
@@ -106,6 +104,7 @@ namespace QLHOCTRUCTUYEN
             this.tabBaiTap.SuspendLayout();
             this.panThemTN.SuspendLayout();
             this.tabDiem.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvKQHT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.header)).BeginInit();
             this.header.Panel1.SuspendLayout();
             this.header.Panel2.SuspendLayout();
@@ -346,7 +345,7 @@ namespace QLHOCTRUCTUYEN
             // 
             // tabDiem
             // 
-            this.tabDiem.Controls.Add(this.listView1);
+            this.tabDiem.Controls.Add(this.dgvKQHT);
             this.tabDiem.Location = new System.Drawing.Point(4, 25);
             this.tabDiem.Name = "tabDiem";
             this.tabDiem.Size = new System.Drawing.Size(844, 750);
@@ -354,23 +353,16 @@ namespace QLHOCTRUCTUYEN
             this.tabDiem.Text = "Điểm";
             this.tabDiem.UseVisualStyleBackColor = true;
             // 
-            // listView1
+            // dgvKQHT
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.colSinhVien,
-            this.colDiem1});
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(3, 3);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(727, 428);
-            this.listView1.TabIndex = 1;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
-            // 
-            // colDiem1
-            // 
-            this.colDiem1.Text = "Điểm";
-            this.colDiem1.Width = 57;
+            this.dgvKQHT.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvKQHT.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvKQHT.Location = new System.Drawing.Point(0, 0);
+            this.dgvKQHT.Name = "dgvKQHT";
+            this.dgvKQHT.RowHeadersWidth = 51;
+            this.dgvKQHT.RowTemplate.Height = 24;
+            this.dgvKQHT.Size = new System.Drawing.Size(844, 750);
+            this.dgvKQHT.TabIndex = 0;
             // 
             // header
             // 
@@ -858,6 +850,7 @@ namespace QLHOCTRUCTUYEN
             this.panThemTN.ResumeLayout(false);
             this.panThemTN.PerformLayout();
             this.tabDiem.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvKQHT)).EndInit();
             this.header.Panel1.ResumeLayout(false);
             this.header.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.header)).EndInit();
@@ -966,9 +959,6 @@ namespace QLHOCTRUCTUYEN
         private System.Windows.Forms.ColumnHeader colThoiHan;
         private System.Windows.Forms.TabPage tabMoiNguoi;
         private System.Windows.Forms.TabPage tabDiem;
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.ColumnHeader colSinhVien;
-        private System.Windows.Forms.ColumnHeader colDiem1;
         private Button btnThemBT;
         private PictureBox pictureBox13;
         private Panel panThemTN;
@@ -982,6 +972,7 @@ namespace QLHOCTRUCTUYEN
         private Label label6;
         private Label label5;
         private Label label4;
+        private DataGridView dgvKQHT;
     }
 }
 

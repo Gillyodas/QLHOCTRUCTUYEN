@@ -36,21 +36,21 @@ namespace QLHOCTRUCTUYEN.Model
         private static string connSql = ConfigurationManager.ConnectionStrings["QLHOCTRUCTUYEN"].ConnectionString;
         public static DataTable loadListTaiNguyenHocTap_PhongHoc (string idPhongHoc)
         {
+            DataTable DataTableTNHT = new DataTable();
             using (SqlConnection conn = new SqlConnection (connSql))
             {
                 conn.Open ();
-                DataTable dataTable = new DataTable();
                 string SqlQueryStr = "SELECT * FROM TAINGUYENHOCTAP WHERE ID_PHONGHOC = @idPhongHoc AND TRANGTHAI = 1";
                 using (SqlCommand SqlCmd = new SqlCommand(SqlQueryStr, conn))
                 {
                     SqlCmd.Parameters.AddWithValue("idPhongHoc",idPhongHoc);
                     using (SqlDataAdapter dataAdapter = new SqlDataAdapter(SqlCmd))
                     {
-                        dataAdapter.Fill(dataTable);
-                        return dataTable;
+                        dataAdapter.Fill(DataTableTNHT);
                     }
                 }
             }
+            return DataTableTNHT;
         }
         private static string CreateID()
         {

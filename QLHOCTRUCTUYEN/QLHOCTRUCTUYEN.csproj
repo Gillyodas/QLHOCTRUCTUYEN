@@ -198,13 +198,15 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Control\ControlKetQuaHocTap.cs" />
     <Compile Include="Control\ControlLoaiTN.cs" />
     <Compile Include="Control\ControlTaiNguyenHocTap.cs" />
     <Compile Include="Control\ControlUsers.cs" />
     <Compile Include="Model\LoaiTN.cs" />
+    <Compile Include="Model\PhongHoc.cs" />
+    <Compile Include="Model\PhongHocThamGia.cs" />
     <Compile Include="Model\TaiNguyenHocTap.cs" />
-    <Compile Include="Model\]KetQuaHocTap.cs" />
-    <Compile Include="View\aithaythixoagium.cs" />
+    <Compile Include="Model\KetQuaHocTap.cs" />
     <Compile Include="View\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -264,6 +266,7 @@
     <EmbeddedResource Include="View\FormTrangChu.resx">
       <DependentUpon>FormTrangChu.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include=".editorconfig" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
