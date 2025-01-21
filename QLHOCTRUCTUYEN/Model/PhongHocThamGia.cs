@@ -41,7 +41,9 @@ namespace QLHOCTRUCTUYEN.Model
                 }
             }
         }
-        public static void ThamGiaPhongHoc(string id_user, string id_phong)
-        { }
+        public static void ThamGiaPhongHoc(string id_user, string id_phong, string maphong)
+        {
+            QLHOCTRUCTUYENDataSetTableAdapters.PHONGHOCTHAMGIATableAdapter phonghoc = new QLHOCTRUCTUYENDataSetTableAdapters.PHONGHOCTHAMGIATableAdapter();
+        }
     }
 }

@@ -207,6 +207,11 @@
     <Compile Include="Model\PhongHocThamGia.cs" />
     <Compile Include="Model\TaiNguyenHocTap.cs" />
     <Compile Include="Model\KetQuaHocTap.cs" />
+    <Compile Include="QLHOCTRUCTUYENDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLHOCTRUCTUYENDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="View\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -277,6 +282,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="QLHOCTRUCTUYENDataSet.xsc">
+      <DependentUpon>QLHOCTRUCTUYENDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="QLHOCTRUCTUYENDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QLHOCTRUCTUYENDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QLHOCTRUCTUYENDataSet.xss">
+      <DependentUpon>QLHOCTRUCTUYENDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
