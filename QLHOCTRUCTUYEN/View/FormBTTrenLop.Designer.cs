@@ -55,8 +55,10 @@
             this.grbGiangDay = new System.Windows.Forms.GroupBox();
             this.btnPhongHocDaTao = new System.Windows.Forms.Button();
             this.btnCanXemXet = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.grbMenuNguoiDung.SuspendLayout();
             this.tabMenuPhongHoc.SuspendLayout();
+            this.tabBangTin.SuspendLayout();
             this.tabBaiTap.SuspendLayout();
             this.tabDiem.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -107,6 +109,7 @@
             // 
             // tabBangTin
             // 
+            this.tabBangTin.Controls.Add(this.button1);
             this.tabBangTin.Location = new System.Drawing.Point(4, 25);
             this.tabBangTin.Name = "tabBangTin";
             this.tabBangTin.Padding = new System.Windows.Forms.Padding(3);
@@ -303,6 +306,16 @@
             this.btnCanXemXet.Text = "Cần xem xét";
             this.btnCanXemXet.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(221, 128);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(130, 40);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "TestDT";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FormBTTrenLop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -315,6 +328,7 @@
             this.Text = "Form1";
             this.grbMenuNguoiDung.ResumeLayout(false);
             this.tabMenuPhongHoc.ResumeLayout(false);
+            this.tabBangTin.ResumeLayout(false);
             this.tabBaiTap.ResumeLayout(false);
             this.tabDiem.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
@@ -353,6 +367,7 @@
         private System.Windows.Forms.GroupBox grbGiangDay;
         private System.Windows.Forms.Button btnPhongHocDaTao;
         private System.Windows.Forms.Button btnCanXemXet;
+        private System.Windows.Forms.Button button1;
     }
 }
 

@@ -44,6 +44,8 @@
             this.panel_ThamGiaLop.Name = "panel_ThamGiaLop";
             this.panel_ThamGiaLop.Size = new System.Drawing.Size(246, 92);
             this.panel_ThamGiaLop.TabIndex = 0;
+            this.panel_ThamGiaLop.Click += new System.EventHandler(this.panel_ThamGiaLop_Click);
+            this.panel_ThamGiaLop.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_ThamGiaLop_Paint);
             this.panel_ThamGiaLop.MouseLeave += new System.EventHandler(this.panel_ThamGiaLop_MouseLeave);
             this.panel_ThamGiaLop.MouseHover += new System.EventHandler(this.panel_ThamGiaLop_MouseHover);
             // 
@@ -67,6 +69,7 @@
             this.panel_TaoLop.Name = "panel_TaoLop";
             this.panel_TaoLop.Size = new System.Drawing.Size(246, 87);
             this.panel_TaoLop.TabIndex = 1;
+            this.panel_TaoLop.Click += new System.EventHandler(this.panel_TaoLop_Click);
             this.panel_TaoLop.MouseLeave += new System.EventHandler(this.panel_TaoLop_MouseLeave);
             this.panel_TaoLop.MouseHover += new System.EventHandler(this.panel_TaoLop_MouseHover);
             // 

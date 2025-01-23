@@ -11,6 +11,8 @@ using System.Configuration;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Text.RegularExpressions;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using QLHOCTRUCTUYEN.Model;
+using QLHOCTRUCTUYEN.View;
 
 namespace QLHOCTRUCTUYEN
 {
@@ -93,6 +95,23 @@ namespace QLHOCTRUCTUYEN
         private void btnDangNhapDN_Click(object sender, EventArgs e)
         {
             Control.ControlUsers.ControlLogin(txtEmailDN.Text, txtPassDN.Text);
+            //currentUser
+            string email = txtEmailDN.Text;
+            string password = txtPassDN.Text;
+
+            UserService userService = new UserService();
+            CurrentUser user = userService.Login(email, password);
+
+            if (user != null)
+            {
+                // Lưu thông tin người dùng vào session
+                CurrentUserSession.SetCurrentUser(user);
+            }
+            else
+            {
+                MessageBox.Show("Đăng nhập thất bại.");
+            }
+
         }
         public void DangKyThanhCong(bool success)
         {
@@ -107,8 +126,8 @@ namespace QLHOCTRUCTUYEN
             if (success)
             {
 
-                FormBTTrenLop formBTTrenLop = new FormBTTrenLop();
-                formBTTrenLop.Show();
+                FormTrangChu formTrangChu = new FormTrangChu();
+                formTrangChu.Show();
 
             }
             else MessageBox.Show("Dang nhap that bai");

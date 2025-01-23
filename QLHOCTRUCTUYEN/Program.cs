@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using QLHOCTRUCTUYEN.Nháp;
 using QLHOCTRUCTUYEN.View;
 
 namespace QLHOCTRUCTUYEN
@@ -17,7 +18,7 @@ namespace QLHOCTRUCTUYEN
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormTrangChu());
+            Application.Run(new FormDangKy());
         }
     }
 }

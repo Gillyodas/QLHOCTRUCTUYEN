@@ -80,5 +80,34 @@ namespace QLHOCTRUCTUYEN.View
             panel_TaoLop.BackColor = SystemColors.Control;
             lb_TaoLop.ForeColor = Color.Black;
         }
+
+        private void panel_ThamGiaLop_Click(object sender, EventArgs e)
+        {
+            FormThamGiaLop FormThamGia = new FormThamGiaLop();
+            this.Close();
+            FormThamGia.ControlBox = false;         // Tắt toàn bộ thanh điều khiển (X, Minimize, Maximize)
+            FormThamGia.Text = "";                  // Xóa tiêu đề (nếu không muốn tiêu đề hiện)
+
+            FormThamGia.StartPosition = FormStartPosition.CenterScreen;
+
+            FormThamGia.Show();
+        }
+
+        private void panel_TaoLop_Click(object sender, EventArgs e)
+        {
+            FormTaoLopHoc FormTaoLop = new FormTaoLopHoc();
+            this.Close();
+            FormTaoLop.ControlBox = false;
+            FormTaoLop.Text = "";                  // Xóa tiêu đề (nếu không muốn tiêu đề hiện)
+
+            FormTaoLop.StartPosition = FormStartPosition.CenterScreen;
+
+            FormTaoLop.Show();
+        }
+
+        private void panel_ThamGiaLop_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

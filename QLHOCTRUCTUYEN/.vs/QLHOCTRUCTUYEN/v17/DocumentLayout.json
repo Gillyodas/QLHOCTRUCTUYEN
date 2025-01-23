@@ -3,44 +3,24 @@
   "WorkspaceRootPath": "F:\\Leanr-inSchool\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|f:\\leanr-inschool\\qlhoctructuyen\\qlhoctructuyen\\view\\formtrangchu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|solutionrelative:view\\formtrangchu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|f:\\leanr-inschool\\qlhoctructuyen\\qlhoctructuyen\\view\\formcttaikhoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|solutionrelative:view\\formcttaikhoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|f:\\leanr-inschool\\qlhoctructuyen\\qlhoctructuyen\\view\\formtrangchu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|solutionrelative:view\\formtrangchu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|f:\\leanr-inschool\\qlhoctructuyen\\qlhoctructuyen\\model\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|solutionrelative:model\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|F:\\Leanr-inSchool\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|F:\\Leanr-inSchool\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\view\\formtaovathamgialop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|solutionrelative:view\\formtaovathamgialop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|F:\\Leanr-inSchool\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\view\\formthamgialop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|solutionrelative:view\\formthamgialop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|f:\\leanr-inschool\\qlhoctructuyen\\qlhoctructuyen\\view\\formtaolophoc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|solutionrelative:view\\formtaolophoc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|F:\\Leanr-inSchool\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\view\\formtaovathamgialop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|solutionrelative:view\\formtaovathamgialop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|F:\\Leanr-inSchool\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\view\\formtaovathamgialop.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|solutionrelative:view\\formtaovathamgialop.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|F:\\Leanr-inSchool\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\view\\formdangky.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|solutionrelative:view\\formdangky.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|F:\\Leanr-inSchool\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\view\\formdangky.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|solutionrelative:view\\formdangky.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|F:\\Leanr-inSchool\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\view\\formbttrenlop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|solutionrelative:view\\formbttrenlop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|F:\\Leanr-inSchool\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\view\\formctbaitap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|solutionrelative:view\\formctbaitap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -58,126 +38,64 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FormCTTaiKhoan.cs [Design]",
+              "DocumentMoniker": "F:\\Leanr-inSchool\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\View\\FormCTTaiKhoan.cs",
+              "RelativeDocumentMoniker": "View\\FormCTTaiKhoan.cs",
+              "ToolTip": "F:\\Leanr-inSchool\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\View\\FormCTTaiKhoan.cs [Design]",
+              "RelativeToolTip": "View\\FormCTTaiKhoan.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-23T03:05:49.86Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "FormTrangChu.cs",
+              "DocumentMoniker": "F:\\Leanr-inSchool\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\View\\FormTrangChu.cs",
+              "RelativeDocumentMoniker": "View\\FormTrangChu.cs",
+              "ToolTip": "F:\\Leanr-inSchool\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\View\\FormTrangChu.cs",
+              "RelativeToolTip": "View\\FormTrangChu.cs",
+              "ViewState": "AgIAADEBAAAAAAAAAAAhwEwBAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-23T03:05:43.347Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "FormTrangChu.cs [Design]",
               "DocumentMoniker": "F:\\Leanr-inSchool\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\View\\FormTrangChu.cs",
               "RelativeDocumentMoniker": "View\\FormTrangChu.cs",
               "ToolTip": "F:\\Leanr-inSchool\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\View\\FormTrangChu.cs [Design]",
               "RelativeToolTip": "View\\FormTrangChu.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-04T13:07:54.749Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Users.cs",
-              "DocumentMoniker": "F:\\Leanr-inSchool\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\Model\\Users.cs",
-              "RelativeDocumentMoniker": "Model\\Users.cs",
-              "ToolTip": "F:\\Leanr-inSchool\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\Model\\Users.cs",
-              "RelativeToolTip": "Model\\Users.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-04T13:10:46.011Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "FormTaoLopHoc.cs [Design]",
-              "DocumentMoniker": "F:\\Leanr-inSchool\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\View\\FormTaoLopHoc.cs",
-              "RelativeDocumentMoniker": "View\\FormTaoLopHoc.cs",
-              "ToolTip": "F:\\Leanr-inSchool\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\View\\FormTaoLopHoc.cs [Design]",
-              "RelativeToolTip": "View\\FormTaoLopHoc.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-02T12:44:52.764Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "FormTaovaThamGiaLop.cs [Design]",
-              "DocumentMoniker": "F:\\Leanr-inSchool\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\View\\FormTaovaThamGiaLop.cs",
-              "RelativeDocumentMoniker": "View\\FormTaovaThamGiaLop.cs",
-              "ToolTip": "F:\\Leanr-inSchool\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\View\\FormTaovaThamGiaLop.cs [Design]",
-              "RelativeToolTip": "View\\FormTaovaThamGiaLop.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-02T10:20:39.695Z",
+              "WhenOpened": "2025-01-23T03:00:24.487Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "FormThamGiaLop.cs [Design]",
-              "DocumentMoniker": "F:\\Leanr-inSchool\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\View\\FormThamGiaLop.cs",
-              "RelativeDocumentMoniker": "View\\FormThamGiaLop.cs",
-              "ToolTip": "F:\\Leanr-inSchool\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\View\\FormThamGiaLop.cs [Design]",
-              "RelativeToolTip": "View\\FormThamGiaLop.cs [Design]",
+              "Title": "Program.cs",
+              "DocumentMoniker": "F:\\Leanr-inSchool\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "F:\\Leanr-inSchool\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-02T12:25:46.959Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "FormTaovaThamGiaLop.cs",
-              "DocumentMoniker": "F:\\Leanr-inSchool\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\View\\FormTaovaThamGiaLop.cs",
-              "RelativeDocumentMoniker": "View\\FormTaovaThamGiaLop.cs",
-              "ToolTip": "F:\\Leanr-inSchool\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\View\\FormTaovaThamGiaLop.cs",
-              "RelativeToolTip": "View\\FormTaovaThamGiaLop.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-02T10:52:38.392Z",
+              "WhenOpened": "2025-01-21T14:26:14.594Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "FormTaovaThamGiaLop.Designer.cs",
-              "DocumentMoniker": "F:\\Leanr-inSchool\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\View\\FormTaovaThamGiaLop.Designer.cs",
-              "RelativeDocumentMoniker": "View\\FormTaovaThamGiaLop.Designer.cs",
-              "ToolTip": "F:\\Leanr-inSchool\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\View\\FormTaovaThamGiaLop.Designer.cs",
-              "RelativeToolTip": "View\\FormTaovaThamGiaLop.Designer.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAAAhwEgAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "FormCTBaiTap.cs [Design]",
+              "DocumentMoniker": "F:\\Leanr-inSchool\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\View\\FormCTBaiTap.cs",
+              "RelativeDocumentMoniker": "View\\FormCTBaiTap.cs",
+              "ToolTip": "F:\\Leanr-inSchool\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\View\\FormCTBaiTap.cs [Design]",
+              "RelativeToolTip": "View\\FormCTBaiTap.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-02T11:10:26.925Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "FormDangKy.cs",
-              "DocumentMoniker": "F:\\Leanr-inSchool\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\View\\FormDangKy.cs",
-              "RelativeDocumentMoniker": "View\\FormDangKy.cs",
-              "ToolTip": "F:\\Leanr-inSchool\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\View\\FormDangKy.cs",
-              "RelativeToolTip": "View\\FormDangKy.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAAwCUAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-01T10:16:17.18Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "FormDangKy.Designer.cs",
-              "DocumentMoniker": "F:\\Leanr-inSchool\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\View\\FormDangKy.Designer.cs",
-              "RelativeDocumentMoniker": "View\\FormDangKy.Designer.cs",
-              "ToolTip": "F:\\Leanr-inSchool\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\View\\FormDangKy.Designer.cs",
-              "RelativeToolTip": "View\\FormDangKy.Designer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-01T10:31:59.529Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "FormBTTrenLop.cs",
-              "DocumentMoniker": "F:\\Leanr-inSchool\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\View\\FormBTTrenLop.cs",
-              "RelativeDocumentMoniker": "View\\FormBTTrenLop.cs",
-              "ToolTip": "F:\\Leanr-inSchool\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\View\\FormBTTrenLop.cs",
-              "RelativeToolTip": "View\\FormBTTrenLop.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-01T10:16:10.54Z"
+              "WhenOpened": "2025-01-21T13:56:13.222Z"
             }
           ]
         }
