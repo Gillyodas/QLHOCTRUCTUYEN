@@ -1,0 +1,134 @@
+[33mcommit 849d8d673f54977498491e12c7d687e45fb91011[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mAnhKhoa[m[33m)[m
+Author: Gillyodas <gillyodaspendragon94@gmail.com>
+Date:   Sun Jan 26 12:03:39 2025 +0700
+
+    Xong QLPhongHoc
+
+[33mcommit 91193bd4bab31e387f3b3860950921bb82e4a18d[m
+Author: Gillyodas <gillyodaspendragon94@gmail.com>
+Date:   Thu Jan 23 10:10:47 2025 +0700
+
+    Update CodeChunks.db and .suo files
+
+[33mcommit 0e2f28f46a80f186c43da79bb286398cf2c49e54[m
+Author: Gillyodas <gillyodaspendragon94@gmail.com>
+Date:   Thu Jan 23 10:09:51 2025 +0700
+
+    Remove deleted index files
+
+[33mcommit 4883148671271ecaf050a01aeb199bdeec8cfd53[m
+Author: Gillyodas <gillyodaspendragon94@gmail.com>
+Date:   Thu Jan 23 10:05:51 2025 +0700
+
+    Update SemanticSymbols and .suo files
+
+[33mcommit b4bc8c063a9621098016005192c97ece52035187[m
+Author: Gillyodas <gillyodaspendragon94@gmail.com>
+Date:   Tue Jan 21 17:12:18 2025 +0700
+
+    xoa 1 vai tep
+
+[33mcommit 00b553308944be01e644e280594dce8ce26ae2e0[m[33m ([m[1;31morigin/AnhKhoa[m[33m)[m
+Author: Gillyodas <gillyodaspendragon94@gmail.com>
+Date:   Mon Jan 6 20:57:39 2025 +0700
+
+    anhkhoa
+
+[33mcommit 20bf80d1d77e79d258291f083fd502b8b34e9da6[m
+Author: Gillyodas <gillyodaspendragon94@gmail.com>
+Date:   Mon Jan 6 20:54:03 2025 +0700
+
+    update cac ham backend khoa viet
+
+[33mcommit 1d57103192b4e0f60c7392914e37c65f984f8622[m
+Author: Gillyodas <gillyodaspendragon94@gmail.com>
+Date:   Sat Jan 4 20:48:42 2025 +0700
+
+    asdas
+
+[33mcommit 658ab3d7388893817b8003fdfef65e7c1cdea4fc[m
+Author: Gillyodas <gillyodaspendragon94@gmail.com>
+Date:   Sat Jan 4 20:45:28 2025 +0700
+
+    .
+
+[33mcommit 44493a5cb1943403fa024286ec0f3c0bd69f8cc8[m[33m ([m[1;31morigin/Khoa[m[33m)[m
+Author: Gillyodas <gillyodaspendragon94@gmail.com>
+Date:   Sat Jan 4 20:22:31 2025 +0700
+
+    Khoa up bai
+
+[33mcommit c2d6f87bcd3c17b9d36b17846c620b5bdff0c36d[m
+Merge: 800784c d5a9d5a
+Author: Gill <daylatkrac123@gmail.com>
+Date:   Thu Jan 2 19:02:20 2025 +0700
+
+    xong CRUD TAINGUYENHOCTAP
+
+[33mcommit d5a9d5a7ff07e7d160aac55fc7e8e31977128968[m
+Merge: 528bd07 343018f
+Author: Bui Cong Danh <buicongdanhcm2004@gmail.com>
+Date:   Wed Jan 1 18:54:50 2025 +0700
+
+    xong giao dien trang chu
+
+[33mcommit 800784c8cf4b7f3d394427ec96a1dd544ae1580b[m
+Author: Gill <daylatkrac123@gmail.com>
+Date:   Wed Jan 1 17:09:20 2025 +0700
+
+    test
+
+[33mcommit 528bd076ef56e08923f520027cfc6428d9fd1af7[m[33m ([m[1;32mcongdanh[m[33m)[m
+Merge: d8cccb3 cff62ac
+Author: Bui Cong Danh <buicongdanhcm2004@gmail.com>
+Date:   Wed Jan 1 16:19:25 2025 +0700
+
+    giai quyet mau thuan
+
+[33mcommit 343018f8d893caba622b01446a53957b97f9ff4a[m
+Author: Gill <daylatkrac123@gmail.com>
+Date:   Wed Jan 1 15:07:53 2025 +0700
+
+    Xong DN/DK
+
+[33mcommit d8cccb3baa519a36e007a3a6115bb4601df08dc5[m
+Author: Bui Cong Danh <buicongdanhcm2004@gmail.com>
+Date:   Wed Jan 1 14:02:27 2025 +0700
+
+    thay doi
+
+[33mcommit 27b9dcf3c7d85edc7a6b6395c99ec85e426c665f[m
+Author: Bui Cong Danh <buicongdanhcm2004@gmail.com>
+Date:   Wed Jan 1 13:43:46 2025 +0700
+
+    thay doi
+
+[33mcommit cff62ac79572a1a3cc311ab7364e22f753778642[m
+Author: Gill <daylatkrac123@gmail.com>
+Date:   Sun Dec 29 23:39:08 2024 +0700
+
+    Backup
+
+[33mcommit c82aec725f1f586debb95d75aef6c4370dc584a9[m
+Author: Gill <daylatkrac123@gmail.com>
+Date:   Sat Dec 28 21:38:42 2024 +0700
+
+    Khoa up code len main
+
+[33mcommit 0ada04a25a44c903afee63b6d8c718baf3b72524[m
+Author: Gill <daylatkrac123@gmail.com>
+Date:   Fri Dec 27 23:53:21 2024 +0700
+
+    Khoa up code 11h53 27/12
+
+[33mcommit 82c8256b4c0bdfb14eb4101e548e6825d049c1e6[m[33m ([m[1;32mtest[m[33m)[m
+Author: Gill <daylatkrac123@gmail.com>
+Date:   Fri Dec 27 23:47:14 2024 +0700
+
+    test
+
+[33mcommit 5559b25bbaaa4621ff65688b062868ba6520aa05[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m
+Author: Gill <daylatkrac123@gmail.com>
+Date:   Sun Dec 22 13:04:37 2024 +0700
+
+    solution goc
