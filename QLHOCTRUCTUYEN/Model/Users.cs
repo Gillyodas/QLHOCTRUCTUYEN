@@ -85,6 +85,7 @@ namespace QLHOCTRUCTUYEN.Model
     public class ManageUsers
     {
         private static string connSql = ConfigurationManager.ConnectionStrings["QLHOCTRUCTUYEN"].ConnectionString;
+        private QLHOCTRUCTUYENDataSetTableAdapters.USERSTableAdapter UsersTableAdapter = new QLHOCTRUCTUYENDataSetTableAdapters.USERSTableAdapter
 
         public static string CreateID()
         {
@@ -146,7 +147,10 @@ namespace QLHOCTRUCTUYEN.Model
                 }
             } return false;
         }
-
+        public QLHOCTRUCTUYENDataSet.USERSDataTable TimKiemTheoEmail(string email)
+        {
+            return UsersTableAdapter.GetDataByEmail(email);
+        }
     }
 
     public class UserLoginHandler

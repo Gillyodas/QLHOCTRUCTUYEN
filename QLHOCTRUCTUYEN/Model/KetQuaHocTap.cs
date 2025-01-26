@@ -10,6 +10,8 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Data.SqlTypes;
 using System.Data;
+using System.Windows.Forms;
+using QLHOCTRUCTUYEN.QLHOCTRUCTUYENDataSetTableAdapters;
 
 
 namespace QLHOCTRUCTUYEN.Model
@@ -21,66 +23,46 @@ namespace QLHOCTRUCTUYEN.Model
     public class ManageKQHT
     {
         private static string connSql = ConfigurationManager.ConnectionStrings["QLHOCTRUCTUYEN"].ConnectionString;
-        public static DataTable DataTableKQHTForUser = new DataTable();
-        public static DataTable LoadListKQHTForPhongHoc(string id_phong)
-        {
-            DataTable DataTableKQHTForPhongHoc = new DataTable();
-            using (SqlConnection conn = new SqlConnection(connSql))
-            {
-                conn.Open();
-                string SqlQueryStr = "SELECT * FROM KETQUAHOCTAP WHERE ID_TAINGUYEN IN " +
-                    "(SELECT ID_TAINGUYEN FROM TAINGUYENHOCTAP WHERE ID_PHONGHOC = @id_phong)";
-                using (SqlCommand SqlCmd = new SqlCommand(SqlQueryStr, conn))
-                {
-                    SqlCmd.Parameters.AddWithValue("@id_phong", id_phong);
-                    using (SqlDataAdapter dataAdapter = new SqlDataAdapter(SqlCmd))
-                    {
-                        dataAdapter.Fill(DataTableKQHTForPhongHoc);
-                    }
-                }
-            }
-            return DataTableKQHTForPhongHoc;
-        }
-        public static void LoadListKQHTForUser(string id_user, string id_tainguyen)
+        private static QLHOCTRUCTUYENDataSetTableAdapters.KETQUAHOCTAPTableAdapter KQHTTableAdapter = new QLHOCTRUCTUYENDataSetTableAdapters.KETQUAHOCTAPTableAdapter();
+        
+        private string CreateIDKQHT()
         {
             using (SqlConnection conn = new SqlConnection(connSql))
             {
-                conn.Open();
-                string SqlQueryStr = "SELECT * FROM KETQUAHOCTAP WHERE ID_USER = @id_user AND ID_TAINGUYEN = @id_tainguyen";
-                using (SqlCommand SqlCmd = new SqlCommand(SqlQueryStr, conn))
+                string SqlQueryStr = "SELECT COUNT(*) FROM KETQUAHOCTAP";
+                using (SqlCommand cmd = new SqlCommand(SqlQueryStr, conn))
                 {
-                    SqlCmd.Parameters.AddWithValue("@id_user", id_user);
-                    using (SqlDataAdapter dataAdapter = new SqlDataAdapter(SqlCmd))
-                    {
-                        dataAdapter.Fill(DataTableKQHTForUser);
-                    }
+                    int count = (int)cmd.ExecuteScalar();
+                    return "KQ" + (count + 1).ToString();
                 }
             }
         }
-        public static void AddNewKQHTToDataTable(string id_user, string id_tnht, float kq, bool tientrinh)
+        public void CreateKQHT(string id_user, string id_tn, int kq, bool tientrinh)
         {
-            DataTableKQHTForUser.Rows.Add(id_user, id_tnht, kq, tientrinh);
+            KQHTTableAdapter.Insert(id_user, id_tn, kq, tientrinh);
         }
-        public static void UpdateKQHTToSql()
+        public void UpdateKQHT(string id_user, string id_tn, int kq, bool tientrinh)
         {
-            using (SqlConnection conn = new SqlConnection(connSql))
+            var row = KQHTTableAdapter.GetData().FindByID_USERID_TAINGUYEN(id_user, id_tn);
+            if (row != null)
             {
-                conn.Open();
+                row.TIENTRINH = tientrinh;
+                row.KETQUA = kq;
+                KQHTTableAdapter.Update(row);
+            }
+        }
+        public QLHOCTRUCTUYENDataSet.KETQUAHOCTAPDataTable XexKQHTCuaUserTheoPhongHoc(string id_user, string id_phonghoc)
+        {
+            return KQHTTableAdapter.GetKQHTCuaUserTheoPhongHoc(id_user, id_phonghoc);
+        }
+        public QLHOCTRUCTUYENDataSet.KETQUAHOCTAPDataTable XemDanhSachKQHTCuaTatcaUserTrongPhongHoc(string id_phonghoc)
+        {
+            return KQHTTableAdapter.GetDataByTNHTTrongPhongHoc(id_phonghoc);
+        }
+        public QLHOCTRUCTUYENDataSet.KETQUAHOCTAPDataTable XemKQHTTheoTNHTTrongPhongHoc()
+        {
+            var QueryLinQ = 
+        }
 
-                foreach (DataRow row in DataTableKQHTForUser.Rows)
-                {
-                    string SqlQueryStr = "INSERT INTO KETQUAHOCTAP (ID_USER, ID_TAINGUYEN, KETQUA, TIENTRINH) VALUES (@id_user, @id_tnht, @kq, @tientrinh)";
-                    using (SqlCommand SqlCmd = new SqlCommand(SqlQueryStr, conn))
-                    {
-                        SqlCmd.Parameters.AddWithValue("@id_user", row["ID_USER"]);
-                        SqlCmd.Parameters.AddWithValue("@id_tnht", row["ID_TAINGUYEN"]);
-                        SqlCmd.Parameters.AddWithValue("@kq", row["KETQUA"]);
-                        SqlCmd.Parameters.AddWithValue("@tientrinh", row["TIENTRINH"]);
-
-                        SqlCmd.ExecuteNonQuery();
-                    }
-                }
-            }
-        }
     }
 }

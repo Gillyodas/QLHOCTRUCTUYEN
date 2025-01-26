@@ -33,122 +33,62 @@ namespace QLHOCTRUCTUYEN.Model
 
     public class ManageTaiNguyenHocTap
     {
+        private static QLHOCTRUCTUYENDataSetTableAdapters.TAINGUYENHOCTAPTableAdapter tainguyenhoctapTableAdapter = new QLHOCTRUCTUYENDataSetTableAdapters.TAINGUYENHOCTAPTableAdapter();
         private static string connSql = ConfigurationManager.ConnectionStrings["QLHOCTRUCTUYEN"].ConnectionString;
-        public static DataTable loadListTaiNguyenHocTap_PhongHoc (string idPhongHoc)
-        {
-            DataTable DataTableTNHT = new DataTable();
-            using (SqlConnection conn = new SqlConnection (connSql))
-            {
-                conn.Open ();
-                string SqlQueryStr = "SELECT * FROM TAINGUYENHOCTAP WHERE ID_PHONGHOC = @idPhongHoc AND TRANGTHAI = 1";
-                using (SqlCommand SqlCmd = new SqlCommand(SqlQueryStr, conn))
-                {
-                    SqlCmd.Parameters.AddWithValue("idPhongHoc",idPhongHoc);
-                    using (SqlDataAdapter dataAdapter = new SqlDataAdapter(SqlCmd))
-                    {
-                        dataAdapter.Fill(DataTableTNHT);
-                    }
-                }
-            }
-            return DataTableTNHT;
-        }
         private static string CreateID()
         {
             using (SqlConnection conn = new SqlConnection(connSql))
             {
                 conn.Open();
                 string SqlQueryStr = "SELECT COUNT(*) FROM TAINGUYENHOCTAP";
-                using (SqlCommand SqlCmd = new SqlCommand(SqlQueryStr, conn))
+                using (SqlCommand cmd = new SqlCommand(SqlQueryStr, conn))
                 {
-                    string index = Convert.ToString(SqlCmd.ExecuteScalar());
-
-                    return "TN" + index;
+                    int count = (int)cmd.ExecuteScalar();
+                    return "TN" + (count + 1).ToString();
                 }
             }
         }
-        public static bool CreateTaiNguyenHocTap(string name, string url, string mota, string idUser, string idLoaiTN, string idPhong)
+        public void CreateTaiNguyenHocTap(string id_user, string ten, string url, string mota, string id_loaitn, string id_phonghoc, DateTime ngaydang, DateTime thoihan)
         {
-            using (SqlConnection conn = new SqlConnection(connSql))
+            tainguyenhoctapTableAdapter.Insert(CreateID(), ten, url, mota, true, id_loaitn, id_phonghoc, id_user, ngaydang, thoihan);
+        }
+        public object XemChiTietTaiNguyenHocTap(string id_tainguyen)
+        {
+            return tainguyenhoctapTableAdapter.GetData().FindByID_TAINGUYEN(id_tainguyen);
+        }
+        public DataTable LoadListTNHT(string id_phonghoc)
+        {
+            var dataTable = new QLHOCTRUCTUYENDataSet.TAINGUYENHOCTAPDataTable();
+            tainguyenhoctapTableAdapter.Fill(dataTable);
+            return dataTable.AsEnumerable().Where(row => row.ID_PHONGHOC == id_phonghoc).CopyToDataTable();
+        }
+        public void UpdateTaiNguyenHocTap(string id_tainguyen, string ten, string url, string mota, DateTime ngaydang, DateTime thoihan)
+        {
+            var row = tainguyenhoctapTableAdapter.GetData().FindByID_TAINGUYEN(id_tainguyen);
+            if (row != null)
             {
-                conn.Open();
-                string SqlQueryStr = "INSERT INTO TAINGUYENHOCTAP " +
-                    "VALUES (@idTaiNguyen, @name, @url, @mota, 1, @idUser, @idLoaiTN, @idPhongHoc)";
-                using (SqlCommand SqlCmd = new SqlCommand(SqlQueryStr, conn))
-                {
-                    SqlCmd.Parameters.AddWithValue("@idTaiNguyen", CreateID());
-                    SqlCmd.Parameters.AddWithValue("@name", name);
-                    SqlCmd.Parameters.AddWithValue("@url", url);
-                    SqlCmd.Parameters.AddWithValue("@mota", mota);
-                    SqlCmd.Parameters.AddWithValue("@idUser", idUser);
-                    SqlCmd.Parameters.AddWithValue("@idLoaiTN", idLoaiTN);
-                    SqlCmd.Parameters.AddWithValue("@idPhongHoc", idPhong);
-
-                    int rowsAffected = SqlCmd.ExecuteNonQuery();
-                    return rowsAffected > 0;
-                }
+                row.TENTAINGUYEN = ten;
+                row.URL_TAINGUYEN = url;
+                row.MOTA = mota;
+                row.NGAYDANG = ngaydang;
+                row.THOIHAN = thoihan;
+                tainguyenhoctapTableAdapter.Update(row);
             }
         }
-        public static bool UpdateTaiNguyenHocTap(string id, string name, string url, string mota, string idLoaiTN)
+        public void DeleteTNHT(string id_tainguyen)
         {
-            using (SqlConnection conn =new SqlConnection(connSql))
+            var row = tainguyenhoctapTableAdapter.GetData().FirstOrDefault(r => r.ID_TAINGUYEN == id_tainguyen);
+            if (row != null)
             {
-                conn.Open();
-                string SqlQueryStr = "UPDATE TAINGUYENHOCTAP SET TENTAINGUYEN = @name, URL_TAINGUYEN = @url, MOTA = @mota, ID_LOAITN = idLoaiTN WHERE ID_TAINGUYEN = @id";
-                using (SqlCommand SqlCmd = new SqlCommand(SqlQueryStr,conn))
-                {
-                    SqlCmd.Parameters.AddWithValue("@name", name);
-                    SqlCmd.Parameters.AddWithValue("@url", url);
-                    SqlCmd.Parameters.AddWithValue("@mota", mota);
-                    SqlCmd.Parameters.AddWithValue("@idLoaiTN", idLoaiTN);
-                    SqlCmd.Parameters.AddWithValue("@id", id);
-
-                    int rowsAffected = SqlCmd.ExecuteNonQuery();
-                    return rowsAffected > 0;
-                }
+                row.TRANGTHAI = false;
+                tainguyenhoctapTableAdapter.Update(row);
             }
         }
-        public static bool DeleteTaiNguyenHocTap(string id)
+        public DataTable LocTaiNguyenTheoLoai(string id_phonghoc, string id_loaitn)
         {
-            using (SqlConnection conn = new SqlConnection(connSql))
-            {
-                conn.Open();
-                string SqlQueryStr = "UPDATE TAINGUYENHOCTAP SET TRANGTHAI = 0 WHERE ID_TAINGUYEN = @id";
-                using (SqlCommand SqlCmd = new SqlCommand(SqlQueryStr, conn))
-                {
-                    SqlCmd.Parameters.AddWithValue("@id", id);
-                    int rowsAffected = SqlCmd.ExecuteNonQuery();
-                    return rowsAffected > 0;
-                }
-            }
-        }
-        public static TaiNguyenHocTap ReadTaiNguyenHocTap(string id)
-        {
-            using (SqlConnection conn = new SqlConnection(connSql))
-            {
-                conn.Open();
-                string SqlQueryStr = "SELECT * FROM TAINGUYENHOCTAP WHERE ID_TAINGUYEN = @id";
-                using ( SqlCommand SqlCmd = new SqlCommand( SqlQueryStr, conn))
-                {
-                    SqlCmd.Parameters.AddWithValue("id", id);
-                    using (SqlDataReader reader = SqlCmd.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            TaiNguyenHocTap tnht = new TaiNguyenHocTap
-                            {
-                                IdTN = reader.GetString(0),
-                                TenTN = reader.GetString(1),
-                                URL_TN = reader.GetString(2),
-                                MoTa = reader.GetString(3),
-                                IdUser = reader.GetString(5),
-                                IdLoaiTN = reader.GetString(6),
-                                IdPH = reader.GetString(7)
-                            };
-                            return tnht;
-                        } return null;
-                    }
-                }
-            }
+            var dataTable = new QLHOCTRUCTUYENDataSet.TAINGUYENHOCTAPDataTable();
+            tainguyenhoctapTableAdapter.Fill(dataTable);
+            return dataTable.AsEnumerable().Where(r => r.ID_PHONGHOC == id_phonghoc && r.ID_LOAITN == id_loaitn).CopyToDataTable();
         }
     }
 }

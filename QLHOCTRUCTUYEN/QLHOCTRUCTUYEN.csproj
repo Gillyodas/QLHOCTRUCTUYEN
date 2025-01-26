@@ -207,6 +207,9 @@
     <Compile Include="Model\PhongHocThamGia.cs" />
     <Compile Include="Model\TaiNguyenHocTap.cs" />
     <Compile Include="Model\KetQuaHocTap.cs" />
+    <Compile Include="QLHOCTRUCTUYENDataSet.cs">
+      <DependentUpon>QLHOCTRUCTUYENDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="QLHOCTRUCTUYENDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -54,6 +54,8 @@ namespace QLHOCTRUCTUYEN {
         
         private global::System.Data.DataRelation relationFK_USERS;
         
+        private global::System.Data.DataRelation relationFK_PHONGHOC_USERS;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -362,6 +364,7 @@ namespace QLHOCTRUCTUYEN {
             this.relationFK_TAINGUYENHOCTAP_PHONGHOC = this.Relations["FK_TAINGUYENHOCTAP_PHONGHOC"];
             this.relationFK_TAINGUYENTHOCTAP_USERS = this.Relations["FK_TAINGUYENTHOCTAP_USERS"];
             this.relationFK_USERS = this.Relations["FK_USERS"];
+            this.relationFK_PHONGHOC_USERS = this.Relations["FK_PHONGHOC_USERS"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -418,6 +421,10 @@ namespace QLHOCTRUCTUYEN {
                         this.tableROLES.ID_ROLEColumn}, new global::System.Data.DataColumn[] {
                         this.tableUSERS.ID_ROLEColumn}, false);
             this.Relations.Add(this.relationFK_USERS);
+            this.relationFK_PHONGHOC_USERS = new global::System.Data.DataRelation("FK_PHONGHOC_USERS", new global::System.Data.DataColumn[] {
+                        this.tableUSERS.ID_USERColumn}, new global::System.Data.DataColumn[] {
+                        this.tablePHONGHOC.ID_USERColumn}, false);
+            this.Relations.Add(this.relationFK_PHONGHOC_USERS);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1154,6 +1161,8 @@ namespace QLHOCTRUCTUYEN {
             
             private global::System.Data.DataColumn columnTRANGTHAI;
             
+            private global::System.Data.DataColumn columnID_USER;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public PHONGHOCDataTable() {
@@ -1229,6 +1238,14 @@ namespace QLHOCTRUCTUYEN {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ID_USERColumn {
+                get {
+                    return this.columnID_USER;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1264,14 +1281,18 @@ namespace QLHOCTRUCTUYEN {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public PHONGHOCRow AddPHONGHOCRow(string ID_PHONGHOC, string TENPHONGHOC, string MAPHONG, string MOTA, bool TRANGTHAI) {
+            public PHONGHOCRow AddPHONGHOCRow(string ID_PHONGHOC, string TENPHONGHOC, string MAPHONG, string MOTA, bool TRANGTHAI, USERSRow parentUSERSRowByFK_PHONGHOC_USERS) {
                 PHONGHOCRow rowPHONGHOCRow = ((PHONGHOCRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID_PHONGHOC,
                         TENPHONGHOC,
                         MAPHONG,
                         MOTA,
-                        TRANGTHAI};
+                        TRANGTHAI,
+                        null};
+                if ((parentUSERSRowByFK_PHONGHOC_USERS != null)) {
+                    columnValuesArray[5] = parentUSERSRowByFK_PHONGHOC_USERS[0];
+                }
                 rowPHONGHOCRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPHONGHOCRow);
                 return rowPHONGHOCRow;
@@ -1306,6 +1327,7 @@ namespace QLHOCTRUCTUYEN {
                 this.columnMAPHONG = base.Columns["MAPHONG"];
                 this.columnMOTA = base.Columns["MOTA"];
                 this.columnTRANGTHAI = base.Columns["TRANGTHAI"];
+                this.columnID_USER = base.Columns["ID_USER"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1321,6 +1343,8 @@ namespace QLHOCTRUCTUYEN {
                 base.Columns.Add(this.columnMOTA);
                 this.columnTRANGTHAI = new global::System.Data.DataColumn("TRANGTHAI", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTRANGTHAI);
+                this.columnID_USER = new global::System.Data.DataColumn("ID_USER", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID_USER);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID_PHONGHOC}, true));
                 this.columnID_PHONGHOC.AllowDBNull = false;
@@ -1331,6 +1355,7 @@ namespace QLHOCTRUCTUYEN {
                 this.columnMAPHONG.AllowDBNull = false;
                 this.columnMAPHONG.MaxLength = 10;
                 this.columnMOTA.MaxLength = 2147483647;
+                this.columnID_USER.MaxLength = 5;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3103,6 +3128,33 @@ namespace QLHOCTRUCTUYEN {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string ID_USER {
+                get {
+                    try {
+                        return ((string)(this[this.tablePHONGHOC.ID_USERColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ID_USER\' in table \'PHONGHOC\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePHONGHOC.ID_USERColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public USERSRow USERSRow {
+                get {
+                    return ((USERSRow)(this.GetParentRow(this.Table.ParentRelations["FK_PHONGHOC_USERS"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_PHONGHOC_USERS"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsMOTANull() {
                 return this.IsNull(this.tablePHONGHOC.MOTAColumn);
             }
@@ -3123,6 +3175,18 @@ namespace QLHOCTRUCTUYEN {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetTRANGTHAINull() {
                 this[this.tablePHONGHOC.TRANGTHAIColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsID_USERNull() {
+                return this.IsNull(this.tablePHONGHOC.ID_USERColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetID_USERNull() {
+                this[this.tablePHONGHOC.ID_USERColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3738,6 +3802,17 @@ namespace QLHOCTRUCTUYEN {
                     return ((TAINGUYENHOCTAPRow[])(base.GetChildRows(this.Table.ChildRelations["FK_TAINGUYENTHOCTAP_USERS"])));
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public PHONGHOCRow[] GetPHONGHOCRows() {
+                if ((this.Table.ChildRelations["FK_PHONGHOC_USERS"] == null)) {
+                    return new PHONGHOCRow[0];
+                }
+                else {
+                    return ((PHONGHOCRow[])(base.GetChildRows(this.Table.ChildRelations["FK_PHONGHOC_USERS"])));
+                }
+            }
         }
         
         /// <summary>
@@ -4154,11 +4229,37 @@ SELECT ID_USER, ID_TAINGUYEN, KETQUA, TIENTRINH FROM KETQUAHOCTAP WHERE (ID_TAIN
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[5];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT ID_USER, ID_TAINGUYEN, KETQUA, TIENTRINH FROM dbo.KETQUAHOCTAP";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT ID_USER, ID_TAINGUYEN, KETQUA, TIENTRINH FROM dbo.KETQUAHOCTAP WHERE ID_TA" +
+                "INGUYEN = @id_tainguyen";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_tainguyen", global::System.Data.SqlDbType.NVarChar, 5, global::System.Data.ParameterDirection.Input, 0, 0, "ID_TAINGUYEN", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "SELECT ID_USER, ID_TAINGUYEN, KETQUA, TIENTRINH FROM dbo.KETQUAHOCTAP WHERE ID_TA" +
+                "INGUYEN IN (SELECT ID_TAINGUYEN FROM TAINGUYENHOCTAP WHERE ID_PHONGHOC = @id_pho" +
+                "nghoc)";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_phonghoc", global::System.Data.SqlDbType.NVarChar, 5, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = "SELECT * FROM KETQUAHOCTAP WHERE ID_USER = @id_user\r\n";
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_user", global::System.Data.SqlDbType.NVarChar, 5, global::System.Data.ParameterDirection.Input, 0, 0, "ID_USER", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[4].Connection = this.Connection;
+            this._commandCollection[4].CommandText = "SELECT KQHT.*\r\nFROM KETQUAHOCTAP KQHT\r\nINNER JOIN TAINGUYENHOCTAP TNHT ON KQHT.ID" +
+                "_TAINGUYEN = TNHT.ID_TAINGUYEN\r\nWHERE KQHT.ID_USER = @id_user AND TNHT.ID_PHONGH" +
+                "OC = @id_phonghoc\r\n";
+            this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_user", global::System.Data.SqlDbType.NVarChar, 5, global::System.Data.ParameterDirection.Input, 0, 0, "ID_USER", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_phonghoc", global::System.Data.SqlDbType.NVarChar, 5, global::System.Data.ParameterDirection.Input, 0, 0, "ID_PHONGHOC", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4180,6 +4281,137 @@ SELECT ID_USER, ID_TAINGUYEN, KETQUA, TIENTRINH FROM KETQUAHOCTAP WHERE (ID_TAIN
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual QLHOCTRUCTUYENDataSet.KETQUAHOCTAPDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            QLHOCTRUCTUYENDataSet.KETQUAHOCTAPDataTable dataTable = new QLHOCTRUCTUYENDataSet.KETQUAHOCTAPDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByID_TaiNguyen(QLHOCTRUCTUYENDataSet.KETQUAHOCTAPDataTable dataTable, string id_tainguyen) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((id_tainguyen == null)) {
+                throw new global::System.ArgumentNullException("id_tainguyen");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(id_tainguyen));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual QLHOCTRUCTUYENDataSet.KETQUAHOCTAPDataTable GetDataByID_TaiNguyen(string id_tainguyen) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((id_tainguyen == null)) {
+                throw new global::System.ArgumentNullException("id_tainguyen");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(id_tainguyen));
+            }
+            QLHOCTRUCTUYENDataSet.KETQUAHOCTAPDataTable dataTable = new QLHOCTRUCTUYENDataSet.KETQUAHOCTAPDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByTNHTTRongPhongHoc(QLHOCTRUCTUYENDataSet.KETQUAHOCTAPDataTable dataTable, string id_phonghoc) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((id_phonghoc == null)) {
+                throw new global::System.ArgumentNullException("id_phonghoc");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(id_phonghoc));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual QLHOCTRUCTUYENDataSet.KETQUAHOCTAPDataTable GetDataByTNHTTrongPhongHoc(string id_phonghoc) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((id_phonghoc == null)) {
+                throw new global::System.ArgumentNullException("id_phonghoc");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(id_phonghoc));
+            }
+            QLHOCTRUCTUYENDataSet.KETQUAHOCTAPDataTable dataTable = new QLHOCTRUCTUYENDataSet.KETQUAHOCTAPDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByUser(QLHOCTRUCTUYENDataSet.KETQUAHOCTAPDataTable dataTable, string id_user) {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
+            if ((id_user == null)) {
+                throw new global::System.ArgumentNullException("id_user");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(id_user));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual QLHOCTRUCTUYENDataSet.KETQUAHOCTAPDataTable GetDataByUser(string id_user) {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
+            if ((id_user == null)) {
+                throw new global::System.ArgumentNullException("id_user");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(id_user));
+            }
+            QLHOCTRUCTUYENDataSet.KETQUAHOCTAPDataTable dataTable = new QLHOCTRUCTUYENDataSet.KETQUAHOCTAPDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual QLHOCTRUCTUYENDataSet.KETQUAHOCTAPDataTable GetKQHTCuaUserTheoPhongHoc(string id_user, string id_phonghoc) {
+            this.Adapter.SelectCommand = this.CommandCollection[4];
+            if ((id_user == null)) {
+                throw new global::System.ArgumentNullException("id_user");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(id_user));
+            }
+            if ((id_phonghoc == null)) {
+                throw new global::System.ArgumentNullException("id_phonghoc");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(id_phonghoc));
+            }
             QLHOCTRUCTUYENDataSet.KETQUAHOCTAPDataTable dataTable = new QLHOCTRUCTUYENDataSet.KETQUAHOCTAPDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -4892,44 +5124,48 @@ SELECT ID_LOAITN, TENLOAITN, TRANGTHAI FROM LOAITAINGUYEN WHERE (ID_LOAITN = @ID
             tableMapping.ColumnMappings.Add("MAPHONG", "MAPHONG");
             tableMapping.ColumnMappings.Add("MOTA", "MOTA");
             tableMapping.ColumnMappings.Add("TRANGTHAI", "TRANGTHAI");
+            tableMapping.ColumnMappings.Add("ID_USER", "ID_USER");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[PHONGHOC] WHERE (([ID_PHONGHOC] = @Original_ID_PHONGHOC) AND (" +
-                "[TENPHONGHOC] = @Original_TENPHONGHOC) AND ([MAPHONG] = @Original_MAPHONG) AND (" +
-                "(@IsNull_TRANGTHAI = 1 AND [TRANGTHAI] IS NULL) OR ([TRANGTHAI] = @Original_TRAN" +
-                "GTHAI)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [PHONGHOC] WHERE (([ID_PHONGHOC] = @Original_ID_PHONGHOC) AND ([TENPHONGHOC] = @Original_TENPHONGHOC) AND ([MAPHONG] = @Original_MAPHONG) AND ((@IsNull_TRANGTHAI = 1 AND [TRANGTHAI] IS NULL) OR ([TRANGTHAI] = @Original_TRANGTHAI)) AND ((@IsNull_ID_USER = 1 AND [ID_USER] IS NULL) OR ([ID_USER] = @Original_ID_USER)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID_PHONGHOC", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_PHONGHOC", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TENPHONGHOC", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TENPHONGHOC", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MAPHONG", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MAPHONG", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_TRANGTHAI", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TRANGTHAI", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TRANGTHAI", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TRANGTHAI", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ID_USER", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_USER", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID_USER", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_USER", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[PHONGHOC] ([ID_PHONGHOC], [TENPHONGHOC], [MAPHONG], [MOTA], [TRANGTHAI]) VALUES (@ID_PHONGHOC, @TENPHONGHOC, @MAPHONG, @MOTA, @TRANGTHAI);
-SELECT ID_PHONGHOC, TENPHONGHOC, MAPHONG, MOTA, TRANGTHAI FROM PHONGHOC WHERE (ID_PHONGHOC = @ID_PHONGHOC)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [PHONGHOC] ([ID_PHONGHOC], [TENPHONGHOC], [MAPHONG], [MOTA], [TRANGTHAI], [ID_USER]) VALUES (@ID_PHONGHOC, @TENPHONGHOC, @MAPHONG, @MOTA, @TRANGTHAI, @ID_USER);
+SELECT ID_PHONGHOC, TENPHONGHOC, MAPHONG, MOTA, TRANGTHAI, ID_USER FROM PHONGHOC WHERE (ID_PHONGHOC = @ID_PHONGHOC)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID_PHONGHOC", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_PHONGHOC", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TENPHONGHOC", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TENPHONGHOC", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MAPHONG", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MAPHONG", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MOTA", global::System.Data.SqlDbType.Text, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MOTA", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TRANGTHAI", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TRANGTHAI", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID_USER", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_USER", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[PHONGHOC] SET [ID_PHONGHOC] = @ID_PHONGHOC, [TENPHONGHOC] = @TENPHONGHOC, [MAPHONG] = @MAPHONG, [MOTA] = @MOTA, [TRANGTHAI] = @TRANGTHAI WHERE (([ID_PHONGHOC] = @Original_ID_PHONGHOC) AND ([TENPHONGHOC] = @Original_TENPHONGHOC) AND ([MAPHONG] = @Original_MAPHONG) AND ((@IsNull_TRANGTHAI = 1 AND [TRANGTHAI] IS NULL) OR ([TRANGTHAI] = @Original_TRANGTHAI)));
-SELECT ID_PHONGHOC, TENPHONGHOC, MAPHONG, MOTA, TRANGTHAI FROM PHONGHOC WHERE (ID_PHONGHOC = @ID_PHONGHOC)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [PHONGHOC] SET [ID_PHONGHOC] = @ID_PHONGHOC, [TENPHONGHOC] = @TENPHONGHOC, [MAPHONG] = @MAPHONG, [MOTA] = @MOTA, [TRANGTHAI] = @TRANGTHAI, [ID_USER] = @ID_USER WHERE (([ID_PHONGHOC] = @Original_ID_PHONGHOC) AND ([TENPHONGHOC] = @Original_TENPHONGHOC) AND ([MAPHONG] = @Original_MAPHONG) AND ((@IsNull_TRANGTHAI = 1 AND [TRANGTHAI] IS NULL) OR ([TRANGTHAI] = @Original_TRANGTHAI)) AND ((@IsNull_ID_USER = 1 AND [ID_USER] IS NULL) OR ([ID_USER] = @Original_ID_USER)));
+SELECT ID_PHONGHOC, TENPHONGHOC, MAPHONG, MOTA, TRANGTHAI, ID_USER FROM PHONGHOC WHERE (ID_PHONGHOC = @ID_PHONGHOC)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID_PHONGHOC", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_PHONGHOC", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TENPHONGHOC", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TENPHONGHOC", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MAPHONG", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MAPHONG", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MOTA", global::System.Data.SqlDbType.Text, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MOTA", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TRANGTHAI", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TRANGTHAI", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID_USER", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_USER", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID_PHONGHOC", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_PHONGHOC", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TENPHONGHOC", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TENPHONGHOC", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MAPHONG", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MAPHONG", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_TRANGTHAI", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TRANGTHAI", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TRANGTHAI", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TRANGTHAI", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ID_USER", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_USER", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID_USER", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_USER", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4942,11 +5178,19 @@ SELECT ID_PHONGHOC, TENPHONGHOC, MAPHONG, MOTA, TRANGTHAI FROM PHONGHOC WHERE (I
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID_PHONGHOC, TENPHONGHOC, MAPHONG, MOTA, TRANGTHAI FROM dbo.PHONGHOC";
+            this._commandCollection[0].CommandText = "SELECT ID_PHONGHOC, TENPHONGHOC, MAPHONG, MOTA, TRANGTHAI, ID_USER FROM PHONGHOC " +
+                "WHERE TRANGTHAI = 1";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT ID_PHONGHOC, TENPHONGHOC, MAPHONG, MOTA, TRANGTHAI, ID_USER FROM PHONGHOC " +
+                "WHERE TRANGTHAI = 1 AND ID_PHONGHOC IN (SELECT ID_PHONGHOC FROM PHONGHOCTHAMGIA " +
+                "WHERE ID_USER = @id_user)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_user", global::System.Data.SqlDbType.NVarChar, 5, global::System.Data.ParameterDirection.Input, 0, 0, "ID_USER", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4968,6 +5212,42 @@ SELECT ID_PHONGHOC, TENPHONGHOC, MAPHONG, MOTA, TRANGTHAI FROM PHONGHOC WHERE (I
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual QLHOCTRUCTUYENDataSet.PHONGHOCDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            QLHOCTRUCTUYENDataSet.PHONGHOCDataTable dataTable = new QLHOCTRUCTUYENDataSet.PHONGHOCDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByPhongHocCuaUser(QLHOCTRUCTUYENDataSet.PHONGHOCDataTable dataTable, string id_user) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((id_user == null)) {
+                throw new global::System.ArgumentNullException("id_user");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(id_user));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual QLHOCTRUCTUYENDataSet.PHONGHOCDataTable GetDataByPhongHocCuaUser(string id_user) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((id_user == null)) {
+                throw new global::System.ArgumentNullException("id_user");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(id_user));
+            }
             QLHOCTRUCTUYENDataSet.PHONGHOCDataTable dataTable = new QLHOCTRUCTUYENDataSet.PHONGHOCDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -5006,7 +5286,7 @@ SELECT ID_PHONGHOC, TENPHONGHOC, MAPHONG, MOTA, TRANGTHAI FROM PHONGHOC WHERE (I
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Original_ID_PHONGHOC, string Original_TENPHONGHOC, string Original_MAPHONG, global::System.Nullable<bool> Original_TRANGTHAI) {
+        public virtual int Delete(string Original_ID_PHONGHOC, string Original_TENPHONGHOC, string Original_MAPHONG, global::System.Nullable<bool> Original_TRANGTHAI, string Original_ID_USER) {
             if ((Original_ID_PHONGHOC == null)) {
                 throw new global::System.ArgumentNullException("Original_ID_PHONGHOC");
             }
@@ -5033,6 +5313,14 @@ SELECT ID_PHONGHOC, TENPHONGHOC, MAPHONG, MOTA, TRANGTHAI FROM PHONGHOC WHERE (I
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
+            if ((Original_ID_USER == null)) {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_ID_USER));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5053,7 +5341,7 @@ SELECT ID_PHONGHOC, TENPHONGHOC, MAPHONG, MOTA, TRANGTHAI FROM PHONGHOC WHERE (I
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string ID_PHONGHOC, string TENPHONGHOC, string MAPHONG, string MOTA, global::System.Nullable<bool> TRANGTHAI) {
+        public virtual int Insert(string ID_PHONGHOC, string TENPHONGHOC, string MAPHONG, string MOTA, global::System.Nullable<bool> TRANGTHAI, string ID_USER) {
             if ((ID_PHONGHOC == null)) {
                 throw new global::System.ArgumentNullException("ID_PHONGHOC");
             }
@@ -5084,6 +5372,12 @@ SELECT ID_PHONGHOC, TENPHONGHOC, MAPHONG, MOTA, TRANGTHAI FROM PHONGHOC WHERE (I
             else {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
+            if ((ID_USER == null)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(ID_USER));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5104,7 +5398,7 @@ SELECT ID_PHONGHOC, TENPHONGHOC, MAPHONG, MOTA, TRANGTHAI FROM PHONGHOC WHERE (I
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string ID_PHONGHOC, string TENPHONGHOC, string MAPHONG, string MOTA, global::System.Nullable<bool> TRANGTHAI, string Original_ID_PHONGHOC, string Original_TENPHONGHOC, string Original_MAPHONG, global::System.Nullable<bool> Original_TRANGTHAI) {
+        public virtual int Update(string ID_PHONGHOC, string TENPHONGHOC, string MAPHONG, string MOTA, global::System.Nullable<bool> TRANGTHAI, string ID_USER, string Original_ID_PHONGHOC, string Original_TENPHONGHOC, string Original_MAPHONG, global::System.Nullable<bool> Original_TRANGTHAI, string Original_ID_USER) {
             if ((ID_PHONGHOC == null)) {
                 throw new global::System.ArgumentNullException("ID_PHONGHOC");
             }
@@ -5135,31 +5429,45 @@ SELECT ID_PHONGHOC, TENPHONGHOC, MAPHONG, MOTA, TRANGTHAI FROM PHONGHOC WHERE (I
             else {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
+            if ((ID_USER == null)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(ID_USER));
+            }
             if ((Original_ID_PHONGHOC == null)) {
                 throw new global::System.ArgumentNullException("Original_ID_PHONGHOC");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_ID_PHONGHOC));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_ID_PHONGHOC));
             }
             if ((Original_TENPHONGHOC == null)) {
                 throw new global::System.ArgumentNullException("Original_TENPHONGHOC");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_TENPHONGHOC));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_TENPHONGHOC));
             }
             if ((Original_MAPHONG == null)) {
                 throw new global::System.ArgumentNullException("Original_MAPHONG");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_MAPHONG));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_MAPHONG));
             }
             if ((Original_TRANGTHAI.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((bool)(Original_TRANGTHAI.Value));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((bool)(Original_TRANGTHAI.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            if ((Original_ID_USER == null)) {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_ID_USER));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -5181,8 +5489,8 @@ SELECT ID_PHONGHOC, TENPHONGHOC, MAPHONG, MOTA, TRANGTHAI FROM PHONGHOC WHERE (I
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string TENPHONGHOC, string MAPHONG, string MOTA, global::System.Nullable<bool> TRANGTHAI, string Original_ID_PHONGHOC, string Original_TENPHONGHOC, string Original_MAPHONG, global::System.Nullable<bool> Original_TRANGTHAI) {
-            return this.Update(Original_ID_PHONGHOC, TENPHONGHOC, MAPHONG, MOTA, TRANGTHAI, Original_ID_PHONGHOC, Original_TENPHONGHOC, Original_MAPHONG, Original_TRANGTHAI);
+        public virtual int Update(string TENPHONGHOC, string MAPHONG, string MOTA, global::System.Nullable<bool> TRANGTHAI, string ID_USER, string Original_ID_PHONGHOC, string Original_TENPHONGHOC, string Original_MAPHONG, global::System.Nullable<bool> Original_TRANGTHAI, string Original_ID_USER) {
+            return this.Update(Original_ID_PHONGHOC, TENPHONGHOC, MAPHONG, MOTA, TRANGTHAI, ID_USER, Original_ID_PHONGHOC, Original_TENPHONGHOC, Original_MAPHONG, Original_TRANGTHAI, Original_ID_USER);
         }
     }
     
@@ -5351,11 +5659,17 @@ SELECT ID_PHONGHOC, ID_USER, VAITRO FROM PHONGHOCTHAMGIA WHERE (ID_PHONGHOC = @I
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT ID_PHONGHOC, ID_USER, VAITRO FROM dbo.PHONGHOCTHAMGIA";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT ID_PHONGHOC, ID_USER, VAITRO FROM dbo.PHONGHOCTHAMGIA WHERE ID_USER = @id_" +
+                "user";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_user", global::System.Data.SqlDbType.NVarChar, 5, global::System.Data.ParameterDirection.Input, 0, 0, "ID_USER", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5377,6 +5691,42 @@ SELECT ID_PHONGHOC, ID_USER, VAITRO FROM PHONGHOCTHAMGIA WHERE (ID_PHONGHOC = @I
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual QLHOCTRUCTUYENDataSet.PHONGHOCTHAMGIADataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            QLHOCTRUCTUYENDataSet.PHONGHOCTHAMGIADataTable dataTable = new QLHOCTRUCTUYENDataSet.PHONGHOCTHAMGIADataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByUser(QLHOCTRUCTUYENDataSet.PHONGHOCTHAMGIADataTable dataTable, string id_user) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((id_user == null)) {
+                throw new global::System.ArgumentNullException("id_user");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(id_user));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual QLHOCTRUCTUYENDataSet.PHONGHOCTHAMGIADataTable GetDataByUser(string id_user) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((id_user == null)) {
+                throw new global::System.ArgumentNullException("id_user");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(id_user));
+            }
             QLHOCTRUCTUYENDataSet.PHONGHOCTHAMGIADataTable dataTable = new QLHOCTRUCTUYENDataSet.PHONGHOCTHAMGIADataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -6111,12 +6461,23 @@ SELECT ID_TAINGUYEN, TENTAINGUYEN, URL_TAINGUYEN, MOTA, TRANGTHAI, ID_LOAITN, ID
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT ID_TAINGUYEN, TENTAINGUYEN, URL_TAINGUYEN, MOTA, TRANGTHAI, ID_LOAITN, ID_" +
                 "PHONGHOC, ID_USER, NGAYDANG, THOIHAN FROM dbo.TAINGUYENHOCTAP";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT * FROM TAINGUYENHOCTAP WHERE ID_PHONGHOC = @id_phonghoc";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_phonghoc", global::System.Data.SqlDbType.NVarChar, 5, global::System.Data.ParameterDirection.Input, 0, 0, "ID_PHONGHOC", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "SELECT * FROM TAINGUYENHOCTAP WHERE TRANGTHAI = 1 AND ID_PHONGHOC IN (SELECT ID_P" +
+                "HONGHOC FROM PHONGHOCTHAMGIA WHERE ID_USER = @id_user)";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_user", global::System.Data.SqlDbType.NVarChar, 5, global::System.Data.ParameterDirection.Input, 0, 0, "ID_USER", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6138,6 +6499,78 @@ SELECT ID_TAINGUYEN, TENTAINGUYEN, URL_TAINGUYEN, MOTA, TRANGTHAI, ID_LOAITN, ID
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual QLHOCTRUCTUYENDataSet.TAINGUYENHOCTAPDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            QLHOCTRUCTUYENDataSet.TAINGUYENHOCTAPDataTable dataTable = new QLHOCTRUCTUYENDataSet.TAINGUYENHOCTAPDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByPhongHoc(QLHOCTRUCTUYENDataSet.TAINGUYENHOCTAPDataTable dataTable, string id_phonghoc) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((id_phonghoc == null)) {
+                throw new global::System.ArgumentNullException("id_phonghoc");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(id_phonghoc));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual QLHOCTRUCTUYENDataSet.TAINGUYENHOCTAPDataTable GetDataByPhongHoc(string id_phonghoc) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((id_phonghoc == null)) {
+                throw new global::System.ArgumentNullException("id_phonghoc");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(id_phonghoc));
+            }
+            QLHOCTRUCTUYENDataSet.TAINGUYENHOCTAPDataTable dataTable = new QLHOCTRUCTUYENDataSet.TAINGUYENHOCTAPDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByPhongHocCuaUser(QLHOCTRUCTUYENDataSet.TAINGUYENHOCTAPDataTable dataTable, string id_user) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((id_user == null)) {
+                throw new global::System.ArgumentNullException("id_user");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(id_user));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual QLHOCTRUCTUYENDataSet.TAINGUYENHOCTAPDataTable GetDataByPhongHocCuaUser(string id_user) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((id_user == null)) {
+                throw new global::System.ArgumentNullException("id_user");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(id_user));
+            }
             QLHOCTRUCTUYENDataSet.TAINGUYENHOCTAPDataTable dataTable = new QLHOCTRUCTUYENDataSet.TAINGUYENHOCTAPDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -6702,12 +7135,18 @@ SELECT ID_USER, TENUSER, EMAIL, TRANGTHAI, ID_ROLE, SALT, HASHPASSWORD, ANHDAIDI
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT ID_USER, TENUSER, EMAIL, TRANGTHAI, ID_ROLE, SALT, HASHPASSWORD, ANHDAIDIE" +
                 "N, GIOITINH FROM USERS";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT ID_USER, TENUSER \r\nFROM USERS \r\nWHERE TRANGTHAI = 1 \r\nAND EMAIL LIKE \'%\' +" +
+                " @email + \'%\'";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@email", global::System.Data.SqlDbType.NVarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "EMAIL", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6729,6 +7168,42 @@ SELECT ID_USER, TENUSER, EMAIL, TRANGTHAI, ID_ROLE, SALT, HASHPASSWORD, ANHDAIDI
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual QLHOCTRUCTUYENDataSet.USERSDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            QLHOCTRUCTUYENDataSet.USERSDataTable dataTable = new QLHOCTRUCTUYENDataSet.USERSDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByEmail(QLHOCTRUCTUYENDataSet.USERSDataTable dataTable, string email) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((email == null)) {
+                throw new global::System.ArgumentNullException("email");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(email));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual QLHOCTRUCTUYENDataSet.USERSDataTable GetDataByEmail(string email) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((email == null)) {
+                throw new global::System.ArgumentNullException("email");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(email));
+            }
             QLHOCTRUCTUYENDataSet.USERSDataTable dataTable = new QLHOCTRUCTUYENDataSet.USERSDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -7320,6 +7795,15 @@ SELECT ID_USER, TENUSER, EMAIL, TRANGTHAI, ID_ROLE, SALT, HASHPASSWORD, ANHDAIDI
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._uSERSTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.USERS.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._uSERSTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._lOAITAINGUYENTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.LOAITAINGUYEN.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -7335,15 +7819,6 @@ SELECT ID_USER, TENUSER, EMAIL, TRANGTHAI, ID_ROLE, SALT, HASHPASSWORD, ANHDAIDI
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._pHONGHOCTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._uSERSTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.USERS.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._uSERSTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -7392,6 +7867,14 @@ SELECT ID_USER, TENUSER, EMAIL, TRANGTHAI, ID_ROLE, SALT, HASHPASSWORD, ANHDAIDI
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._uSERSTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.USERS.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._uSERSTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._lOAITAINGUYENTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.LOAITAINGUYEN.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -7405,14 +7888,6 @@ SELECT ID_USER, TENUSER, EMAIL, TRANGTHAI, ID_ROLE, SALT, HASHPASSWORD, ANHDAIDI
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._pHONGHOCTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._uSERSTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.USERS.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._uSERSTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -7474,14 +7949,6 @@ SELECT ID_USER, TENUSER, EMAIL, TRANGTHAI, ID_ROLE, SALT, HASHPASSWORD, ANHDAIDI
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._uSERSTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.USERS.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._uSERSTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._pHONGHOCTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.PHONGHOC.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -7495,6 +7962,14 @@ SELECT ID_USER, TENUSER, EMAIL, TRANGTHAI, ID_ROLE, SALT, HASHPASSWORD, ANHDAIDI
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._lOAITAINGUYENTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._uSERSTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.USERS.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._uSERSTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
