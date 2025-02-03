@@ -7,15 +7,31 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Data.SqlTypes;
 using System.Data;
+using QLHOCTRUCTUYEN.Control;
 
 namespace QLHOCTRUCTUYEN.Model
 {
     public class ManagePhongHocThamGia
     {
-        QLHOCTRUCTUYENDataSetTableAdapters.PHONGHOCTHAMGIATableAdapter PHTGTableAdapter = new QLHOCTRUCTUYENDataSetTableAdapters.PHONGHOCTHAMGIATableAdapter();
-        public void ThamGiaPhongHoc(string id_user, string id_phonghoc)
+        private static QLHOCTRUCTUYENDataSetTableAdapters.PHONGHOCTHAMGIATableAdapter PHTGTableAdapter = new QLHOCTRUCTUYENDataSetTableAdapters.PHONGHOCTHAMGIATableAdapter();
+
+        public static void ThamGiaPhongHoc(string id_user, string id_phonghoc, bool vaitro)
         {
-            PHTGTableAdapter.Insert(id_phonghoc, id_user, 1);
+            PHTGTableAdapter.Insert(id_phonghoc, id_user, vaitro);
+            ControlRoom.ControlReloadTrangChu();
+        }
+        public static QLHOCTRUCTUYENDataSet.PHONGHOCTHAMGIADataTable LoadListPHTGCuaUser(string id_user)
+        {
+            return PHTGTableAdapter.GetDataByUser(id_user);
+        }
+        public static bool CheckVaiTroPhongHocThamGia(string id_user, string id_phonghoc)
+        {
+            var datarow = LoadListPHTGCuaUser(id_user).FindByID_PHONGHOCID_USER(id_user, id_phonghoc);
+            return datarow.VAITRO;
+        }
+        public static QLHOCTRUCTUYENDataSet.PHONGHOCTHAMGIADataTable LoadListUserInRoom(string id_phonghoc)
+        {
+            return PHTGTableAdapter.GetDataListUserInRoom(id_phonghoc);
         }
     }
 }

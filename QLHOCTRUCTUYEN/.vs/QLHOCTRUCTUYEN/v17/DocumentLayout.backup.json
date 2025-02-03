@@ -1,7 +1,32 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "E:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|e:\\qlhoctructuyen\\qlhoctructuyen\\view\\formtrangchu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|solutionrelative:view\\formtrangchu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|e:\\qlhoctructuyen\\qlhoctructuyen\\model\\tainguyenhoctap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|solutionrelative:model\\tainguyenhoctap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|E:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\qlhoctructuyendataset.xsd||{07AC752B-D2B0-4DCD-AD9C-237BF561A30A}",
+      "RelativeMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|solutionrelative:qlhoctructuyendataset.xsd||{07AC752B-D2B0-4DCD-AD9C-237BF561A30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|e:\\qlhoctructuyen\\qlhoctructuyen\\control\\controltainguyenhoctap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|solutionrelative:control\\controltainguyenhoctap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|e:\\qlhoctructuyen\\qlhoctructuyen\\view\\formtrangchu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|solutionrelative:view\\formtrangchu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|E:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\control\\controlroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42C4F248-68A5-4698-9C19-208B5A124983}|QLHOCTRUCTUYEN.csproj|solutionrelative:control\\controlroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +34,95 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TaiNguyenHocTap.cs",
+              "DocumentMoniker": "E:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\Model\\TaiNguyenHocTap.cs",
+              "RelativeDocumentMoniker": "Model\\TaiNguyenHocTap.cs",
+              "ToolTip": "E:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\Model\\TaiNguyenHocTap.cs",
+              "RelativeToolTip": "Model\\TaiNguyenHocTap.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAQwDwAAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-03T08:27:58.742Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ControlTaiNguyenHocTap.cs",
+              "DocumentMoniker": "E:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\Control\\ControlTaiNguyenHocTap.cs",
+              "RelativeDocumentMoniker": "Control\\ControlTaiNguyenHocTap.cs",
+              "ToolTip": "E:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\Control\\ControlTaiNguyenHocTap.cs",
+              "RelativeToolTip": "Control\\ControlTaiNguyenHocTap.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-03T08:27:35.069Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "FormTrangChu.cs [Design]",
+              "DocumentMoniker": "E:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\View\\FormTrangChu.cs",
+              "RelativeDocumentMoniker": "View\\FormTrangChu.cs",
+              "ToolTip": "E:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\View\\FormTrangChu.cs [Design]*",
+              "RelativeToolTip": "View\\FormTrangChu.cs [Design]*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-03T01:56:51.594Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FormTrangChu.cs",
+              "DocumentMoniker": "E:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\View\\FormTrangChu.cs",
+              "RelativeDocumentMoniker": "View\\FormTrangChu.cs",
+              "ToolTip": "E:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\View\\FormTrangChu.cs*",
+              "RelativeToolTip": "View\\FormTrangChu.cs*",
+              "ViewState": "AgIAACQAAAAAAAAAAAA1wEAAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-02T09:48:39.887Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ControlRoom.cs",
+              "DocumentMoniker": "E:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\Control\\ControlRoom.cs",
+              "RelativeDocumentMoniker": "Control\\ControlRoom.cs",
+              "ToolTip": "E:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\Control\\ControlRoom.cs",
+              "RelativeToolTip": "Control\\ControlRoom.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAA+wDoAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-02T04:57:33.478Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "QLHOCTRUCTUYENDataSet.xsd",
+              "DocumentMoniker": "E:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYENDataSet.xsd",
+              "RelativeDocumentMoniker": "QLHOCTRUCTUYENDataSet.xsd",
+              "ToolTip": "E:\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYEN\\QLHOCTRUCTUYENDataSet.xsd",
+              "RelativeToolTip": "QLHOCTRUCTUYENDataSet.xsd",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003579|",
+              "WhenOpened": "2025-02-02T02:50:15.799Z",
+              "EditorCaption": ""
             }
           ]
         }

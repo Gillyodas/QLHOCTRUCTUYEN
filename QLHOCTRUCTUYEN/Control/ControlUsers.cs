@@ -4,37 +4,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using QLHOCTRUCTUYEN.View;
+using QLHOCTRUCTUYEN.Model;
+using System.Data;
 
 namespace QLHOCTRUCTUYEN.Control
 {
     public class ControlUsers
     {
-        private FormDangKy sender;
-        //public ControlUsers(FormDangKy sender)
-        //{
-        //    this.sender = sender;
-        //    this.sender.sentdata += ControlCreateUser;
-        //}
-
-        //public void ControlCreateUser(object sender, DataSentSighUp e)
-        //{
-        //    Model.ManageUsers.CreateUser(e.HoTen, e.Email, e.Pass);
-        //}
-
+        public static bool IsLogin { get; private set; } = false;
         public static void ControlCreateUser(string Ten, string Email, string Pass)
         {
             bool success = Model.ManageUsers.CreateUser(Ten, Email, Pass);
             FormDangKy formDK = new FormDangKy();
             formDK.DangKyThanhCong(success);
         }
-
         public static void ControlLogin(string email, string pass)
         {
-            Model.Users user = Model.UserLoginHandler.ValidLogin(email, pass);
-            if (user != null)
-                FormDangKy.DangNhapThanhcong(true, user);
-            else FormDangKy.DangNhapThanhcong(false, null);
+            if (UserLoginHandler.ValidLogin(email, pass))
+            {
+                FormDangKy.DangNhapThatBai(false);
+                IsLogin = true;
+            }
+            else FormDangKy.DangNhapThatBai(true);
         }
-        
+        public static DataTable ControlLoadListUserInPhongHocByVaiTro(string id_phonghoc, bool vaitro)
+        {
+            return ManageUsers.ListUserInPhongHocByVaiTro(id_phonghoc, vaitro);
+        }
     }
 }

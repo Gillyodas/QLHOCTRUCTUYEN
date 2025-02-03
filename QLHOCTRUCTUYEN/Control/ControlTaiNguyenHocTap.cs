@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using QLHOCTRUCTUYEN.Model;
 
 namespace QLHOCTRUCTUYEN.Control
 {
     public class ControlTaiNguyenHocTap
     {
-        public static void ControlLoadListTNHT(string id_Phong)
+        public static QLHOCTRUCTUYENDataSet.TAINGUYENHOCTAPDataTable LoadDanhSachTNHTTrongPhong(string id_phonghoc)
         {
-            //FormBTTrenLop.LoadListTaiNguyenHocTap(Model.ManageTaiNguyenHocTap.loadListTaiNguyenHocTap_PhongHoc(id_Phong));
-            FormBTTrenLop.listTNHT = Model.ManageTaiNguyenHocTap.loadListTaiNguyenHocTap_PhongHoc(id_Phong);
+            return ManageTaiNguyenHocTap.LoadListTNHTByPhongHoc(id_phonghoc);
         }
     }
 }

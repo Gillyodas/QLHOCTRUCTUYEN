@@ -11,10 +11,19 @@ using System.Data;
 
 namespace QLHOCTRUCTUYEN.Model
 {
+    public static class PHONGHOC
+    { 
+        public static string IdPhongHoc {  get; set; }
+        public static string TenPhongHoc { get; set; }
+        public static string MaPhong {  get; set; }
+        public static string MoTa {  get; set; }
+        public static string IdUser { get; set; }
+    }
     public class ManagePhongHoc
     {
         private static string connSql = ConfigurationManager.ConnectionStrings["QLHOCTRUCTUYEN"].ConnectionString;
         private static QLHOCTRUCTUYENDataSetTableAdapters.PHONGHOCTableAdapter phonghocTableAdapter = new QLHOCTRUCTUYENDataSetTableAdapters.PHONGHOCTableAdapter();
+        public static QLHOCTRUCTUYENDataSet.PHONGHOCRow CurPhongHoc { get; private set; }
         private static string CreateIDPhongHoc()
         {
             using (SqlConnection conn = new SqlConnection(connSql))
@@ -42,42 +51,49 @@ namespace QLHOCTRUCTUYEN.Model
 
             return new String(stringChars) + id_phonghoc;
         }
-        public bool KiemTraMaPhongHoc(string maphong, string id_phonghoc)
+        public static QLHOCTRUCTUYENDataSet.PHONGHOCRow KiemTraMaPhongHoc_GetPhongHoc(string maphong)
         {
-            using (SqlConnection conn = new SqlConnection (connSql))
+            QLHOCTRUCTUYENDataSet.PHONGHOCRow phonghoc = phonghocTableAdapter.GetPhongHocByMaPhong(maphong).FirstOrDefault();
+            return phonghoc;
+        }
+        public static bool CreatePhongHoc(string id_user, string ten, string mota)
+        {
+            string idphonghoc = CreateIDPhongHoc();
+            int rowsAffected = phonghocTableAdapter.Insert(idphonghoc, ten, CreateMaPhongHoc(CreateIDPhongHoc()), mota, true, id_user);
+            if (rowsAffected > 0)
             {
-                conn.Open();
-                string QuerySqlStr = "SELECT COUNT(*) FROM PHONGHOC WHERE ID_PHONGHOC = @id_phonghoc AND MAPHONG + @maphong";
-                using (SqlCommand SqlCmd = new SqlCommand(QuerySqlStr, conn))
+                ManagePhongHocThamGia.ThamGiaPhongHoc(id_user, idphonghoc, true);
+                return true;
+            } else return false;
+            
+        }
+        public static void CurrentPhongHoc(string id_phonghoc)
+        {
+             CurPhongHoc =  phonghocTableAdapter.GetData().FindByID_PHONGHOC(id_phonghoc);
+        }
+        public void UpdatePhongHoc(string id_phonghoc, string ten, string mota, string id_user)
+        {
+            if (Model.ManagePhongHocThamGia.CheckVaiTroPhongHocThamGia(id_user, id_phonghoc))
+            {
+                var phongHocData = phonghocTableAdapter.GetData();
+                var row = phongHocData.FindByID_PHONGHOC(id_phonghoc);
+                if (row != null)
                 {
-                    SqlCmd.Parameters.AddWithValue("@id_phonghoc", id_phonghoc);
-                    SqlCmd.Parameters.AddWithValue("@maphong", maphong);
-                    int count = (int)SqlCmd.ExecuteScalar();
-                    if (count == 0)
-                        return false;
-                    else 
-                        return true;
+                    row.TENPHONGHOC = ten;
+                    row.MOTA = mota;
+                    phonghocTableAdapter.Update(phongHocData);
                 }
             }
         }
-        public void CreatePhongHoc(string id_user, string mota, string ten)
+        public static QLHOCTRUCTUYENDataSet.PHONGHOCDataTable LoadListPhongHocByPhongHocThamGiaCuaUser(string id_user)
         {
-
-            phonghocTableAdapter.Insert(CreateIDPhongHoc(), ten, CreateMaPhongHoc(CreateIDPhongHoc()), mota, true, id_user);
-        }
-        public object XemThongTinPhongHoc(string id_phonghoc)
-        {
-            return phonghocTableAdapter.GetData().FirstOrDefault(row => row.ID_PHONGHOC == id_phonghoc);
-        }
-        public void UpdatePhongHoc(string id_phonghoc, string ten, string mota)
-        {
-            var phongHocData = phonghocTableAdapter.GetData();
-            var row = phongHocData.FindByID_PHONGHOC(id_phonghoc);
-            if (row != null)
+            try
             {
-                row.TENPHONGHOC = ten;
-                row.MOTA = mota;
-                phonghocTableAdapter.Update(phongHocData);
+                return phonghocTableAdapter.GetDataPhongHocByPhongHocThamGiaCuaUser(id_user);
+            }
+            catch (Exception e)
+            {
+                return null;
             }
         }
     }

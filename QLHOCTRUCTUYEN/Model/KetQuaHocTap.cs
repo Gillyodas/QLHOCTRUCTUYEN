@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
-using System.Data.SqlClient;
 using System.Data.SqlTypes;
 using System.Data;
 using System.Windows.Forms;
@@ -55,14 +54,9 @@ namespace QLHOCTRUCTUYEN.Model
         {
             return KQHTTableAdapter.GetKQHTCuaUserTheoPhongHoc(id_user, id_phonghoc);
         }
-        public QLHOCTRUCTUYENDataSet.KETQUAHOCTAPDataTable XemDanhSachKQHTCuaTatcaUserTrongPhongHoc(string id_phonghoc)
+        public static QLHOCTRUCTUYENDataSet.KETQUAHOCTAPDataTable XemDanhSachKQHTCuaTatcaUserTrongPhongHoc(string id_phonghoc)
         {
-            return KQHTTableAdapter.GetDataByTNHTTrongPhongHoc(id_phonghoc);
+            return KQHTTableAdapter.GetData_KQHT_TenUser_TenTNHT_InRoom(id_phonghoc);
         }
-        public QLHOCTRUCTUYENDataSet.KETQUAHOCTAPDataTable XemKQHTTheoTNHTTrongPhongHoc()
-        {
-            var QueryLinQ = 
-        }
-
     }
 }

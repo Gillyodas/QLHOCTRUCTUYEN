@@ -56,11 +56,9 @@ namespace QLHOCTRUCTUYEN.Model
         {
             return tainguyenhoctapTableAdapter.GetData().FindByID_TAINGUYEN(id_tainguyen);
         }
-        public DataTable LoadListTNHT(string id_phonghoc)
+        public static QLHOCTRUCTUYENDataSet.TAINGUYENHOCTAPDataTable LoadListTNHTByPhongHoc(string id_phonghoc)
         {
-            var dataTable = new QLHOCTRUCTUYENDataSet.TAINGUYENHOCTAPDataTable();
-            tainguyenhoctapTableAdapter.Fill(dataTable);
-            return dataTable.AsEnumerable().Where(row => row.ID_PHONGHOC == id_phonghoc).CopyToDataTable();
+            return tainguyenhoctapTableAdapter.GetDataByPhongHoc(id_phonghoc);
         }
         public void UpdateTaiNguyenHocTap(string id_tainguyen, string ten, string url, string mota, DateTime ngaydang, DateTime thoihan)
         {

@@ -34,6 +34,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <Win32Resource>
+    </Win32Resource>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Azure.Core, Version=1.38.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
       <HintPath>packages\Azure.Core.1.38.0\lib\net472\Azure.Core.dll</HintPath>
@@ -200,8 +204,8 @@
   <ItemGroup>
     <Compile Include="Control\ControlKetQuaHocTap.cs" />
     <Compile Include="Control\ControlLoaiTN.cs" />
+    <Compile Include="Control\ControlPHTG.cs" />
     <Compile Include="Control\ControlTaiNguyenHocTap.cs" />
-    <Compile Include="Control\ControlUsers.cs" />
     <Compile Include="Model\LoaiTN.cs" />
     <Compile Include="Model\PhongHoc.cs" />
     <Compile Include="Model\PhongHocThamGia.cs" />
@@ -210,13 +214,42 @@
     <Compile Include="QLHOCTRUCTUYENDataSet.cs">
       <DependentUpon>QLHOCTRUCTUYENDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="QLHOCTRUCTUYENDataSet.Designer.cs">
+    <Compile Include="Control\ControlRoom.cs" />
+    <Compile Include="Control\ControlUsers.cs" />
+    <Compile Include="Model\CheckRoom.cs" />
+    <Compile Include="Model\CurrentUser.cs" />
+    <Compile Include="Model\Room.cs" />
+    <Compile Include="Model\Roles.cs" />
+    <Compile Include="Model\Users.cs" />
+    <Compile Include="QLHOCTRUCTUYENDataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>QLHOCTRUCTUYENDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Model\Roles.cs" />
-    <Compile Include="Model\Users.cs" />
+    <Compile Include="View\FormCTBaiTap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormCTBaiTap.Designer.cs">
+      <DependentUpon>FormCTBaiTap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormCTTaiKhoan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormCTTaiKhoan.Designer.cs">
+      <DependentUpon>FormCTTaiKhoan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormCTTaoBaiTap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormCTTaoBaiTap.Designer.cs">
+      <DependentUpon>FormCTTaoBaiTap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormDangKy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormDangKy.Designer.cs">
+      <DependentUpon>FormDangKy.cs</DependentUpon>
+    </Compile>
     <Compile Include="Home_UserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -225,6 +258,72 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\FormMoiThamGiaLop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormMoiThamGiaLop.Designer.cs">
+      <DependentUpon>FormMoiThamGiaLop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormPhanQuyenTVRoomG.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormPhanQuyenTVRoomG.Designer.cs">
+      <DependentUpon>FormPhanQuyenTVRoomG.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormPhanQuyenTVRoomS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormPhanQuyenTVRoomS.Designer.cs">
+      <DependentUpon>FormPhanQuyenTVRoomS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormTaoBaiTapTrongRoom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormTaoBaiTapTrongRoom.Designer.cs">
+      <DependentUpon>FormTaoBaiTapTrongRoom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormTaoLopHoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormTaoLopHoc.Designer.cs">
+      <DependentUpon>FormTaoLopHoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormTaovaThamGiaLop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormTaovaThamGiaLop.Designer.cs">
+      <DependentUpon>FormTaovaThamGiaLop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormThamGiaLop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormThamGiaLop.Designer.cs">
+      <DependentUpon>FormThamGiaLop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormTrangChu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormTrangChu.Designer.cs">
+      <DependentUpon>FormTrangChu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormTTPhongHoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormTTPhongHoc.Designer.cs">
+      <DependentUpon>FormTTPhongHoc.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="View\FormCTBaiTap.resx">
+      <DependentUpon>FormCTBaiTap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormCTTaiKhoan.resx">
+      <DependentUpon>FormCTTaiKhoan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormCTTaoBaiTap.resx">
+      <DependentUpon>FormCTTaoBaiTap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormDangKy.resx">
+      <DependentUpon>FormDangKy.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Home_UserControl.resx">
       <DependentUpon>Home_UserControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -238,7 +337,33 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include=".editorconfig" />
+    <EmbeddedResource Include="View\FormMoiThamGiaLop.resx">
+      <DependentUpon>FormMoiThamGiaLop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormPhanQuyenTVRoomG.resx">
+      <DependentUpon>FormPhanQuyenTVRoomG.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormPhanQuyenTVRoomS.resx">
+      <DependentUpon>FormPhanQuyenTVRoomS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormTaoBaiTapTrongRoom.resx">
+      <DependentUpon>FormTaoBaiTapTrongRoom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormTaoLopHoc.resx">
+      <DependentUpon>FormTaoLopHoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormTaovaThamGiaLop.resx">
+      <DependentUpon>FormTaovaThamGiaLop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormThamGiaLop.resx">
+      <DependentUpon>FormThamGiaLop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormTrangChu.resx">
+      <DependentUpon>FormTrangChu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormTTPhongHoc.resx">
+      <DependentUpon>FormTTPhongHoc.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -254,8 +379,8 @@
     </None>
     <None Include="QLHOCTRUCTUYENDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>QLHOCTRUCTUYENDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>QLHOCTRUCTUYENDataSet1.Designer.cs</LastGenOutput>
     </None>
     <None Include="QLHOCTRUCTUYENDataSet.xss">
       <DependentUpon>QLHOCTRUCTUYENDataSet.xsd</DependentUpon>
@@ -266,6 +391,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Images\adduser.png" />
+    <Content Include="Images\avartar\boy.png" />
+    <Content Include="Images\avartar\graduation.png" />
+    <Content Include="Images\avartar\kid.png" />
     <Content Include="Images\calendar.png" />
     <Content Include="Images\checklist.png" />
     <Content Include="Images\download.png" />
@@ -273,11 +402,19 @@
     <Content Include="Images\graduated.png" />
     <Content Include="Images\home.png" />
     <Content Include="Images\menu.png" />
+    <Content Include="Images\more.png" />
+    <Content Include="Images\paper.png" />
     <Content Include="Images\plus.png" />
+    <Content Include="Images\question.png" />
     <Content Include="Images\rec.png" />
+    <Content Include="Images\school.png" />
     <Content Include="Images\search-file.png" />
     <Content Include="Images\setting.png" />
+    <Content Include="Images\students-3518726_1280.jpg" />
     <Content Include="Images\teacher.png" />
+    <Content Include="Images\test.png" />
+    <Content Include="Images\user-solid.svg" />
+    <None Include="Images\user.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Microsoft.Data.SqlClient.SNI.5.2.0\build\net462\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('packages\Microsoft.Data.SqlClient.SNI.5.2.0\build\net462\Microsoft.Data.SqlClient.SNI.targets')" />

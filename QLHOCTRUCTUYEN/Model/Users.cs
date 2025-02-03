@@ -9,25 +9,20 @@ using System.Data.SqlClient;
 using System.Security.Cryptography;
 using System.Runtime.InteropServices;
 using System.Diagnostics.Eventing.Reader;
+using QLHOCTRUCTUYEN.QLHOCTRUCTUYENDataSetTableAdapters;
+using System.Data;
 
 namespace QLHOCTRUCTUYEN.Model
 {
-    public class Users
+    public static class Users
     {
-        private string ID_USER;
-        private string TENUSER;
-        private string EMAIL;
-        private bool TRANGTHAI;
-        // Foreign key
-        private string ID_ROLE;
-        public string IdUser { get; set; }
-        public string TenUser { get; set; }
-        public string Email { get; set; }
-        public bool TrangThai { get; set; }
-        public string IdRole { get; set; }
+        public static string IdUser { get; set; }
+        public static string TenUser { get; set; }
+        public static string Email { get; set; }
+        public static string IdRole { get; set; }
+        public static string AnhDaiDien { get; set; }
+        public static bool GioiTinh { get; set; }
     }
-
-
     public class PasswordHasher
     {
         private const int SaltSize = 16;
@@ -85,8 +80,7 @@ namespace QLHOCTRUCTUYEN.Model
     public class ManageUsers
     {
         private static string connSql = ConfigurationManager.ConnectionStrings["QLHOCTRUCTUYEN"].ConnectionString;
-        private QLHOCTRUCTUYENDataSetTableAdapters.USERSTableAdapter UsersTableAdapter = new QLHOCTRUCTUYENDataSetTableAdapters.USERSTableAdapter
-
+        private static QLHOCTRUCTUYENDataSetTableAdapters.USERSTableAdapter UsersTableAdapter = new QLHOCTRUCTUYENDataSetTableAdapters.USERSTableAdapter();
         public static string CreateID()
         {
             using (SqlConnection conn = new SqlConnection(connSql))
@@ -151,12 +145,27 @@ namespace QLHOCTRUCTUYEN.Model
         {
             return UsersTableAdapter.GetDataByEmail(email);
         }
+        public QLHOCTRUCTUYENDataSet.USERSDataTable LoadListUsersByPhongHocThamGia(string id_phonghoc)
+        {
+            return UsersTableAdapter.GetDataUsersByPhongHocThamGia(id_phonghoc);
+        }
+        public static QLHOCTRUCTUYENDataSet.USERSDataTable ListUserInPhongHocByVaiTro(string id_phonghoc, bool vaitro)
+        {
+            QLHOCTRUCTUYENDataSet.USERSDataTable dt = new QLHOCTRUCTUYENDataSet.USERSDataTable();
+            using (var adapter = new QLHOCTRUCTUYENDataSetTableAdapters.USERSTableAdapter())
+            {
+                dt = adapter.GetListUserInPhongHocByVaiTro(id_phonghoc, vaitro);
+            }
+            return dt;
+        }
+
     }
 
     public class UserLoginHandler
     {
         private static string connSql = ConfigurationManager.ConnectionStrings["QLHOCTRUCTUYEN"].ConnectionString;
-        public static Users ValidLogin(string email, string pass)
+        private static QLHOCTRUCTUYENDataSetTableAdapters.USERSTableAdapter UsersTableAdapter = new QLHOCTRUCTUYENDataSetTableAdapters.USERSTableAdapter();
+        public static bool ValidLogin(string email, string pass)
         {
             using (SqlConnection conn = new SqlConnection(connSql))
             {
@@ -178,24 +187,21 @@ namespace QLHOCTRUCTUYEN.Model
 
                             if (PasswordHasher.VerifyPassword(pass, salt, hash))
                             {
-                                Users user = new Users
-                                {
-                                    IdUser = reader.GetString(0),
-                                    TenUser = reader.GetString(1),
-                                    Email = reader.GetString(2),
-                                    TrangThai = reader.GetBoolean(3),
-                                    IdRole = reader.GetString(4),
-                                };
+                                Users.IdUser = reader["ID_USER"] != DBNull.Value ? reader.GetString(reader.GetOrdinal("ID_USER")) : string.Empty;
+                                Users.Email = reader["EMAIL"] != DBNull.Value ? reader.GetString(reader.GetOrdinal("EMAIL")) : string.Empty;
+                                Users.TenUser = reader["TENUSER"] != DBNull.Value ? reader.GetString(reader.GetOrdinal("TENUSER")) : string.Empty;
+                                Users.IdRole = reader["ID_ROLE"] != DBNull.Value ? reader.GetString(reader.GetOrdinal("ID_ROLE")) : string.Empty;
+                                Users.AnhDaiDien = reader["ANHDAIDIEN"] != DBNull.Value ? reader.GetString(reader.GetOrdinal("ANHDAIDIEN")) : string.Empty;
+                                Users.GioiTinh = reader["GIOITINH"] != DBNull.Value && reader.GetBoolean(reader.GetOrdinal("GIOITINH"));
 
-                                return user;
+                                return true;
                             }
                         }
-                        return null;
+                        return false;
                     }
                 }
             }
         }
-
 
     }
 }

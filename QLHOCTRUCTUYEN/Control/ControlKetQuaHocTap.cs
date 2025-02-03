@@ -1,16 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using QLHOCTRUCTUYEN.Model;
+using QLHOCTRUCTUYEN.View;
 
 namespace QLHOCTRUCTUYEN.Control
 {
     public class ControlKetQuaHocTap
     {
-        public static void ControlLoadListKQHTForPhongHoc(string id_phong)
+        public static DataTable Data_KQHTCuaUserTrongPhong(string id_phonghoc)
         {
-            FormBTTrenLop.dtKQHTForPhongHoc = Model.ManageKQHT.LoadListKQHTForPhongHoc(id_phong);
+            return ManageKQHT.XemDanhSachKQHTCuaTatcaUserTrongPhongHoc(id_phonghoc);
         }
     }
 }

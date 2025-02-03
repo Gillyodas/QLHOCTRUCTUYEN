@@ -7,9 +7,12 @@
     }
 }
 
-namespace QLHOCTRUCTUYEN.QLHOCTRUCTUYENDataSetTableAdapters {
-    
-    
+namespace QLHOCTRUCTUYEN.QLHOCTRUCTUYENDataSetTableAdapters
+{
+    partial class USERSTableAdapter
+    {
+    }
+
     public partial class TAINGUYENHOCTAPTableAdapter {
     }
 }
