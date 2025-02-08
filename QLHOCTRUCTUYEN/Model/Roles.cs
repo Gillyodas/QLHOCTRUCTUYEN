@@ -7,10 +7,4 @@ using System.Threading.Tasks;
 
 namespace QLHOCTRUCTUYEN.Model
 {
-    internal class Roles
-    {
-        private SqlString ID_ROLE;
-        private SqlString TENROLE;
-        private SqlBoolean TRANGTHAI;
-    }
 }

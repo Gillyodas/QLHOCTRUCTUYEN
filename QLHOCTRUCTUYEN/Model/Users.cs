@@ -14,15 +14,6 @@ using System.Data;
 
 namespace QLHOCTRUCTUYEN.Model
 {
-    public static class Users
-    {
-        public static string IdUser { get; set; }
-        public static string TenUser { get; set; }
-        public static string Email { get; set; }
-        public static string IdRole { get; set; }
-        public static string AnhDaiDien { get; set; }
-        public static bool GioiTinh { get; set; }
-    }
     public class PasswordHasher
     {
         private const int SaltSize = 16;
@@ -96,7 +87,6 @@ namespace QLHOCTRUCTUYEN.Model
                 }
             }
         }
-
         private static bool EmailIsNotUsed(string email)
         {
             using (SqlConnection conn = new SqlConnection(connSql))
@@ -139,7 +129,6 @@ namespace QLHOCTRUCTUYEN.Model
                         return rowsAffected > 0;
                     }
                 }
-            } return false;
         }
         public QLHOCTRUCTUYENDataSet.USERSDataTable TimKiemTheoEmail(string email)
         {
@@ -158,9 +147,7 @@ namespace QLHOCTRUCTUYEN.Model
             }
             return dt;
         }
-
     }
-
     public class UserLoginHandler
     {
         private static string connSql = ConfigurationManager.ConnectionStrings["QLHOCTRUCTUYEN"].ConnectionString;
@@ -202,6 +189,5 @@ namespace QLHOCTRUCTUYEN.Model
                 }
             }
         }
-
     }
 }

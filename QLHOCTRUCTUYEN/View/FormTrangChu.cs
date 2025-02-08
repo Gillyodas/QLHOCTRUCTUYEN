@@ -10,30 +10,19 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using QLHOCTRUCTUYEN.Model;
 using QLHOCTRUCTUYEN.View;
-using QLHOCTRUCTUYEN.Control;
 using System.Configuration;
 using System.Runtime.CompilerServices;
 namespace QLHOCTRUCTUYEN.View
 {
     public partial class FormTrangChu : Form
     {
-        //public event EventHandler ReloadRequested;
         public FormTrangChu()
         {
             InitializeComponent();
             
-            //LoadDataGridViewBTTrenLop();
             tab_QLPH.Visible = false;
             //this.ReloadRequested += FormTT_ReloadRequested;
         }
-        //private void FormTT_ReloadRequested(object sender, EventArgs e)
-        //{
-        //    ReloadForm();
-        //}
-        //public void RequestReload()
-        //{
-        //    ReloadRequested?.Invoke(this, EventArgs.Empty);
-        //}
         public void LoadListPhongHocByPhongHocThamGiaCuaNguoiDung()
         {
             lsv_DanhSachPhongHocThamGia.Items.Clear();
@@ -211,7 +200,6 @@ namespace QLHOCTRUCTUYEN.View
             MessageBox.Show("Bạn đã nhấn vào icon phải của bài tập số: " + STTMess, "Thông báo");
            
         }
-
         // Hàm xử lý sự kiện click vào PictureBox bên trái
         private static void PicLeft_Click(object sender, EventArgs e, string STTMess)
         {
@@ -219,7 +207,6 @@ namespace QLHOCTRUCTUYEN.View
             FormCTBaiTap form = new FormCTBaiTap();
             form.ShowDialog();
         }
-
         private void pic_TaoVaThamGiaLop_Click(object sender, EventArgs e)
         {
            // Tạo form con
@@ -241,43 +228,6 @@ namespace QLHOCTRUCTUYEN.View
                                          // Hiển thị form con
                 ChildForm.Show(); 
         }
-        public  void TeacherInRoom (string link, string TenUser)//********************************************************************************
-        {
-            // code đưa hình ảnh và Tên user vào đây        
-            // dùng For để lặp qua số lượt các giáo viên trong phòng  bằng cách xác định có bao nhiêu giáo viên trong lớp
-
-            ListViewItem item1 = new ListViewItem(" ", 0); // Hình đại diện đầu tiên
-            item1.SubItems.Add("Nguyễn Văn A");// thay biến Ten User sẽ đặt ở đây
-
-            ListViewItem item2 = new ListViewItem(" ", 1); // Hình đại diện thứ hai
-            item2.SubItems.Add("Trần Thị B");//thay biến Ten User sẽ đặt ở đây
-            lsv_GiaoVien.Items.AddRange(new ListViewItem[] { item1, item2 });
-        }
-        public void StudentInRoom(string link, string TenUser)//********************************************************************************
-        {
-            // code đưa hình ảnh và Tên user vào đây        
-            // dùng For để lặp qua số lượt các giáo viên trong phòng  bằng cách xác định có bao nhiêu giáo viên trong lớp
-
-            ListViewItem item1 = new ListViewItem(" ", 0); // Hình đại diện đầu tiên
-            item1.SubItems.Add("Nguyễn Văn A");// thay biến Ten User sẽ đặt ở đây
-
-            ListViewItem item2 = new ListViewItem(" ", 1); // Hình đại diện thứ hai
-            item2.SubItems.Add("Trần Thị B");//thay biến Ten User sẽ đặt ở đây
-            lsv_GiaoVien.Items.AddRange(new ListViewItem[] { item1, item2 });
-        }
-
-        private void btn_checkpnl_Click(object sender, EventArgs e)
-           
-        {
-            //Control.ControlRoom.ControlCreatePanelRoom(this);
-
-            // test chức năng thả xuống của bảng tin
-           for(int i=0; i<3; i++)
-            {
-                CreateMessage(i.ToString(), "Subject", "Content", this);
-            }
-        }
-
         private void lsv_GiaoVien_SelectedIndexChanged(object sender, EventArgs e)//*********************************************************************************
         {
             if (lsv_GiaoVien.SelectedItems.Count > 0) // Kiểm tra có hàng được chọn
@@ -299,29 +249,7 @@ namespace QLHOCTRUCTUYEN.View
                 // Hiển thị form
                 form.Show();
             }
-           
         }
-/*
-        private void btn_checkGVSV_Click(object sender, EventArgs e)//************************************************************************
-        {
-
-            ListViewItem item1 = new ListViewItem(" ", 0); // Hình đại diện đầu tiên
-            item1.SubItems.Add("Nguyễn Văn A");
-
-            ListViewItem item2 = new ListViewItem(" ", 1); // Hình đại diện thứ hai
-            item2.SubItems.Add("Trần Thị B");
-
-            ListViewItem item3 = new ListViewItem(" ", 2); // Hình đại diện đầu tiên
-            item3.SubItems.Add("Nguyễn Văn A");
-
-            ListViewItem item4 = new ListViewItem(" ", 1); // Hình đại diện thứ hai
-            item4.SubItems.Add("Trần Thị B");
-            lsv_GiaoVien.Items.AddRange(new ListViewItem[] { item1, item2 });
-            lsv_SinhVien.Items.AddRange(new ListViewItem[] { item3, item4 });
-
-        }
-*/
-
         private void lsv_SinhVien_SelectedIndexChanged(object sender, EventArgs e)//**********************************************************************
         {
             if (lsv_SinhVien.SelectedItems.Count > 0) // Kiểm tra có hàng được chọn
@@ -345,34 +273,11 @@ namespace QLHOCTRUCTUYEN.View
                 form.Show();
             }
         }
-        private FormMoiThamGiaLop FormMoiThamGiaLop;
-        private void pic_addGV_Click(object sender, EventArgs e)
-        {
-            FormMoiThamGiaLop form = new FormMoiThamGiaLop();
-            // Nếu form đã tồn tại và đang hiển thị
-
-            form.Show();
-        }
-        private void pic_AddSV_Click(object sender, EventArgs e)
-        {
-            FormMoiThamGiaLop form = new FormMoiThamGiaLop();
-            // Nếu form đã tồn tại và đang hiển thị
-
-            form.Show();
-        }
-        private void btn_CheckBT_Click(object sender, EventArgs e)
-        {
-            for (int i = 0; i < 10; i++)
-            {
-                CreateAssignment(i.ToString(), "Subject",  this);
-            }
-        }
         private void pictureBox13_Click(object sender, EventArgs e)
         {
             FormCTTaiKhoan form = new FormCTTaiKhoan();
             form.ShowDialog();
         }
-
         private void panel_ManHinhChinh_MouseClick(object sender, MouseEventArgs e)
         {
             tab_QLPH.Visible = false;
@@ -410,11 +315,6 @@ namespace QLHOCTRUCTUYEN.View
             }
         }
         private void btn_TaoBT_Click_1(object sender, EventArgs e)
-        {
-            FormCTTaoBaiTap formCTTaoBT = new FormCTTaoBaiTap();
-            Program.OpenOrActivateForm(formCTTaoBT);
-        }
-        private void FormTrangChu_Shown(object sender, EventArgs e)
         {
             LoadListPhongHocByPhongHocThamGiaCuaNguoiDung();
             LoadHienThiThongTinNguoiDung();

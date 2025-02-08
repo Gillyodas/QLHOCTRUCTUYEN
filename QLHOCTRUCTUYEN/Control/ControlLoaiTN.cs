@@ -10,9 +10,5 @@ namespace QLHOCTRUCTUYEN.Control
 {
     public class ControlLoaiTN
     {
-        public static DataTable ControlLoadLoaiTN()
-        {
-            return Model.ManageLoaiTN.LoadLoaiTN();
-        }
     }
 }
