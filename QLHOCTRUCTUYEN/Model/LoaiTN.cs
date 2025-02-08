@@ -13,5 +13,14 @@ namespace QLHOCTRUCTUYEN.Model
     public class ManageLoaiTN
     {
         private static string connSql = ConfigurationManager.ConnectionStrings["QLHOCTRUCTUYEN"].ConnectionString;
+        private static QLHOCTRUCTUYENDataSetTableAdapters.LOAITAINGUYENTableAdapter LOAITAINGUYENTableAdapter = new QLHOCTRUCTUYENDataSetTableAdapters.LOAITAINGUYENTableAdapter();
+        public static QLHOCTRUCTUYENDataSet.LOAITAINGUYENDataTable ListLoaiTaiNguyen()
+        {
+            return LOAITAINGUYENTableAdapter.GetData();
+        }
+        public static void UpdateLoaiTN(QLHOCTRUCTUYENDataSet.LOAITAINGUYENDataTable ltnDatatable)
+        {
+            LOAITAINGUYENTableAdapter.Update(ltnDatatable);
+        }
     }
 }

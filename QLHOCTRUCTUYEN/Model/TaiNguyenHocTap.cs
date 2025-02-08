@@ -12,25 +12,6 @@ using System.Data.SqlTypes;
 
 namespace QLHOCTRUCTUYEN.Model
 {
-    public class TaiNguyenHocTap
-    {
-        private string ID_TAINGUYEN;
-        private string TENTAINGUYEN;
-        private string URL_TAINGUYEN;
-        private string MOTA;
-        // Foreign key
-        private string ID_USER;
-        private string ID_LOAITN;
-        private string ID_PHONGHOC;
-        public string IdTN { get; set; }
-        public string TenTN { get; set; }
-        public string URL_TN { get; set; }
-        public string MoTa { get; set; }
-        public string IdUser { get; set; }
-        public string IdLoaiTN { get; set; }
-        public string IdPH { get; set; }
-    }
-
     public class ManageTaiNguyenHocTap
     {
         private static QLHOCTRUCTUYENDataSetTableAdapters.TAINGUYENHOCTAPTableAdapter tainguyenhoctapTableAdapter = new QLHOCTRUCTUYENDataSetTableAdapters.TAINGUYENHOCTAPTableAdapter();
@@ -48,25 +29,25 @@ namespace QLHOCTRUCTUYEN.Model
                 }
             }
         }
-        public void CreateTaiNguyenHocTap(string id_user, string ten, string url, string mota, string id_loaitn, string id_phonghoc, DateTime ngaydang, DateTime thoihan)
+        public static bool CreateTaiNguyenHocTap(string id_user, string ten, string mota, string id_loaitn, string id_phonghoc, DateTime ngaydang, DateTime thoihan)
         {
-            tainguyenhoctapTableAdapter.Insert(CreateID(), ten, url, mota, true, id_loaitn, id_phonghoc, id_user, ngaydang, thoihan);
+            int rowsAffected = tainguyenhoctapTableAdapter.Insert(CreateID(), ten, mota, true, id_loaitn, id_phonghoc, id_user, ngaydang, thoihan);
+            return rowsAffected > 0;
         }
         public object XemChiTietTaiNguyenHocTap(string id_tainguyen)
         {
             return tainguyenhoctapTableAdapter.GetData().FindByID_TAINGUYEN(id_tainguyen);
         }
-        public static QLHOCTRUCTUYENDataSet.TAINGUYENHOCTAPDataTable LoadListTNHTByPhongHoc(string id_phonghoc)
+        public static QLHOCTRUCTUYENDataSet.TAINGUYENHOCTAPDataTable LoadListTNHTByPhongHoc(string id_phonghoc, string id_ltn)
         {
-            return tainguyenhoctapTableAdapter.GetDataByPhongHoc(id_phonghoc);
+            return tainguyenhoctapTableAdapter.GetDataByPhongHocAndLoaiTN(id_phonghoc, id_ltn);
         }
-        public void UpdateTaiNguyenHocTap(string id_tainguyen, string ten, string url, string mota, DateTime ngaydang, DateTime thoihan)
+        public void UpdateTaiNguyenHocTap(string id_tainguyen, string ten, string mota, DateTime ngaydang, DateTime thoihan)
         {
             var row = tainguyenhoctapTableAdapter.GetData().FindByID_TAINGUYEN(id_tainguyen);
             if (row != null)
             {
                 row.TENTAINGUYEN = ten;
-                row.URL_TAINGUYEN = url;
                 row.MOTA = mota;
                 row.NGAYDANG = ngaydang;
                 row.THOIHAN = thoihan;

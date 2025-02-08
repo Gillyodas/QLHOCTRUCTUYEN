@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using QLHOCTRUCTUYEN.Model;
 using QLHOCTRUCTUYEN.View;
 
 namespace QLHOCTRUCTUYEN
@@ -19,22 +20,8 @@ namespace QLHOCTRUCTUYEN
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            // Tạo form đăng ký/đăng nhập trước
-            FormDangKy formDK = new FormDangKy();
-            MainForm = new FormTrangChu();
-
-            // Hiển thị formDK dưới dạng dialog để chặn luồng
-            formDK.ShowDialog();
-
-            // Sau khi formDK đóng, kiểm tra login
-            if (Control.ControlUsers.IsLogin)
-            {
-                Application.Run(MainForm); // Chạy formTT nếu login thành công
-            }
-            else
-            {
-                Application.Exit(); // Thoát nếu không login
-            }
+            Global.MainForm = new FormDangKy();
+            Application.Run(Global.MainForm);
         }
         public static void OpenOrActivateForm(Form formInstance)
         {

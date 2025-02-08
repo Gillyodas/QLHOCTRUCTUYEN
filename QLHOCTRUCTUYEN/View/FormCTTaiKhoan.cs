@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using QLHOCTRUCTUYEN.Model;
-using QLHOCTRUCTUYEN.Control;
+using System.Runtime.CompilerServices;
 
 namespace QLHOCTRUCTUYEN.View
 {
@@ -21,18 +21,45 @@ namespace QLHOCTRUCTUYEN.View
         }
         public void SetThongTin()
         {
-            string imagePath = @"Images\" + Users.AnhDaiDien;
-            string tmp = Users.AnhDaiDien;
-            txt_HoTen.Text = Users.TenUser;
-            txt_email.Text = Users.Email;
+            string imagePath = @"Images\" + UserLoginHandler.CurUser.ANHDAIDIEN;
+            txt_HoTen.Text = UserLoginHandler.CurUser.TENUSER;
+            txt_email.Text = UserLoginHandler.CurUser.EMAIL;
             try
             {
                 pic_AnhDaiDien.Image = Image.FromFile(imagePath);
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.Message);
             }
+        }
+        private void btn_DangXuat_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Global.MainForm.Hide();
+            Global.MainForm = new FormDangKy();
+            Global.MainForm.Show();
+        }
+
+        private void btn_DoiMK_Click(object sender, EventArgs e)
+        {
+            DoiMatKhau doiMatKhau = new DoiMatKhau();
+            Program.OpenOrActivateForm(doiMatKhau);
+        }
+        private void btn_DoiThongTin_Click(object sender, EventArgs e)
+        {
+            bool gioiTinh = false;
+
+            if (rdB_Nam.Checked)
+                gioiTinh = true;
+            else if (rdB_Nam.Checked)
+                gioiTinh = false;
+            if (ManageUsers.UpdateUser(txt_HoTen.Text, txt_email.Text, gioiTinh))
+                MessageBox.Show("success");
+            else
+                MessageBox.Show("fail");
+            FormTrangChu form = Application.OpenForms["FormTrangChu"] as FormTrangChu;
+            form.LoadHienThiThongTinNguoiDung();
+            SetThongTin();
         }
     }
 }

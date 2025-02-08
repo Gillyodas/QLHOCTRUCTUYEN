@@ -11,6 +11,9 @@ using System.Runtime.InteropServices;
 using System.Diagnostics.Eventing.Reader;
 using QLHOCTRUCTUYEN.QLHOCTRUCTUYENDataSetTableAdapters;
 using System.Data;
+using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using System.Web;
 
 namespace QLHOCTRUCTUYEN.Model
 {
@@ -20,7 +23,7 @@ namespace QLHOCTRUCTUYEN.Model
         private const int HashSize = 32;
         private const int Iterations = 200000;
         // Hàm tạo hash cho mật khẩu
-        public static (byte[] Salt, byte[] Hash) HashPassword(string password)
+        internal static (byte[] Salt, byte[] Hash) HashPassword(string password)
         {
             byte[] salt = GenerateSalt();
             byte[] hash = HashPassword(password, salt, Iterations, HashSize);
@@ -36,7 +39,7 @@ namespace QLHOCTRUCTUYEN.Model
             return salt;
         }
 
-        private static byte[] HashPassword(string password, byte[] salt, int iterations, int hashSize)
+        internal static byte[] HashPassword(string password, byte[] salt, int iterations, int hashSize)
         {
             using (var pbkdf2 = new Rfc2898DeriveBytes(password, salt, iterations, HashAlgorithmName.SHA256))
             {
@@ -115,8 +118,8 @@ namespace QLHOCTRUCTUYEN.Model
                 {
                     conn.Open();
 
-                    string SqlQueryStr = "INSERT INTO USERS " +
-                                         "VALUES (@Id, @Ten, @Email, 1, 'R1', @Salt, @HPass)";
+                    string SqlQueryStr = "INSERT INTO USERS (ID_USER, TENUSER, EMAIL, TRANGTHAI, ID_ROLE, SALT, PASSWORD_HASH, ANHDAIDIEN, GIOITINH) " +
+                                         "VALUES (@Id, @Ten, @Email, 1, 'R1', @Salt, @HPass, '', NULL)";
 
                     using (SqlCommand SqlCmd = new SqlCommand(SqlQueryStr, conn))
                     {
@@ -129,6 +132,31 @@ namespace QLHOCTRUCTUYEN.Model
                         return rowsAffected > 0;
                     }
                 }
+            }
+            return false;
+        }
+        public static bool DoiMK(string MkCu, string MkMoi)
+        {
+            var (salt, hash, userId) = UserLoginHandler.GetUserByEmail(UserLoginHandler.CurUser.EMAIL);
+            if (salt == null || hash == null) return false;
+
+            if (UserLoginHandler.ValidatePassword(MkCu, salt, hash))
+            {
+                (byte[] newsalt, byte[] newhash) =  PasswordHasher.HashPassword(MkMoi);
+                using (SqlConnection conn = new SqlConnection(connSql))
+                {
+                    conn.Open();
+                    string SqlQueryStr = "UPDATE USERS SET SALT = @salt, PASSWORD_HASH = @hash WHERE ID_USER = @id_user AND TRANGTHAI = 1";
+                    using (SqlCommand SqlCmd = new SqlCommand(SqlQueryStr, conn))
+                    {
+                        SqlCmd.Parameters.AddWithValue("@salt", newsalt);
+                        SqlCmd.Parameters.AddWithValue("@hash", newhash);
+                        SqlCmd.Parameters.AddWithValue("@id_user", UserLoginHandler.CurUser.ID_USER);
+                        int rowsAffected = SqlCmd.ExecuteNonQuery();
+                        return rowsAffected > 0;
+                    }
+                }
+            } return false;
         }
         public QLHOCTRUCTUYENDataSet.USERSDataTable TimKiemTheoEmail(string email)
         {
@@ -140,25 +168,27 @@ namespace QLHOCTRUCTUYEN.Model
         }
         public static QLHOCTRUCTUYENDataSet.USERSDataTable ListUserInPhongHocByVaiTro(string id_phonghoc, bool vaitro)
         {
-            QLHOCTRUCTUYENDataSet.USERSDataTable dt = new QLHOCTRUCTUYENDataSet.USERSDataTable();
-            using (var adapter = new QLHOCTRUCTUYENDataSetTableAdapters.USERSTableAdapter())
-            {
-                dt = adapter.GetListUserInPhongHocByVaiTro(id_phonghoc, vaitro);
-            }
-            return dt;
+            return UsersTableAdapter.GetListUserInPhongHocByVaiTro(id_phonghoc, vaitro);
+        }
+        public static bool UpdateUser(string ten, string email, bool gioitinh)
+        {
+            int rowEffected = UsersTableAdapter.UpdateUser(ten, email, "", gioitinh, UserLoginHandler.CurUser.ID_USER);
+            UserLoginHandler.CurUser = UsersTableAdapter.GetData().FindByID_USER(UserLoginHandler.CurUser.ID_USER);
+            return rowEffected > 0;
         }
     }
     public class UserLoginHandler
     {
         private static string connSql = ConfigurationManager.ConnectionStrings["QLHOCTRUCTUYEN"].ConnectionString;
         private static QLHOCTRUCTUYENDataSetTableAdapters.USERSTableAdapter UsersTableAdapter = new QLHOCTRUCTUYENDataSetTableAdapters.USERSTableAdapter();
-        public static bool ValidLogin(string email, string pass)
+        public static QLHOCTRUCTUYENDataSet.USERSRow CurUser { get; internal set; }
+        internal static (byte[] salt, byte[] hash, object userId) GetUserByEmail(string email)
         {
             using (SqlConnection conn = new SqlConnection(connSql))
             {
                 conn.Open();
 
-                using (SqlCommand SqlCmd = new SqlCommand("SELECT * FROM USERS WHERE EMAIL = @email", conn))
+                using (SqlCommand SqlCmd = new SqlCommand("SELECT ID_USER, SALT, PASSWORD_HASH, ANHDAIDIEN FROM USERS WHERE EMAIL = @email", conn))
                 {
                     SqlCmd.Parameters.AddWithValue("@email", email);
 
@@ -169,25 +199,35 @@ namespace QLHOCTRUCTUYEN.Model
                             byte[] salt = new byte[16];
                             byte[] hash = new byte[32];
 
-                            long bytesReadSalt = reader.GetBytes(reader.GetOrdinal("SALT"), 0, salt, 0, salt.Length);
-                            long bytesReadHash = reader.GetBytes(reader.GetOrdinal("HASHPASSWORD"), 0, hash, 0, hash.Length);
+                            reader.GetBytes(reader.GetOrdinal("SALT"), 0, salt, 0, salt.Length);
+                            reader.GetBytes(reader.GetOrdinal("PASSWORD_HASH"), 0, hash, 0, hash.Length);
 
-                            if (PasswordHasher.VerifyPassword(pass, salt, hash))
-                            {
-                                Users.IdUser = reader["ID_USER"] != DBNull.Value ? reader.GetString(reader.GetOrdinal("ID_USER")) : string.Empty;
-                                Users.Email = reader["EMAIL"] != DBNull.Value ? reader.GetString(reader.GetOrdinal("EMAIL")) : string.Empty;
-                                Users.TenUser = reader["TENUSER"] != DBNull.Value ? reader.GetString(reader.GetOrdinal("TENUSER")) : string.Empty;
-                                Users.IdRole = reader["ID_ROLE"] != DBNull.Value ? reader.GetString(reader.GetOrdinal("ID_ROLE")) : string.Empty;
-                                Users.AnhDaiDien = reader["ANHDAIDIEN"] != DBNull.Value ? reader.GetString(reader.GetOrdinal("ANHDAIDIEN")) : string.Empty;
-                                Users.GioiTinh = reader["GIOITINH"] != DBNull.Value && reader.GetBoolean(reader.GetOrdinal("GIOITINH"));
+                            object userId = reader["ID_USER"] != DBNull.Value ? reader["ID_USER"] : null;
 
-                                return true;
-                            }
+                            return (salt, hash, userId);
                         }
-                        return false;
                     }
                 }
             }
+            return (null, null, null);
+        }
+        internal static bool ValidatePassword(string inputPassword, byte[] salt, byte[] hash)
+        {
+            return PasswordHasher.VerifyPassword(inputPassword, salt, hash);
+        }
+        public static bool ValidLogin(string email, string pass)
+        {
+            var (salt, hash, userId) = GetUserByEmail(email);
+
+            if (salt == null || hash == null) return false;
+
+            if (ValidatePassword(pass, salt, hash))
+            {
+                CurUser = UsersTableAdapter.GetData().FindByID_USER(userId?.ToString());
+                return true;
+            }
+
+            return false;
         }
     }
 }

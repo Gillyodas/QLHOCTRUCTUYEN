@@ -11,14 +11,6 @@ using System.Data;
 
 namespace QLHOCTRUCTUYEN.Model
 {
-    public static class PHONGHOC
-    { 
-        public static string IdPhongHoc {  get; set; }
-        public static string TenPhongHoc { get; set; }
-        public static string MaPhong {  get; set; }
-        public static string MoTa {  get; set; }
-        public static string IdUser { get; set; }
-    }
     public class ManagePhongHoc
     {
         private static string connSql = ConfigurationManager.ConnectionStrings["QLHOCTRUCTUYEN"].ConnectionString;
@@ -33,7 +25,7 @@ namespace QLHOCTRUCTUYEN.Model
                 using (SqlCommand cmd = new SqlCommand(SqlQueryStr, conn))
                 {
                     int count = (int)cmd.ExecuteScalar();
-                    return "PH" + (count + 1).ToString();
+                    return "P" + (count + 1).ToString();
                 }
             }
         }

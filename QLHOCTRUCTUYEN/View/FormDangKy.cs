@@ -12,7 +12,8 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Text.RegularExpressions;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using QLHOCTRUCTUYEN.Model;
-using QLHOCTRUCTUYEN.Control;
+using System.Runtime.CompilerServices;
+using QLHOCTRUCTUYEN.View;
 
 namespace QLHOCTRUCTUYEN
 {
@@ -27,6 +28,7 @@ namespace QLHOCTRUCTUYEN
             UpdateBtnDangKyState();
             UpdateBtnDangNhapState();
             NhapSanEmailPass();
+            this.FormBorderStyle = FormBorderStyle.None;
         }
         private void NhapSanEmailPass()
         {
@@ -84,13 +86,17 @@ namespace QLHOCTRUCTUYEN
         }
         private void btnDangKy_Click(object sender, EventArgs e)
         {
-            Control.ControlUsers.ControlCreateUser(txtHoTen.Text, txtEmail.Text, txtPass.Text);
+            DangKyThanhCong(ManageUsers.CreateUser(txtHoTen.Text, txtEmail.Text, txtPass.Text));
         }
         private void btnDangNhapDN_Click(object sender, EventArgs e)
         {
-            ControlUsers.ControlLogin(txtEmailDN.Text, txtPassDN.Text);
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            if (UserLoginHandler.ValidLogin(txtEmailDN.Text, txtPassDN.Text))
+            {
+                Global.MainForm.Hide();
+                Global.MainForm = new FormTrangChu();
+                Global.MainForm.Show();
+            }
+            else MessageBox.Show("Dang nhap that bai");
         }
         public void DangKyThanhCong(bool success)
         {
@@ -99,13 +105,6 @@ namespace QLHOCTRUCTUYEN
                 MessageBox.Show("Thanh cong");
             }
             else MessageBox.Show("That bai");
-        }
-        public static void DangNhapThatBai(bool thatbai)
-        {
-            if (thatbai)
-            {
-                MessageBox.Show("Dang nhap that bai");
-            }
         }
         private void btnChuyenSangFormDK_Click(object sender, EventArgs e)
         {

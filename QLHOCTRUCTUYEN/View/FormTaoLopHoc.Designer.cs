@@ -84,6 +84,7 @@
             this.btn_TaoLop.TabIndex = 8;
             this.btn_TaoLop.Text = "Tạo";
             this.btn_TaoLop.UseVisualStyleBackColor = true;
+            this.btn_TaoLop.TextChanged += new System.EventHandler(this.btn_TaoLop_TextChanged);
             this.btn_TaoLop.Click += new System.EventHandler(this.btn_TaoLop_Click);
             // 
             // label2

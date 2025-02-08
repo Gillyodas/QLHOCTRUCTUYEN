@@ -6,9 +6,13 @@ CREATE TABLE PHONGHOC (
 	TENPHONGHOC NVARCHAR(50) NOT NULL,
 	MAPHONG CHAR(10) NOT NULL,
 	MOTA TEXT NULL,
+	ID_USER NVARCHAR(5) NOT NULL,
 	TRANGTHAI BIT DEFAULT 1,
 
-	CONSTRAINT PK_PHONGHOC PRIMARY KEY (ID_PHONGHOC)
+	CONSTRAINT PK_PHONGHOC PRIMARY KEY (ID_PHONGHOC),
+	CONSTRAINT FK_PHONGHOC FOREIGN KEY (ID_USER) REFERENCES USERS (ID_USER)
+	ON DELETE NO ACTION
+	ON UPDATE CASCADE
 );
 
 CREATE TABLE LOAITAINGUYEN (
@@ -31,13 +35,16 @@ CREATE TABLE USERS (
 	ID_USER NVARCHAR(5) NOT NULL,
 	TENUSER NVARCHAR(50) NOT NULL,
 	EMAIL NVARCHAR(100) NOT NULL,
-	PASSWORD_HASH NVARCHAR(255) NOT NULL,
+	SALT VARBINARY(16) NOT NULL,
+	PASSWORD_HASH VARBINARY(32) NOT NULL,
 	TRANGTHAI BIT DEFAULT 1,
+	ANHDAIDIEN TEXT NULL,
+	GIOITINH BIT NULL,
 
 	ID_ROLE NVARCHAR(5) NOT NULL,
 
 	CONSTRAINT PK_USERS PRIMARY KEY (ID_USER),
-	CONSTRAINT FK_USERS FOREIGN KEY (ID_ROLE) REFERENCES ROLES (ID_ROLE)
+	CONSTRAINT FK_USERS_ROLES FOREIGN KEY (ID_ROLE) REFERENCES ROLES (ID_ROLE)
 	ON DELETE NO ACTION
 	ON UPDATE CASCADE,
 
@@ -51,10 +58,10 @@ CREATE TABLE PHONGHOCTHAMGIA (
 	CONSTRAINT PK_PHONGHOCTHAMGIA PRIMARY KEY (ID_PHONGHOC, ID_USER),
 	CONSTRAINT FK_PHONGHOCTHAMGIA_PHONGHOC  FOREIGN KEY (ID_PHONGHOC) REFERENCES PHONGHOC (ID_PHONGHOC)
 	ON DELETE NO ACTION
-	ON UPDATE CASCADE,
+	ON UPDATE NO ACTION,
 	CONSTRAINT FK_PHONGHOCTHAMGIA_USER FOREIGN KEY (ID_USER) REFERENCES USERS (ID_USER)
 	ON DELETE NO ACTION
-	ON UPDATE CASCADE
+	ON UPDATE NO ACTION
 );
 
 CREATE TABLE TAINGUYENHOCTAP (
@@ -62,8 +69,26 @@ CREATE TABLE TAINGUYENHOCTAP (
 	TENTAINGUYEN NVARCHAR(50) NOT NULL,
 	URL_TAINGUYEN TEXT NOT NULL,
 	MOTA TEXT NULL,
+	THOIHAN DATETIME NULL,
+	NGAYDANG DATETIME NULL,
 	TRANGTHAI BIT DEFAULT 1,
+
+	ID_LOAITN NVARCHAR(5) NOT NULL,
+	ID_PHONGHOC NVARCHAR(5) NOT NULL,
+	ID_USER NVARCHAR(5) NOT NULL
 	CONSTRAINT PK_TAINGUYENHOCTAP PRIMARY KEY (ID_TAINGUYEN)
+	CONSTRAINT FK_TAINGUYENHOCTAP_LOAITN FOREIGN KEY (ID_LOAITN) 
+    REFERENCES LOAITAINGUYEN (ID_LOAITN) 
+    ON DELETE NO ACTION 
+    ON UPDATE CASCADE,
+	CONSTRAINT FK_TAINGUYENHOCTAP_PHONGHOC FOREIGN KEY (ID_PHONGHOC) 
+    REFERENCES PHONGHOC (ID_PHONGHOC) 
+    ON DELETE NO ACTION 
+    ON UPDATE NO ACTION,
+	CONSTRAINT FK_TAINGUYENHOCTAP_USERS FOREIGN KEY (ID_USER) 
+    REFERENCES USERS (ID_USER) 
+    ON DELETE NO ACTION 
+    ON UPDATE NO ACTION
 );
 
 CREATE TABLE KETQUAHOCTAP (
@@ -82,126 +107,74 @@ CREATE TABLE KETQUAHOCTAP (
 	ON UPDATE NO ACTION
 );
 
-ALTER TABLE TAINGUYENHOCTAP
-ADD ID_LOAITN NVARCHAR(5) NOT NULL;
-
-ALTER TABLE TAINGUYENHOCTAP
-ADD CONSTRAINT FK_TAINGUYENHOCTAP_LOAITN FOREIGN KEY (ID_LOAITN) 
-    REFERENCES LOAITAINGUYEN (ID_LOAITN) 
-    ON DELETE NO ACTION 
-    ON UPDATE CASCADE;
-
-ALTER TABLE TAINGUYENHOCTAP
-ADD ID_PHONGHOC NVARCHAR(5) NOT NULL;
-
-ALTER TABLE TAINGUYENHOCTAP
-ADD CONSTRAINT FK_TAINGUYENHOCTAP_PHONGHOC FOREIGN KEY (ID_PHONGHOC) 
-    REFERENCES PHONGHOC (ID_PHONGHOC) 
-    ON DELETE NO ACTION 
-    ON UPDATE CASCADE;
-
-ALTER TABLE TAINGUYENHOCTAP
-ADD	ID_USER NVARCHAR(5) NOT NULL
-
-ALTER TABLE TAINGUYENHOCTAP
-ADD THOIHAN DATETIME NULL
-NGAYDANG DATETIME NULL
-
-DELETE FROM TAINGUYENHOCTAP
-
-ALTER TABLE USERS
-ADD ANHDAIDIEN TEXT NULL,
-	GIOITINH BIT NULL;
-
-ALTER TABLE PHONGHOC
-ADD ID_USER NVARCHAR(5) NULL;
-
-ALTER TABLE PHONGHOC
-ADD CONSTRAINT FK_PHONGHOC_USERS FOREIGN KEY (ID_USER)
-REFERENCES USERS (ID_USER)
-ON DELETE NO ACTION
-ON UPDATE NO ACTION;
-
-ALTER TABLE TAINGUYENHOCTAP
-ADD CONSTRAINT FK_TAINGUYENTHOCTAP_USERS FOREIGN KEY (ID_USER) 
-REFERENCES USERS (ID_USER)
-ON DELETE NO ACTION
-ON UPDATE CASCADE
-	
-
-
-
-INSERT INTO PHONGHOC (ID_PHONGHOC, TENPHONGHOC, MAPHONG, MOTA, TRANGTHAI)
+INSERT INTO PHONGHOC (ID_PHONGHOC, TENPHONGHOC, MAPHONG, MOTA, TRANGTHAI, ID_USER)
 VALUES 
-('P001', 'Phòng học A1', 'A1-001', 'Phòng học lý thuyết', 1),
-('P002', 'Phòng học B1', 'B1-002', 'Phòng học thực hành', 1),
-('P003', 'Phòng học C1', 'C1-003', 'Phòng học đa năng', 1);
+('P1', 'Phòng học A1', 'A1-001', 'Phòng học lý thuyết', 1, 'U0'),
+('P2', 'Phòng học B1', 'B1-002', 'Phòng học thực hành', 1, 'U0'),
+('P3', 'Phòng học C1', 'C1-003', 'Phòng học đa năng', 1, 'U0');
 
 INSERT INTO LOAITAINGUYEN (ID_LOAITN, TENLOAITN, TRANGTHAI)
 VALUES 
-('L001', 'Tài liệu tham khảo', 1),
-('L002', 'Bài giảng', 1),
-('L003', 'Video học tập', 1);
+('L1', 'Tài liệu tham khảo', 1),
+('L2', 'Bài giảng', 1),
+('L3', 'Video học tập', 1);
 
 INSERT INTO TAINGUYENHOCTAP (ID_TAINGUYEN, TENTAINGUYEN, URL_TAINGUYEN, MOTA, TRANGTHAI, ID_USER, ID_LOAITN, ID_PHONGHOC, THOIHAN, NGAYDANG)
 VALUES
-('T001', 'Tài liệu Toán 1', 'http://example.com/math1', 'Tài liệu học toán lớp 1', 1, 'U0', 'L001', 'P001', DATEADD(MONTH, 1, GETDATE()), GETDATE()),
-('T002', 'Video Sinh học', 'http://example.com/bio', 'Video học sinh học lớp 6', 1, 'U0', 'L003', 'P002', DATEADD(MONTH, 1, GETDATE()), GETDATE()),
-('T003', 'Bài giảng Vật lý', 'http://example.com/physics', 'Bài giảng vật lý lớp 10', 1, 'U0', 'L002', 'P003', DATEADD(MONTH, 1, GETDATE()), GETDATE()),
-('T004', 'Tài liệu Hóa học', 'http://example.com/chemistry', 'Tài liệu học hóa lớp 12', 1, 'U0', 'L001', 'P002', DATEADD(MONTH, 1, GETDATE()), GETDATE()),
-('T005', 'Video Lịch sử', 'http://example.com/history', 'Video học lịch sử lớp 9', 1, 'U0', 'L003', 'P001', DATEADD(MONTH, 1, GETDATE()), GETDATE()),
-('T006', 'Bài giảng Địa lý', 'http://example.com/geography', 'Bài giảng địa lý lớp 8', 1, 'U1', 'L002', 'P003', DATEADD(MONTH, 1, GETDATE()), GETDATE()),
-('T007', 'Tài liệu Ngữ văn', 'http://example.com/literature', 'Tài liệu ngữ văn lớp 11', 1, 'U0', 'L001', 'P003', DATEADD(MONTH, 1, GETDATE()), GETDATE()),
-('T008', 'Video Tiếng Anh', 'http://example.com/english', 'Video học tiếng Anh giao tiếp', 1, 'U1', 'L003', 'P002', DATEADD(MONTH, 1, GETDATE()), GETDATE()),
-('T009', 'Bài giảng Tin học', 'http://example.com/it', 'Bài giảng tin học cơ bản', 1, 'U1', 'L001', 'P001', DATEADD(MONTH, 1, GETDATE()), GETDATE()),
-('T010', 'Tài liệu Thể dục', 'http://example.com/pe', 'Tài liệu hướng dẫn thể dục', 1, 'U1', 'L001', 'P003', DATEADD(MONTH, 1, GETDATE()), GETDATE());
+('T1', 'Tài liệu Toán 1', 'http://example.com/math1', 'Tài liệu học toán lớp 1', 1, 'U0', 'L1', 'P1', DATEADD(MONTH, 1, GETDATE()), GETDATE()),
+('T2', 'Video Sinh học', 'http://example.com/bio', 'Video học sinh học lớp 6', 1, 'U0', 'L3', 'P2', DATEADD(MONTH, 1, GETDATE()), GETDATE()),
+('T3', 'Bài giảng Vật lý', 'http://example.com/physics', 'Bài giảng vật lý lớp 10', 1, 'U0', 'L2', 'P3', DATEADD(MONTH, 1, GETDATE()), GETDATE()),
+('T4', 'Tài liệu Hóa học', 'http://example.com/chemistry', 'Tài liệu học hóa lớp 12', 1, 'U0', 'L1', 'P2', DATEADD(MONTH, 1, GETDATE()), GETDATE()),
+('T5', 'Video Lịch sử', 'http://example.com/history', 'Video học lịch sử lớp 9', 1, 'U0', 'L3', 'P1', DATEADD(MONTH, 1, GETDATE()), GETDATE()),
+('T6', 'Bài giảng Địa lý', 'http://example.com/geography', 'Bài giảng địa lý lớp 8', 1, 'U0', 'L2', 'P3', DATEADD(MONTH, 1, GETDATE()), GETDATE()),
+('T7', 'Tài liệu Ngữ văn', 'http://example.com/literature', 'Tài liệu ngữ văn lớp 11', 1, 'U0', 'L1', 'P3', DATEADD(MONTH, 1, GETDATE()), GETDATE()),
+('T8', 'Video Tiếng Anh', 'http://example.com/english', 'Video học tiếng Anh giao tiếp', 1, 'U0', 'L3', 'P2', DATEADD(MONTH, 1, GETDATE()), GETDATE()),
+('T9', 'Bài giảng Tin học', 'http://example.com/it', 'Bài giảng tin học cơ bản', 1, 'U0', 'L1', 'P1', DATEADD(MONTH, 1, GETDATE()), GETDATE()),
+('T10', 'Tài liệu Thể dục', 'http://example.com/pe', 'Tài liệu hướng dẫn thể dục', 1, 'U0', 'L1', 'P3', DATEADD(MONTH, 1, GETDATE()), GETDATE());
 
 
 
-SELECT * FROM TAINGUYENHOCTAP
-
-ALTER TABLE TAINGUYENHOCTAP
-DROP CONSTRAINT FK_TAINGUYENTHOCTAP;
+SELECT * FROM USERS
 
 INSERT INTO ROLES (ID_ROLE, TENROLE, TRANGTHAI)
 VALUES
-('R001', 'Học viên', 1),
-('R002', 'Giảng viên', 1),
-('R003', 'Quản trị viên', 1);
+('R1', 'Học viên', 1),
+('R2', 'Giảng viên', 1),
+('R3', 'Quản trị viên', 1);
 
 INSERT INTO PHONGHOCTHAMGIA (ID_PHONGHOC, ID_USER, VAITRO)
 VALUES
-('P001', 'U0', 1), -- Học viên tham gia Phòng học A1
-('P001', 'U1', 2), -- Giảng viên tham gia Phòng học B1
-('P001', 'U2', 2); -- Giảng viên tham gia Phòng học C1
+('P1', 'U0', 1), -- Học viên tham gia Phòng học A1
+('P2', 'U0', 2), -- Giảng viên tham gia Phòng học B1
+('P3', 'U0', 2); -- Giảng viên tham gia Phòng học C1
 
-SELECT * FROM KETQUAHOCTAP
+SELECT * FROM PHONGHOCTHAMGIA
 
 INSERT INTO KETQUAHOCTAP (ID_USER, ID_TAINGUYEN, KETQUA, TIENTRINH)
 VALUES
-('U0', 'T001', 8.5, 1), -- Học viên A hoàn thành Tài liệu Toán 1
-('U0', 'T002', 7.0, 1), -- Học viên A hoàn thành Video Sinh học
-('U1', 'T003', 9.0, 1), -- Giảng viên B hoàn thành Bài giảng Vật lý
-('U1', 'T004', NULL, 0), -- Giảng viên B chưa hoàn thành Tài liệu Hóa học
-('U2', 'T005', 10.0, 1); -- Quản trị viên C hoàn thành Video Lịch sử
+('U0', 'T1', 8.5, 1), -- Học viên A hoàn thành Tài liệu Toán 1
+('U0', 'T2', 7.0, 1), -- Học viên A hoàn thành Video Sinh học
+('U0', 'T3', 9.0, 1), -- Giảng viên B hoàn thành Bài giảng Vật lý
+('U0', 'T4', NULL, 0), -- Giảng viên B chưa hoàn thành Tài liệu Hóa học
+('U0', 'T5', 10.0, 1); -- Quản trị viên C hoàn thành Video Lịch sử
 
 INSERT INTO KETQUAHOCTAP (ID_USER, ID_TAINGUYEN, KETQUA, TIENTRINH)
 VALUES
 -- Học viên A (U0)
-('U0', 'T003', 8.0, 1),
-('U0', 'T004', 7.5, 1),
+('U0', 'T3', 8.0, 1),
+('U0', 'T4', 7.5, 1),
 
 -- Học viên B (U1)
-('U1', 'T006', 9.5, 1),
-('U1', 'T002', NULL, 0),
-('U1', 'T001', 10.0, 1),
+('U1', 'T6', 9.5, 1),
+('U1', 'T2', NULL, 0),
+('U1', 'T1', 10.0, 1),
 
 -- Học viên C (U2)
-('U2', 'T001', NULL, 0),
-('U2', 'T002', 6.0, 1),
-('U2', 'T003', 7.0, 1),
-('U2', 'T004', 8.5, 1),
-('U2', 'T006', 9.0, 1);
+('U2', 'T1', NULL, 0),
+('U2', 'T2', 6.0, 1),
+('U2', 'T3', 7.0, 1),
+('U2', 'T4', 8.5, 1),
+('U2', 'T6', 9.0, 1);
 
 
 

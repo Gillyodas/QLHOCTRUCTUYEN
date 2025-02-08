@@ -21,12 +21,12 @@ namespace QLHOCTRUCTUYEN.View
             InitializeComponent();
             
             tab_QLPH.Visible = false;
-            //this.ReloadRequested += FormTT_ReloadRequested;
+            LoadData();
         }
         public void LoadListPhongHocByPhongHocThamGiaCuaNguoiDung()
         {
             lsv_DanhSachPhongHocThamGia.Items.Clear();
-            var phongHocList = ControlRoom.ControlListPhongHocByPhongHocThamGia(Users.IdUser);
+            var phongHocList = ManagePhongHoc.LoadListPhongHocByPhongHocThamGiaCuaUser(UserLoginHandler.CurUser.ID_USER);
             if (phongHocList == null || !phongHocList.Any()) { }
             else
             {
@@ -46,12 +46,12 @@ namespace QLHOCTRUCTUYEN.View
                 ListViewItem selectedItem = lsv_DanhSachPhongHocThamGia.SelectedItems[0];
                 string id_phonghoc = selectedItem.Tag.ToString();
                 tab_QLPH.Visible = true;
-                ControlRoom.ControlCurrentPhongHoc(id_phonghoc);
+                ManagePhongHoc.CurrentPhongHoc(id_phonghoc);
                 LoadHienThiThongTinPhongHoc(id_phonghoc);
                 HienThiDanhSachNguoiDungTrongPhongHoc();
                 HienThiDanhSachTaiNguyenHocTapTrongPhongHoc();
                 LoadDgvKQHT();
-                LoadFlpMessage();
+                LoadFlpMessage(this);
             }
         }
         private void LoadHienThiThongTinPhongHoc(string id_phonghoc)
@@ -61,7 +61,7 @@ namespace QLHOCTRUCTUYEN.View
         }
         public void LoadHienThiThongTinNguoiDung()
         {
-            lbl_tk.Text = Users.TenUser;
+            lbl_tk.Text = UserLoginHandler.CurUser.TENUSER;
         }
         public static void CreatePanel_Room(string STTroom,int x, int y, string txtLbl, FormTrangChu form)
         {
@@ -249,6 +249,7 @@ namespace QLHOCTRUCTUYEN.View
                 // Hiển thị form
                 form.Show();
             }
+           
         }
         private void lsv_SinhVien_SelectedIndexChanged(object sender, EventArgs e)//**********************************************************************
         {
@@ -282,10 +283,10 @@ namespace QLHOCTRUCTUYEN.View
         {
             tab_QLPH.Visible = false;
         }
-        private void HienThiDanhSachTaiNguyenHocTapTrongPhongHoc()
+        public void HienThiDanhSachTaiNguyenHocTapTrongPhongHoc()
         {
             lsv_BaiTap.Items.Clear();
-            var TNHTTable = ControlTaiNguyenHocTap.LoadDanhSachTNHTTrongPhong(ManagePhongHoc.CurPhongHoc.ID_PHONGHOC);
+            var TNHTTable = ManageTaiNguyenHocTap.LoadListTNHTByPhongHoc(ManagePhongHoc.CurPhongHoc.ID_PHONGHOC, "T0");
             foreach (DataRow row in TNHTTable.Rows)
             {
                 ListViewItem item = new ListViewItem(row["TENTAINGUYEN"].ToString());
@@ -298,7 +299,7 @@ namespace QLHOCTRUCTUYEN.View
         private void HienThiDanhSachNguoiDungTrongPhongHoc()
         {
             lsv_GiaoVien.Items.Clear();
-            var giaoVienTable = ControlUsers.ControlLoadListUserInPhongHocByVaiTro(ManagePhongHoc.CurPhongHoc.ID_PHONGHOC, true);
+            var giaoVienTable = ManageUsers.ListUserInPhongHocByVaiTro(ManagePhongHoc.CurPhongHoc.ID_PHONGHOC, true);
             foreach (DataRow row in giaoVienTable.Rows)
             {
                 ListViewItem item = new ListViewItem(" ", 0);
@@ -306,7 +307,7 @@ namespace QLHOCTRUCTUYEN.View
                 lsv_GiaoVien.Items.Add(item);
             }
             lsv_SinhVien.Items.Clear();
-            var sinhVienTable = ControlUsers.ControlLoadListUserInPhongHocByVaiTro(ManagePhongHoc.CurPhongHoc.ID_PHONGHOC, false);
+            var sinhVienTable = ManageUsers.ListUserInPhongHocByVaiTro(ManagePhongHoc.CurPhongHoc.ID_PHONGHOC, false);
             foreach (DataRow row in sinhVienTable.Rows)
             {
                 ListViewItem item = new ListViewItem(" ", 0);
@@ -314,7 +315,7 @@ namespace QLHOCTRUCTUYEN.View
                 lsv_SinhVien.Items.Add(item);
             }
         }
-        private void btn_TaoBT_Click_1(object sender, EventArgs e)
+        public void LoadData()
         {
             LoadListPhongHocByPhongHocThamGiaCuaNguoiDung();
             LoadHienThiThongTinNguoiDung();
@@ -323,12 +324,13 @@ namespace QLHOCTRUCTUYEN.View
         {
             dgv_KQHT.AutoGenerateColumns = true;
             BindingSource bs = new BindingSource();
-            bs.DataSource = ControlKetQuaHocTap.Data_KQHTCuaUserTrongPhong(ManagePhongHoc.CurPhongHoc.ID_PHONGHOC);
+            bs.DataSource = ManageKQHT.XemDanhSachKQHTCuaTatcaUserTrongPhongHoc(ManagePhongHoc.CurPhongHoc.ID_PHONGHOC);
             dgv_KQHT.DataSource = bs;
         }
-        private void LoadFlpMessage()
+        private void LoadFlpMessage(FormTrangChu form)
         {
-            var TNHTTable = ControlTaiNguyenHocTap.LoadDanhSachTNHTTrongPhong(ManagePhongHoc.CurPhongHoc.ID_PHONGHOC);
+            form.flp_Messsage.Controls.Clear();
+            var TNHTTable = ManageTaiNguyenHocTap.LoadListTNHTByPhongHoc(ManagePhongHoc.CurPhongHoc.ID_PHONGHOC, "");
             int i = 0;
             foreach (DataRow row in TNHTTable.Rows)
             {
@@ -336,17 +338,33 @@ namespace QLHOCTRUCTUYEN.View
                 i++;
             }
         }
+        private void btn_SaveDgvKQHT_Change_Click(object sender, EventArgs e)
+        {
+            //BindingSource bs = dgv_KQHT.DataSource as BindingSource;
+            //    ManageKQHT.UpdateKQHT(customTable);
+        }
+        private void pan_QLRole_Click(object sender, EventArgs e)
+        {
+            QL_Role role = new QL_Role();
+            role.Show();
+        }
 
+        private void pan_QLLTN_Click(object sender, EventArgs e)
+        {
+            QL_LoaiTaiNguyen ltn = new QL_LoaiTaiNguyen();
+            ltn.Show();
+        }
 
+        private void btn_TaoThongBao_Click(object sender, EventArgs e)
+        {
+            FormCTTaoBaiTap formCTTaoBT = new FormCTTaoBaiTap();
+            Program.OpenOrActivateForm(formCTTaoBT);
+        }
 
-
-
-
-
-        //public void LoadDataGridViewBTTrenLop()
-        //{
-        //    dataGridView2.AutoGenerateColumns = true;
-        //    dataGridView2.DataSource = Control.ControlTaiNguyenHocTap.LoadDanhSachTNHTTrongPhong("P001");
-        //}
+        private void btn_TaoBT_Click(object sender, EventArgs e)
+        {
+            FormCTTaoBaiTap formCTTaoBT = new FormCTTaoBaiTap();
+            Program.OpenOrActivateForm(formCTTaoBT);
+        }
     }
 }

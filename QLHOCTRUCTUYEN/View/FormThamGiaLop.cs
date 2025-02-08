@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using QLHOCTRUCTUYEN.Control;
+using QLHOCTRUCTUYEN.Model;
 
 namespace QLHOCTRUCTUYEN.View
 {
@@ -23,18 +23,13 @@ namespace QLHOCTRUCTUYEN.View
         }
         private void btn_XMaLop_Click(object sender, EventArgs e)
         {
-            ControlRoom.ControlCurrentUserThamGiaPhongHoc(txt_MaLop.Text);
-        }
-        public static void ThamGiaLopThanhCong(bool success)
-        {
-            if (success)
+            var phonghoc = ManagePhongHoc.KiemTraMaPhongHoc_GetPhongHoc(txt_MaLop.Text);
+            if (phonghoc != null)
             {
-                MessageBox.Show("Tham gia lớp thành công");
+                ManagePhongHocThamGia.ThamGiaPhongHoc(UserLoginHandler.CurUser.ID_USER, phonghoc.ID_PHONGHOC, false);
+                this.Close();
             }
-            else
-            {
-                MessageBox.Show("Mã lớp không hợp lệ");
-            }
+            else { MessageBox.Show("Mã lớp không hợp lệ"); }
         }
     }
 }

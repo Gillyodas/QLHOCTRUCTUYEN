@@ -34,16 +34,15 @@
             this.gr_Avarta = new System.Windows.Forms.GroupBox();
             this.pic_AnhDaiDien = new System.Windows.Forms.PictureBox();
             this.pnl_BaoPhai = new System.Windows.Forms.Panel();
+            this.btn_DoiThongTin = new System.Windows.Forms.Button();
             this.btn_DangXuat = new System.Windows.Forms.Button();
             this.btn_DoiMK = new System.Windows.Forms.Button();
             this.rdB_Nu = new System.Windows.Forms.RadioButton();
             this.rdB_Nam = new System.Windows.Forms.RadioButton();
-            this.dtp_NgaySinh = new System.Windows.Forms.DateTimePicker();
             this.txt_email = new System.Windows.Forms.TextBox();
             this.txt_HoTen = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.spl_1)).BeginInit();
             this.spl_1.Panel1.SuspendLayout();
@@ -68,7 +67,7 @@
             // spl_1.Panel2
             // 
             this.spl_1.Panel2.Controls.Add(this.pnl_BaoPhai);
-            this.spl_1.Size = new System.Drawing.Size(800, 450);
+            this.spl_1.Size = new System.Drawing.Size(800, 345);
             this.spl_1.SplitterDistance = 303;
             this.spl_1.TabIndex = 0;
             // 
@@ -80,7 +79,7 @@
             this.pnl_baoTrai.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_baoTrai.Location = new System.Drawing.Point(0, 0);
             this.pnl_baoTrai.Name = "pnl_baoTrai";
-            this.pnl_baoTrai.Size = new System.Drawing.Size(303, 450);
+            this.pnl_baoTrai.Size = new System.Drawing.Size(303, 345);
             this.pnl_baoTrai.TabIndex = 1;
             // 
             // btn_XoaTK
@@ -89,7 +88,7 @@
             this.btn_XoaTK.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btn_XoaTK.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_XoaTK.ForeColor = System.Drawing.Color.White;
-            this.btn_XoaTK.Location = new System.Drawing.Point(0, 391);
+            this.btn_XoaTK.Location = new System.Drawing.Point(0, 286);
             this.btn_XoaTK.Name = "btn_XoaTK";
             this.btn_XoaTK.Size = new System.Drawing.Size(301, 57);
             this.btn_XoaTK.TabIndex = 13;
@@ -118,48 +117,60 @@
             // pnl_BaoPhai
             // 
             this.pnl_BaoPhai.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnl_BaoPhai.Controls.Add(this.btn_DoiThongTin);
             this.pnl_BaoPhai.Controls.Add(this.btn_DangXuat);
             this.pnl_BaoPhai.Controls.Add(this.btn_DoiMK);
             this.pnl_BaoPhai.Controls.Add(this.rdB_Nu);
             this.pnl_BaoPhai.Controls.Add(this.rdB_Nam);
-            this.pnl_BaoPhai.Controls.Add(this.dtp_NgaySinh);
             this.pnl_BaoPhai.Controls.Add(this.txt_email);
             this.pnl_BaoPhai.Controls.Add(this.txt_HoTen);
             this.pnl_BaoPhai.Controls.Add(this.label4);
             this.pnl_BaoPhai.Controls.Add(this.label3);
-            this.pnl_BaoPhai.Controls.Add(this.label2);
             this.pnl_BaoPhai.Controls.Add(this.label1);
             this.pnl_BaoPhai.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_BaoPhai.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.pnl_BaoPhai.Location = new System.Drawing.Point(0, 0);
             this.pnl_BaoPhai.Name = "pnl_BaoPhai";
-            this.pnl_BaoPhai.Size = new System.Drawing.Size(493, 450);
+            this.pnl_BaoPhai.Size = new System.Drawing.Size(493, 345);
             this.pnl_BaoPhai.TabIndex = 0;
+            // 
+            // btn_DoiThongTin
+            // 
+            this.btn_DoiThongTin.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_DoiThongTin.Location = new System.Drawing.Point(165, 286);
+            this.btn_DoiThongTin.Name = "btn_DoiThongTin";
+            this.btn_DoiThongTin.Size = new System.Drawing.Size(156, 38);
+            this.btn_DoiThongTin.TabIndex = 13;
+            this.btn_DoiThongTin.Text = "ĐÔI THÔNG TIN";
+            this.btn_DoiThongTin.UseVisualStyleBackColor = true;
+            this.btn_DoiThongTin.Click += new System.EventHandler(this.btn_DoiThongTin_Click);
             // 
             // btn_DangXuat
             // 
             this.btn_DangXuat.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_DangXuat.Location = new System.Drawing.Point(273, 360);
+            this.btn_DangXuat.Location = new System.Drawing.Point(324, 286);
             this.btn_DangXuat.Name = "btn_DangXuat";
             this.btn_DangXuat.Size = new System.Drawing.Size(156, 38);
             this.btn_DangXuat.TabIndex = 12;
             this.btn_DangXuat.Text = "ĐĂNG XUẤT";
             this.btn_DangXuat.UseVisualStyleBackColor = true;
+            this.btn_DangXuat.Click += new System.EventHandler(this.btn_DangXuat_Click);
             // 
             // btn_DoiMK
             // 
             this.btn_DoiMK.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_DoiMK.Location = new System.Drawing.Point(54, 360);
+            this.btn_DoiMK.Location = new System.Drawing.Point(3, 286);
             this.btn_DoiMK.Name = "btn_DoiMK";
             this.btn_DoiMK.Size = new System.Drawing.Size(156, 38);
             this.btn_DoiMK.TabIndex = 11;
             this.btn_DoiMK.Text = "ĐỔI MẬT KHẨU";
             this.btn_DoiMK.UseVisualStyleBackColor = true;
+            this.btn_DoiMK.Click += new System.EventHandler(this.btn_DoiMK_Click);
             // 
             // rdB_Nu
             // 
             this.rdB_Nu.AutoSize = true;
-            this.rdB_Nu.Location = new System.Drawing.Point(335, 208);
+            this.rdB_Nu.Location = new System.Drawing.Point(324, 115);
             this.rdB_Nu.Name = "rdB_Nu";
             this.rdB_Nu.Size = new System.Drawing.Size(45, 20);
             this.rdB_Nu.TabIndex = 10;
@@ -170,7 +181,7 @@
             // rdB_Nam
             // 
             this.rdB_Nam.AutoSize = true;
-            this.rdB_Nam.Location = new System.Drawing.Point(185, 208);
+            this.rdB_Nam.Location = new System.Drawing.Point(174, 115);
             this.rdB_Nam.Name = "rdB_Nam";
             this.rdB_Nam.Size = new System.Drawing.Size(57, 20);
             this.rdB_Nam.TabIndex = 9;
@@ -178,16 +189,9 @@
             this.rdB_Nam.Text = "Nam";
             this.rdB_Nam.UseVisualStyleBackColor = true;
             // 
-            // dtp_NgaySinh
-            // 
-            this.dtp_NgaySinh.Location = new System.Drawing.Point(185, 129);
-            this.dtp_NgaySinh.Name = "dtp_NgaySinh";
-            this.dtp_NgaySinh.Size = new System.Drawing.Size(244, 22);
-            this.dtp_NgaySinh.TabIndex = 8;
-            // 
             // txt_email
             // 
-            this.txt_email.Location = new System.Drawing.Point(185, 295);
+            this.txt_email.Location = new System.Drawing.Point(185, 177);
             this.txt_email.Name = "txt_email";
             this.txt_email.Size = new System.Drawing.Size(244, 22);
             this.txt_email.TabIndex = 7;
@@ -203,7 +207,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(54, 295);
+            this.label4.Location = new System.Drawing.Point(54, 177);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(46, 16);
             this.label4.TabIndex = 3;
@@ -213,21 +217,11 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(54, 212);
+            this.label3.Location = new System.Drawing.Point(54, 119);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(69, 16);
             this.label3.TabIndex = 2;
             this.label3.Text = "Giới Tính";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(54, 129);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(78, 16);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Ngày Sinh";
             // 
             // label1
             // 
@@ -243,7 +237,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 345);
             this.Controls.Add(this.spl_1);
             this.Name = "FormCTTaiKhoan";
             this.Text = "FormCTTaiKhoan";
@@ -269,15 +263,14 @@
         private System.Windows.Forms.Panel pnl_BaoPhai;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RadioButton rdB_Nu;
         private System.Windows.Forms.RadioButton rdB_Nam;
-        private System.Windows.Forms.DateTimePicker dtp_NgaySinh;
         private System.Windows.Forms.TextBox txt_email;
         private System.Windows.Forms.TextBox txt_HoTen;
         private System.Windows.Forms.Button btn_XoaTK;
         private System.Windows.Forms.Button btn_DangXuat;
         private System.Windows.Forms.Button btn_DoiMK;
+        private System.Windows.Forms.Button btn_DoiThongTin;
     }
 }

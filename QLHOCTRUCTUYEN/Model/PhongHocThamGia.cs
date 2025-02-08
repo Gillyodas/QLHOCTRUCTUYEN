@@ -7,7 +7,8 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Data.SqlTypes;
 using System.Data;
-using QLHOCTRUCTUYEN.Control;
+using QLHOCTRUCTUYEN.View;
+using System.Windows.Forms;
 
 namespace QLHOCTRUCTUYEN.Model
 {
@@ -18,7 +19,8 @@ namespace QLHOCTRUCTUYEN.Model
         public static void ThamGiaPhongHoc(string id_user, string id_phonghoc, bool vaitro)
         {
             PHTGTableAdapter.Insert(id_phonghoc, id_user, vaitro);
-            ControlRoom.ControlReloadTrangChu();
+            FormTrangChu form = Application.OpenForms["FormTrangChu"] as FormTrangChu;
+            form.LoadListPhongHocByPhongHocThamGiaCuaNguoiDung();
         }
         public static QLHOCTRUCTUYENDataSet.PHONGHOCTHAMGIADataTable LoadListPHTGCuaUser(string id_user)
         {
