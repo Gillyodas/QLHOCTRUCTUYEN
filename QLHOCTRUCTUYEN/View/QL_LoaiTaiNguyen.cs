@@ -26,78 +26,52 @@ namespace QLHOCTRUCTUYEN.View
             BindingSource bs = new BindingSource();
             bs.DataSource = ManageLoaiTN.ListLoaiTaiNguyen();
             dgv_DsLTN.DataSource = bs;
+            dgv_DsLTN.Columns["ID_LOAITN"].ReadOnly = true;
         }
-
-        private void SaveChanges()
-        {
-            //ManageLoaiTN.UpdateLoaiTN(dgv_DsLTN.DataSource)
-        }
-
-
         private void btn_Them_Click(object sender, EventArgs e)
         {
-            //lbl_DsLTN.Visible = true;
-            //txt_LoaiTaiNguyen.Visible = true;
-
-            //string TenLoaiTN = txt_LoaiTaiNguyen.Text.Trim();
-
-            //if (string.IsNullOrEmpty(TenLoaiTN))
-            //{
-            //    MessageBox.Show("Tên loại tài nguyên không được để trống!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    return;
-            //}
-
-            //DataTable table = dataSet.Tables["LOAITAINGUYEN"];
-            //DataRow newRow = table.NewRow();
-            //newRow["TENLOAITN"] = TenLoaiTN;
-            //table.Rows.Add(newRow);
-
-            //SaveChanges();
-            //LoadLoaiTN();
+            lbl_DsLTN.Visible = true;
+            txt_LoaiTaiNguyen.Visible = true;
+            btn_Luu.Visible = true;
         }
-
         private void btn_Sua_Click(object sender, EventArgs e)
         {
-            dgv_DsLTN.ReadOnly = false;
-            if (dgv_DsLTN.CurrentRow == null)
-            {
-                MessageBox.Show("Vui lòng chọn loại tài nguyên để sửa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            dgv_DsLTN.CellValueChanged += dgv_DsLTN_CellValueChanged;
+            
         }
-
-        private void dgv_DsLTN_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == dgv_DsLTN.Columns["TENLOAITN"].Index)
-            {
-                DataRow row = ((DataRowView)dgv_DsLTN.Rows[e.RowIndex].DataBoundItem).Row;
-                SaveChanges();
-            }
-        }
-
-        private void btn_Xoa_Click(object sender, EventArgs e)
-        {
-            dgv_DsLTN.ReadOnly = false;
-            if (dgv_DsLTN.CurrentRow == null)
-            {
-                MessageBox.Show("Vui lòng chọn loại tài nguyên để xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            DataRow row = ((DataRowView)dgv_DsLTN.CurrentRow.DataBoundItem).Row;
-            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa loại tài nguyên này?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                row.Delete();
-                SaveChanges();
-                MessageBox.Show("Loại tài nguyên đã được xóa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
         private void btn_Luu_Click(object sender, EventArgs e)
         {
-            SaveChanges();
-            LoadLoaiTN();
+            if (string.IsNullOrEmpty(txt_LoaiTaiNguyen.Text))
+            {
+                MessageBox.Show("Tên loại tài nguyên không được để trống!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                if(ManageLoaiTN.ThemLoaiTaiNguyen(txt_LoaiTaiNguyen.Text))
+                {
+                    LoadLoaiTN();
+                }
+                else
+                {
+                    MessageBox.Show("Thêm loại tài nguyên thất bại!");
+                }
+            }
+        }
+        private void dgv_DsLTN_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                string id = dgv_DsLTN.Rows[e.RowIndex].Cells["ID_LOAITN"].Value.ToString();
+                string ten = dgv_DsLTN.Rows[e.RowIndex].Cells["TENLOAITN"].Value.ToString();
+                bool trangthai = Convert.ToBoolean(dgv_DsLTN.Rows[e.RowIndex].Cells["TRANGTHAI"].Value);
+                if (ManageLoaiTN.UpdateLoaiTN(id, ten, trangthai))
+                {
+                    LoadLoaiTN();
+                }
+                else
+                {
+                    MessageBox.Show("Sửa loại tài nguyên thất bại!");
+                }
+            }
         }
     }
 }

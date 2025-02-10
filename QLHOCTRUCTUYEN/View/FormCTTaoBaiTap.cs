@@ -13,11 +13,20 @@ namespace QLHOCTRUCTUYEN.View
 {
     public partial class FormCTTaoBaiTap : Form
     {
+        public static QLHOCTRUCTUYENDataSet.TAINGUYENHOCTAPRow TaiNguyen { get; set; }
         public FormCTTaoBaiTap()
         {
             InitializeComponent();
             NgayHienTai();
             LoadLoaiTaiNguyen();
+            this.FormBorderStyle = FormBorderStyle.None;
+        }
+        public void SetSuaBT()
+        {
+            txt_TieuDe.Text = TaiNguyen.TENTAINGUYEN;
+            txt_MoTa.Text = TaiNguyen.MOTA;
+            dtp_NgayDang.Value = TaiNguyen.NGAYDANG;
+            dtp_HanBT.Value = TaiNguyen.THOIHAN;
         }
         private void NgayHienTai()
         {
@@ -37,9 +46,23 @@ namespace QLHOCTRUCTUYEN.View
             {
                 FormTrangChu form = Application.OpenForms["FormTrangChu"] as FormTrangChu;
                 form.HienThiDanhSachTaiNguyenHocTapTrongPhongHoc();
+                form.LoadFlpMessage(form);
             }
             else
                 MessageBox.Show("that bai");
+        }
+        private void btn_Huy_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        private void btn_Sua_Click(object sender, EventArgs e)
+        {
+            if (ManageTaiNguyenHocTap.UpdateTaiNguyenHocTap(TaiNguyen.ID_TAINGUYEN, txt_TieuDe.Text, txt_MoTa.Text, dtp_HanBT.Value))
+            {
+                FormTrangChu form = Application.OpenForms["FormTrangChu"] as FormTrangChu;
+                form.HienThiDanhSachTaiNguyenHocTapTrongPhongHoc();
+            }
+            else MessageBox.Show("Sửa thất bại");
         }
     }
 }

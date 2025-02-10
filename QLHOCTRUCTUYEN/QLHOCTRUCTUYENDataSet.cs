@@ -9,6 +9,10 @@
 
 namespace QLHOCTRUCTUYEN.QLHOCTRUCTUYENDataSetTableAdapters
 {
+    partial class KETQUAHOCTAPTableAdapter
+    {
+    }
+
     partial class USERSTableAdapter
     {
     }

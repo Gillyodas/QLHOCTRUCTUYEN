@@ -53,13 +53,17 @@ namespace QLHOCTRUCTUYEN.View
                 gioiTinh = true;
             else if (rdB_Nam.Checked)
                 gioiTinh = false;
-            if (ManageUsers.UpdateUser(txt_HoTen.Text, txt_email.Text, gioiTinh))
-                MessageBox.Show("success");
-            else
+            if (!ManageUsers.UpdateUser(txt_HoTen.Text, txt_email.Text, gioiTinh))
                 MessageBox.Show("fail");
             FormTrangChu form = Application.OpenForms["FormTrangChu"] as FormTrangChu;
             form.LoadHienThiThongTinNguoiDung();
             SetThongTin();
+        }
+
+        private void btn_XoaTK_Click(object sender, EventArgs e)
+        {
+            ManageUsers.XoaNguoiDung(UserLoginHandler.CurUser.ID_USER);
+            btn_DangXuat_Click(null, EventArgs.Empty);
         }
     }
 }

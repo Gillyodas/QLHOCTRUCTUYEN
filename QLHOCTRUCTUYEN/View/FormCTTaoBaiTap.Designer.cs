@@ -35,11 +35,13 @@
             this.lbl_HanBT = new System.Windows.Forms.Label();
             this.lbl_MoTa = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_Sua = new System.Windows.Forms.Button();
+            this.btn_Huy = new System.Windows.Forms.Button();
+            this.lbl_LoauTaiNguyen = new System.Windows.Forms.Label();
+            this.cbb_LoaiTaiNguyen = new System.Windows.Forms.ComboBox();
+            this.dtp_NgayDang = new System.Windows.Forms.DateTimePicker();
             this.btn_XacNhanTaoBT = new System.Windows.Forms.Button();
             this.txt_MoTa = new System.Windows.Forms.TextBox();
-            this.dtp_NgayDang = new System.Windows.Forms.DateTimePicker();
-            this.cbb_LoaiTaiNguyen = new System.Windows.Forms.ComboBox();
-            this.lbl_LoauTaiNguyen = new System.Windows.Forms.Label();
             this.grp_TieuDe.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -94,7 +96,7 @@
             // lbl_MoTa
             // 
             this.lbl_MoTa.AutoSize = true;
-            this.lbl_MoTa.Location = new System.Drawing.Point(27, 135);
+            this.lbl_MoTa.Location = new System.Drawing.Point(27, 117);
             this.lbl_MoTa.Name = "lbl_MoTa";
             this.lbl_MoTa.Size = new System.Drawing.Size(46, 16);
             this.lbl_MoTa.TabIndex = 6;
@@ -103,6 +105,8 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.btn_Sua);
+            this.panel1.Controls.Add(this.btn_Huy);
             this.panel1.Controls.Add(this.lbl_LoauTaiNguyen);
             this.panel1.Controls.Add(this.cbb_LoaiTaiNguyen);
             this.panel1.Controls.Add(this.dtp_NgayDang);
@@ -117,11 +121,57 @@
             this.panel1.Size = new System.Drawing.Size(663, 281);
             this.panel1.TabIndex = 7;
             // 
+            // btn_Sua
+            // 
+            this.btn_Sua.Location = new System.Drawing.Point(566, 182);
+            this.btn_Sua.Name = "btn_Sua";
+            this.btn_Sua.Size = new System.Drawing.Size(75, 41);
+            this.btn_Sua.TabIndex = 13;
+            this.btn_Sua.Text = "Sửa";
+            this.btn_Sua.UseVisualStyleBackColor = true;
+            this.btn_Sua.Click += new System.EventHandler(this.btn_Sua_Click);
+            // 
+            // btn_Huy
+            // 
+            this.btn_Huy.Location = new System.Drawing.Point(566, 139);
+            this.btn_Huy.Name = "btn_Huy";
+            this.btn_Huy.Size = new System.Drawing.Size(75, 37);
+            this.btn_Huy.TabIndex = 12;
+            this.btn_Huy.Text = "Hủy";
+            this.btn_Huy.UseVisualStyleBackColor = true;
+            this.btn_Huy.Click += new System.EventHandler(this.btn_Huy_Click);
+            // 
+            // lbl_LoauTaiNguyen
+            // 
+            this.lbl_LoauTaiNguyen.AutoSize = true;
+            this.lbl_LoauTaiNguyen.Location = new System.Drawing.Point(354, 73);
+            this.lbl_LoauTaiNguyen.Name = "lbl_LoauTaiNguyen";
+            this.lbl_LoauTaiNguyen.Size = new System.Drawing.Size(97, 16);
+            this.lbl_LoauTaiNguyen.TabIndex = 11;
+            this.lbl_LoauTaiNguyen.Text = "Loại tài nguyên";
+            // 
+            // cbb_LoaiTaiNguyen
+            // 
+            this.cbb_LoaiTaiNguyen.FormattingEnabled = true;
+            this.cbb_LoaiTaiNguyen.Location = new System.Drawing.Point(357, 92);
+            this.cbb_LoaiTaiNguyen.Name = "cbb_LoaiTaiNguyen";
+            this.cbb_LoaiTaiNguyen.Size = new System.Drawing.Size(121, 24);
+            this.cbb_LoaiTaiNguyen.TabIndex = 10;
+            // 
+            // dtp_NgayDang
+            // 
+            this.dtp_NgayDang.Enabled = false;
+            this.dtp_NgayDang.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtp_NgayDang.Location = new System.Drawing.Point(11, 36);
+            this.dtp_NgayDang.Name = "dtp_NgayDang";
+            this.dtp_NgayDang.Size = new System.Drawing.Size(299, 27);
+            this.dtp_NgayDang.TabIndex = 9;
+            // 
             // btn_XacNhanTaoBT
             // 
-            this.btn_XacNhanTaoBT.Location = new System.Drawing.Point(581, 227);
+            this.btn_XacNhanTaoBT.Location = new System.Drawing.Point(566, 229);
             this.btn_XacNhanTaoBT.Name = "btn_XacNhanTaoBT";
-            this.btn_XacNhanTaoBT.Size = new System.Drawing.Size(75, 37);
+            this.btn_XacNhanTaoBT.Size = new System.Drawing.Size(75, 41);
             this.btn_XacNhanTaoBT.TabIndex = 8;
             this.btn_XacNhanTaoBT.Text = "Xác nhận";
             this.btn_XacNhanTaoBT.UseVisualStyleBackColor = true;
@@ -129,36 +179,11 @@
             // 
             // txt_MoTa
             // 
-            this.txt_MoTa.Location = new System.Drawing.Point(30, 163);
+            this.txt_MoTa.Location = new System.Drawing.Point(30, 139);
             this.txt_MoTa.Multiline = true;
             this.txt_MoTa.Name = "txt_MoTa";
-            this.txt_MoTa.Size = new System.Drawing.Size(530, 101);
+            this.txt_MoTa.Size = new System.Drawing.Size(530, 131);
             this.txt_MoTa.TabIndex = 7;
-            // 
-            // dtp_NgayDang
-            // 
-            this.dtp_NgayDang.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtp_NgayDang.Location = new System.Drawing.Point(11, 36);
-            this.dtp_NgayDang.Name = "dtp_NgayDang";
-            this.dtp_NgayDang.Size = new System.Drawing.Size(299, 27);
-            this.dtp_NgayDang.TabIndex = 9;
-            // 
-            // cbb_LoaiTaiNguyen
-            // 
-            this.cbb_LoaiTaiNguyen.FormattingEnabled = true;
-            this.cbb_LoaiTaiNguyen.Location = new System.Drawing.Point(357, 109);
-            this.cbb_LoaiTaiNguyen.Name = "cbb_LoaiTaiNguyen";
-            this.cbb_LoaiTaiNguyen.Size = new System.Drawing.Size(121, 24);
-            this.cbb_LoaiTaiNguyen.TabIndex = 10;
-            // 
-            // lbl_LoauTaiNguyen
-            // 
-            this.lbl_LoauTaiNguyen.AutoSize = true;
-            this.lbl_LoauTaiNguyen.Location = new System.Drawing.Point(354, 90);
-            this.lbl_LoauTaiNguyen.Name = "lbl_LoauTaiNguyen";
-            this.lbl_LoauTaiNguyen.Size = new System.Drawing.Size(97, 16);
-            this.lbl_LoauTaiNguyen.TabIndex = 11;
-            this.lbl_LoauTaiNguyen.Text = "Loại tài nguyên";
             // 
             // FormCTTaoBaiTap
             // 
@@ -191,5 +216,7 @@
         private System.Windows.Forms.DateTimePicker dtp_NgayDang;
         private System.Windows.Forms.Label lbl_LoauTaiNguyen;
         private System.Windows.Forms.ComboBox cbb_LoaiTaiNguyen;
+        private System.Windows.Forms.Button btn_Huy;
+        private System.Windows.Forms.Button btn_Sua;
     }
 }

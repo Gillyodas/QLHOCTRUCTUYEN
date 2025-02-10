@@ -94,6 +94,7 @@
             this.btn_XoaTK.TabIndex = 13;
             this.btn_XoaTK.Text = "XÓA TÀI KHOẢN";
             this.btn_XoaTK.UseVisualStyleBackColor = false;
+            this.btn_XoaTK.Click += new System.EventHandler(this.btn_XoaTK_Click);
             // 
             // gr_Avarta
             // 

@@ -95,7 +95,7 @@ namespace QLHOCTRUCTUYEN.Model
             using (SqlConnection conn = new SqlConnection(connSql))
             {
                 conn.Open();
-                string SqlQueryStr = "SELECT COUNT(*) FROM USERS WHERE EMAIL = @email";
+                string SqlQueryStr = "SELECT COUNT(*) FROM USERS WHERE TRANGTHAI = 1 AND EMAIL = @email";
                 using (SqlCommand sqlCmd = new SqlCommand(SqlQueryStr, conn))
                 {
                     sqlCmd.Parameters.AddWithValue("@email", email);
@@ -124,7 +124,7 @@ namespace QLHOCTRUCTUYEN.Model
                     using (SqlCommand SqlCmd = new SqlCommand(SqlQueryStr, conn))
                     {
                         SqlCmd.Parameters.AddWithValue("@Id", id);
-                        SqlCmd.Parameters.AddWithValue("@Ten", ten);
+                        SqlCmd.Parameters.AddWithValue("@Ten", "N" + ten);
                         SqlCmd.Parameters.AddWithValue("@Email", email);
                         SqlCmd.Parameters.AddWithValue("@Salt", salt);
                         SqlCmd.Parameters.AddWithValue("@HPass", hash);
@@ -158,6 +158,10 @@ namespace QLHOCTRUCTUYEN.Model
                 }
             } return false;
         }
+        public static void XoaNguoiDung(string id_user)
+        {
+            UsersTableAdapter.UpdateTrangThaiUser(id_user);
+        }
         public QLHOCTRUCTUYENDataSet.USERSDataTable TimKiemTheoEmail(string email)
         {
             return UsersTableAdapter.GetDataByEmail(email);
@@ -188,7 +192,7 @@ namespace QLHOCTRUCTUYEN.Model
             {
                 conn.Open();
 
-                using (SqlCommand SqlCmd = new SqlCommand("SELECT ID_USER, SALT, PASSWORD_HASH, ANHDAIDIEN FROM USERS WHERE EMAIL = @email", conn))
+                using (SqlCommand SqlCmd = new SqlCommand("SELECT ID_USER, SALT, PASSWORD_HASH, ANHDAIDIEN FROM USERS WHERE TRANGTHAI = 1 AND EMAIL = @email", conn))
                 {
                     SqlCmd.Parameters.AddWithValue("@email", email);
 

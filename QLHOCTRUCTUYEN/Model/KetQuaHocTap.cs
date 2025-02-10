@@ -23,22 +23,26 @@ namespace QLHOCTRUCTUYEN.Model
         {
             KQHTTableAdapter.Insert(id_user, id_tn, kq, tientrinh);
         }
-        public static void UpdateKQHT(QLHOCTRUCTUYENDataSet.KETQUAHOCTAPDataTable dt)
+        public static bool UpdateKQHT(double kq, bool tientring, string id_user, string id_tn)
         {
-            KQHTTableAdapter.Update(dt);
+            try
+            {
+                int rowAffected = KQHTTableAdapter.Update(kq, tientring, id_user, id_tn, kq, tientring);
+                return rowAffected > 0;
+            }
+            catch (DBConcurrencyException)
+            {
+                //Lỗi xung đột dữ liệu! Hãy tải lại bảng trước khi cập nhật
+                return false;
+            }
         }
-        public QLHOCTRUCTUYENDataSet.KETQUAHOCTAPDataTable XexKQHTCuaUserTheoPhongHoc(string id_user, string id_phonghoc)
+        public QLHOCTRUCTUYENDataSet.KETQUAHOCTAPDataTable ListKQHTCuaUserTheoPhongHoc(string id_user, string id_phonghoc)
         {
             return KQHTTableAdapter.GetKQHTCuaUserTheoPhongHoc(id_user, id_phonghoc);
         }
         public static QLHOCTRUCTUYENDataSet.KETQUAHOCTAPDataTable XemDanhSachKQHTCuaTatcaUserTrongPhongHoc(string id_phonghoc)
         {
-            try
-            {
-                return KQHTTableAdapter.GetData_KQHT_TenUser_TenTNHT_InRoom(id_phonghoc);
-            }
-            catch (Exception ex)
-            { return null; }
+            return KQHTTableAdapter.GetDataKQHT_DgvKQHT_ByPhongHoc(id_phonghoc);
         }
     }
 }

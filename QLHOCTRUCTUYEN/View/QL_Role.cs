@@ -24,14 +24,6 @@ namespace QLHOCTRUCTUYEN.View
         private DataSet dataSet = new DataSet();
         private void LoadRoles()
         {
-            //using (SqlConnection conn = new SqlConnection(connStr))
-            //{
-            //    string query = "SELECT ID_ROLE, TENROLE FROM ROLES"; 
-            //    SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
-            //    dataSet.Clear(); 
-            //    adapter.Fill(dataSet, "ROLES");
-            //    dgv_DsRoles.DataSource = dataSet.Tables["ROLES"]; 
-            //}
             dgv_DsRoles.AutoGenerateColumns = true;
             BindingSource bs = new BindingSource();
             bs.DataSource = ManageRoles.LoadListRoles();
@@ -61,6 +53,7 @@ namespace QLHOCTRUCTUYEN.View
         {
             lbl_NhapRole.Visible = true;
             txt_Them.Visible = true;
+            btn_Luu.Visible = true;
 
             string TenRole = txt_Them.Text.Trim();
 
@@ -113,14 +106,22 @@ namespace QLHOCTRUCTUYEN.View
             SaveChanges();
             LoadRoles();
         }
-
         private void dgv_DsRoles_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            //if (e.ColumnIndex == dgv_DsRoles.Columns["TENROLE"].Index)
-            //{
-            //    DataRow row = ((DataRowView)dgv_DsRoles.Rows[e.RowIndex].DataBoundItem).Row;
-            //    SaveChanges();
-            //}
+            if (e.RowIndex >= 0)
+            {
+                string id = dgv_DsRoles.Rows[e.RowIndex].Cells["ID_ROLE"].Value.ToString();
+                string ten = dgv_DsRoles.Rows[e.RowIndex].Cells["TENROLE"].Value.ToString();
+                bool trangthai = Convert.ToBoolean(dgv_DsRoles.Rows[e.RowIndex].Cells["TRANGTHAI"].Value);
+                if ()
+                {
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Sửa vai trò thất bại!");
+                }
+            }
         }
     }
 }

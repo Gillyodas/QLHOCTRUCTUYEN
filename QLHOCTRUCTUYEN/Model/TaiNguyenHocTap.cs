@@ -34,7 +34,7 @@ namespace QLHOCTRUCTUYEN.Model
             int rowsAffected = tainguyenhoctapTableAdapter.Insert(CreateID(), ten, mota, true, id_loaitn, id_phonghoc, id_user, ngaydang, thoihan);
             return rowsAffected > 0;
         }
-        public object XemChiTietTaiNguyenHocTap(string id_tainguyen)
+        public static QLHOCTRUCTUYENDataSet.TAINGUYENHOCTAPRow XemChiTietTaiNguyenHocTap(string id_tainguyen)
         {
             return tainguyenhoctapTableAdapter.GetData().FindByID_TAINGUYEN(id_tainguyen);
         }
@@ -42,17 +42,18 @@ namespace QLHOCTRUCTUYEN.Model
         {
             return tainguyenhoctapTableAdapter.GetDataByPhongHocAndLoaiTN(id_phonghoc, id_ltn);
         }
-        public void UpdateTaiNguyenHocTap(string id_tainguyen, string ten, string mota, DateTime ngaydang, DateTime thoihan)
+        public static bool UpdateTaiNguyenHocTap(string id_tainguyen, string ten, string mota, DateTime thoihan)
         {
             var row = tainguyenhoctapTableAdapter.GetData().FindByID_TAINGUYEN(id_tainguyen);
             if (row != null)
             {
                 row.TENTAINGUYEN = ten;
                 row.MOTA = mota;
-                row.NGAYDANG = ngaydang;
                 row.THOIHAN = thoihan;
-                tainguyenhoctapTableAdapter.Update(row);
+                int rowAffected = tainguyenhoctapTableAdapter.Update(row);
+                return rowAffected > 0;
             }
+            return false;
         }
         public void DeleteTNHT(string id_tainguyen)
         {

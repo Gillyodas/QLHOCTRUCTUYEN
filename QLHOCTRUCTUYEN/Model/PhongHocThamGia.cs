@@ -28,7 +28,7 @@ namespace QLHOCTRUCTUYEN.Model
         }
         public static bool CheckVaiTroPhongHocThamGia(string id_user, string id_phonghoc)
         {
-            var datarow = LoadListPHTGCuaUser(id_user).FindByID_PHONGHOCID_USER(id_user, id_phonghoc);
+            var datarow = LoadListPHTGCuaUser(id_user).FindByID_PHONGHOCID_USER(id_phonghoc, id_user);
             return datarow.VAITRO;
         }
         public static QLHOCTRUCTUYENDataSet.PHONGHOCTHAMGIADataTable LoadListUserInRoom(string id_phonghoc)

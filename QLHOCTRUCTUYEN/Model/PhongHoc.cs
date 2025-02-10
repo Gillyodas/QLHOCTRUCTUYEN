@@ -8,6 +8,8 @@ using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using System.Configuration;
 using System.Data.SqlTypes;
 using System.Data;
+using QLHOCTRUCTUYEN.View;
+using System.Windows.Forms;
 
 namespace QLHOCTRUCTUYEN.Model
 {
@@ -63,7 +65,7 @@ namespace QLHOCTRUCTUYEN.Model
         {
              CurPhongHoc =  phonghocTableAdapter.GetData().FindByID_PHONGHOC(id_phonghoc);
         }
-        public void UpdatePhongHoc(string id_phonghoc, string ten, string mota, string id_user)
+        public static bool UpdatePhongHoc(string id_phonghoc, string ten, string mota, string id_user)
         {
             if (Model.ManagePhongHocThamGia.CheckVaiTroPhongHocThamGia(id_user, id_phonghoc))
             {
@@ -74,8 +76,11 @@ namespace QLHOCTRUCTUYEN.Model
                     row.TENPHONGHOC = ten;
                     row.MOTA = mota;
                     phonghocTableAdapter.Update(phongHocData);
-                }
-            }
+                    FormTrangChu form = Application.OpenForms["FormTrangChu"] as FormTrangChu;
+                    form.LoadHienThiThongTinPhongHoc(id_phonghoc);
+                    return true;
+                } return false;
+            } return false;
         }
         public static QLHOCTRUCTUYENDataSet.PHONGHOCDataTable LoadListPhongHocByPhongHocThamGiaCuaUser(string id_user)
         {

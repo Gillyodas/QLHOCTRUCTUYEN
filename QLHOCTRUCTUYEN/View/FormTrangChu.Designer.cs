@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormTrangChu));
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
             "",
             "Bùi Công Danh"}, 0);
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -48,7 +48,7 @@
             this.btn_TaoThongBao = new System.Windows.Forms.Button();
             this.flp_Messsage = new System.Windows.Forms.FlowLayoutPanel();
             this.pnl_AnhNen = new System.Windows.Forms.Panel();
-            this.pictureBox15 = new System.Windows.Forms.PictureBox();
+            this.ptb_SettingPhongHoc = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txt_MaLop = new System.Windows.Forms.TextBox();
             this.lbl_TenLop = new System.Windows.Forms.Label();
@@ -106,7 +106,7 @@
             this.tab_QLPH.SuspendLayout();
             this.tab_BangTin.SuspendLayout();
             this.pnl_AnhNen.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_SettingPhongHoc)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
             this.tab_BaiTap.SuspendLayout();
@@ -169,9 +169,10 @@
             // 
             // pan_QLLTN
             // 
+            this.pan_QLLTN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pan_QLLTN.Controls.Add(this.label3);
             this.pan_QLLTN.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pan_QLLTN.Location = new System.Drawing.Point(0, 299);
+            this.pan_QLLTN.Location = new System.Drawing.Point(0, 482);
             this.pan_QLLTN.Name = "pan_QLLTN";
             this.pan_QLLTN.Size = new System.Drawing.Size(232, 69);
             this.pan_QLLTN.TabIndex = 4;
@@ -190,9 +191,10 @@
             // 
             // pan_QLRole
             // 
+            this.pan_QLRole.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pan_QLRole.Controls.Add(this.label2);
             this.pan_QLRole.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pan_QLRole.Location = new System.Drawing.Point(0, 230);
+            this.pan_QLRole.Location = new System.Drawing.Point(0, 413);
             this.pan_QLRole.Name = "pan_QLRole";
             this.pan_QLRole.Size = new System.Drawing.Size(232, 69);
             this.pan_QLRole.TabIndex = 3;
@@ -216,7 +218,7 @@
             this.pan_ListPHTG.Dock = System.Windows.Forms.DockStyle.Top;
             this.pan_ListPHTG.Location = new System.Drawing.Point(0, 0);
             this.pan_ListPHTG.Name = "pan_ListPHTG";
-            this.pan_ListPHTG.Size = new System.Drawing.Size(232, 230);
+            this.pan_ListPHTG.Size = new System.Drawing.Size(232, 413);
             this.pan_ListPHTG.TabIndex = 1;
             // 
             // lsv_DanhSachPhongHocThamGia
@@ -227,7 +229,7 @@
             this.lsv_DanhSachPhongHocThamGia.HideSelection = false;
             this.lsv_DanhSachPhongHocThamGia.Location = new System.Drawing.Point(0, 0);
             this.lsv_DanhSachPhongHocThamGia.Name = "lsv_DanhSachPhongHocThamGia";
-            this.lsv_DanhSachPhongHocThamGia.Size = new System.Drawing.Size(230, 228);
+            this.lsv_DanhSachPhongHocThamGia.Size = new System.Drawing.Size(230, 411);
             this.lsv_DanhSachPhongHocThamGia.TabIndex = 0;
             this.lsv_DanhSachPhongHocThamGia.UseCompatibleStateImageBehavior = false;
             this.lsv_DanhSachPhongHocThamGia.View = System.Windows.Forms.View.Details;
@@ -235,8 +237,8 @@
             // 
             // colTenPhong
             // 
-            this.colTenPhong.Text = "Ten phong";
-            this.colTenPhong.Width = 139;
+            this.colTenPhong.Text = "Phòng học";
+            this.colTenPhong.Width = 230;
             // 
             // pnl_QLPH
             // 
@@ -294,7 +296,7 @@
             this.flp_Messsage.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flp_Messsage.Location = new System.Drawing.Point(90, 301);
             this.flp_Messsage.Name = "flp_Messsage";
-            this.flp_Messsage.Size = new System.Drawing.Size(921, 452);
+            this.flp_Messsage.Size = new System.Drawing.Size(900, 452);
             this.flp_Messsage.TabIndex = 1;
             this.flp_Messsage.WrapContents = false;
             // 
@@ -303,25 +305,26 @@
             this.pnl_AnhNen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnl_AnhNen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnl_AnhNen.Controls.Add(this.pictureBox15);
+            this.pnl_AnhNen.Controls.Add(this.ptb_SettingPhongHoc);
             this.pnl_AnhNen.Controls.Add(this.groupBox1);
             this.pnl_AnhNen.Controls.Add(this.lbl_TenLop);
             this.pnl_AnhNen.Controls.Add(this.pictureBox14);
             this.pnl_AnhNen.Location = new System.Drawing.Point(90, 60);
             this.pnl_AnhNen.Name = "pnl_AnhNen";
-            this.pnl_AnhNen.Size = new System.Drawing.Size(878, 181);
+            this.pnl_AnhNen.Size = new System.Drawing.Size(857, 181);
             this.pnl_AnhNen.TabIndex = 0;
             // 
-            // pictureBox15
+            // ptb_SettingPhongHoc
             // 
-            this.pictureBox15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox15.Image = global::QLHOCTRUCTUYEN.Properties.Resources.setting;
-            this.pictureBox15.Location = new System.Drawing.Point(832, 14);
-            this.pictureBox15.Name = "pictureBox15";
-            this.pictureBox15.Size = new System.Drawing.Size(32, 32);
-            this.pictureBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox15.TabIndex = 2;
-            this.pictureBox15.TabStop = false;
+            this.ptb_SettingPhongHoc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ptb_SettingPhongHoc.Image = global::QLHOCTRUCTUYEN.Properties.Resources.setting;
+            this.ptb_SettingPhongHoc.Location = new System.Drawing.Point(811, 14);
+            this.ptb_SettingPhongHoc.Name = "ptb_SettingPhongHoc";
+            this.ptb_SettingPhongHoc.Size = new System.Drawing.Size(32, 32);
+            this.ptb_SettingPhongHoc.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptb_SettingPhongHoc.TabIndex = 2;
+            this.ptb_SettingPhongHoc.TabStop = false;
+            this.ptb_SettingPhongHoc.Click += new System.EventHandler(this.pictureBox15_Click);
             // 
             // groupBox1
             // 
@@ -402,6 +405,7 @@
             this.lsv_BaiTap.TabIndex = 2;
             this.lsv_BaiTap.UseCompatibleStateImageBehavior = false;
             this.lsv_BaiTap.View = System.Windows.Forms.View.Details;
+            this.lsv_BaiTap.DoubleClick += new System.EventHandler(this.lsv_BaiTap_DoubleClick);
             // 
             // colTenTaiNguyen
             // 
@@ -560,7 +564,7 @@
             this.lsv_GiaoVien.GridLines = true;
             this.lsv_GiaoVien.HideSelection = false;
             this.lsv_GiaoVien.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem2});
+            listViewItem1});
             this.lsv_GiaoVien.Location = new System.Drawing.Point(0, 0);
             this.lsv_GiaoVien.Name = "lsv_GiaoVien";
             this.lsv_GiaoVien.Size = new System.Drawing.Size(879, 178);
@@ -835,7 +839,7 @@
             this.tab_BangTin.PerformLayout();
             this.pnl_AnhNen.ResumeLayout(false);
             this.pnl_AnhNen.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_SettingPhongHoc)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
@@ -896,7 +900,7 @@
         private System.Windows.Forms.Button btn_TaoThongBao;
         private System.Windows.Forms.FlowLayoutPanel flp_Messsage;
         private System.Windows.Forms.Panel pnl_AnhNen;
-        private System.Windows.Forms.PictureBox pictureBox15;
+        private System.Windows.Forms.PictureBox ptb_SettingPhongHoc;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txt_MaLop;
         private System.Windows.Forms.Label lbl_TenLop;

@@ -32,7 +32,7 @@ namespace QLHOCTRUCTUYEN
         }
         private void NhapSanEmailPass()
         {
-            txtEmailDN.Text = "1@gmail.com";
+            txtEmailDN.Text = "admin@gmail.com";
             txtPassDN.Text = "1";
         }
         private void UpdateBtnDangKyState()

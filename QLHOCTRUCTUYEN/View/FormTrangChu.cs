@@ -54,7 +54,7 @@ namespace QLHOCTRUCTUYEN.View
                 LoadFlpMessage(this);
             }
         }
-        private void LoadHienThiThongTinPhongHoc(string id_phonghoc)
+        public void LoadHienThiThongTinPhongHoc(string id_phonghoc)
         {
             lbl_TenLop.Text = ManagePhongHoc.CurPhongHoc.TENPHONGHOC;
             txt_MaLop.Text = ManagePhongHoc.CurPhongHoc.MAPHONG;
@@ -117,7 +117,7 @@ namespace QLHOCTRUCTUYEN.View
             Label label = new Label
             {
                 Name = "label_Mess" + STTMess,
-                Text = TenNguoiDang + " đã đăng một bài tập mới:" + TenTaiNguyen, // Nội dung của Label
+                Text = TenNguoiDang + " đã đăng một thông báo mới:" + TenTaiNguyen, // Nội dung của Label
                 AutoSize = false,
                 ForeColor = Color.DarkBlue,
                 Font = new Font("Arial", 10, FontStyle.Bold),
@@ -131,7 +131,8 @@ namespace QLHOCTRUCTUYEN.View
             pnl_Mess.Controls.Add(label);
 
             // Thêm Panel nhỏ vào Panel_GiaoDien
-            form.flp_Messsage.Controls.Add(pnl_Mess);
+            form.flp_Messsage.Controls.Add(pnl_Mess);  // Thêm control vào cuối
+            form.flp_Messsage.Controls.SetChildIndex(pnl_Mess, 0);  // Di chuyển lên đầu
         }
         public static void CreateAssignment(string STTMess, string TenBT, FormTrangChu form)//***************************************************************************************************************
         {
@@ -286,7 +287,7 @@ namespace QLHOCTRUCTUYEN.View
         public void HienThiDanhSachTaiNguyenHocTapTrongPhongHoc()
         {
             lsv_BaiTap.Items.Clear();
-            var TNHTTable = ManageTaiNguyenHocTap.LoadListTNHTByPhongHoc(ManagePhongHoc.CurPhongHoc.ID_PHONGHOC, "T0");
+            var TNHTTable = ManageTaiNguyenHocTap.LoadListTNHTByPhongHoc(ManagePhongHoc.CurPhongHoc.ID_PHONGHOC, "L4");
             foreach (DataRow row in TNHTTable.Rows)
             {
                 ListViewItem item = new ListViewItem(row["TENTAINGUYEN"].ToString());
@@ -319,15 +320,28 @@ namespace QLHOCTRUCTUYEN.View
         {
             LoadListPhongHocByPhongHocThamGiaCuaNguoiDung();
             LoadHienThiThongTinNguoiDung();
+            if(UserLoginHandler.CurUser.ID_ROLE != "R0")
+            {
+                pan_QLLTN.Visible = false;
+                pan_QLRole.Visible = false;
+            }
         }
         private void LoadDgvKQHT()
         {
             dgv_KQHT.AutoGenerateColumns = true;
+            dgv_KQHT.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             BindingSource bs = new BindingSource();
             bs.DataSource = ManageKQHT.XemDanhSachKQHTCuaTatcaUserTrongPhongHoc(ManagePhongHoc.CurPhongHoc.ID_PHONGHOC);
             dgv_KQHT.DataSource = bs;
+
+            dgv_KQHT.Columns["KETQUA"].ReadOnly = false;
+            dgv_KQHT.Columns["TIENTRINH"].ReadOnly = false;
+            dgv_KQHT.Columns["ID_USER"].ReadOnly = true;
+            dgv_KQHT.Columns["ID_TAINGUYEN"].ReadOnly = true;
+            dgv_KQHT.Columns["TENUSER"].ReadOnly = true;
+            dgv_KQHT.Columns["TENTAINGUYEN"].ReadOnly = true;
         }
-        private void LoadFlpMessage(FormTrangChu form)
+        public void LoadFlpMessage(FormTrangChu form)
         {
             form.flp_Messsage.Controls.Clear();
             var TNHTTable = ManageTaiNguyenHocTap.LoadListTNHTByPhongHoc(ManagePhongHoc.CurPhongHoc.ID_PHONGHOC, "");
@@ -348,23 +362,36 @@ namespace QLHOCTRUCTUYEN.View
             QL_Role role = new QL_Role();
             role.Show();
         }
-
         private void pan_QLLTN_Click(object sender, EventArgs e)
         {
             QL_LoaiTaiNguyen ltn = new QL_LoaiTaiNguyen();
             ltn.Show();
         }
-
         private void btn_TaoThongBao_Click(object sender, EventArgs e)
         {
-            FormCTTaoBaiTap formCTTaoBT = new FormCTTaoBaiTap();
-            Program.OpenOrActivateForm(formCTTaoBT);
+            FormCTTaoBaiTap form = new FormCTTaoBaiTap();
+            Program.OpenOrActivateForm(form);
         }
-
         private void btn_TaoBT_Click(object sender, EventArgs e)
         {
-            FormCTTaoBaiTap formCTTaoBT = new FormCTTaoBaiTap();
-            Program.OpenOrActivateForm(formCTTaoBT);
+            FormCTTaoBaiTap form = new FormCTTaoBaiTap();
+            Program.OpenOrActivateForm(form);
+        }
+
+        private void pictureBox15_Click(object sender, EventArgs e)
+        {
+            FormTTPhongHoc form = new FormTTPhongHoc();
+            Program.OpenOrActivateForm(form);
+        }
+        private void lsv_BaiTap_DoubleClick(object sender, EventArgs e)
+        {
+            if(lsv_BaiTap.SelectedItems.Count > 0)
+            {
+                FormCTTaoBaiTap.TaiNguyen = ManageTaiNguyenHocTap.XemChiTietTaiNguyenHocTap(lsv_BaiTap.SelectedItems[0].Tag as string);
+                FormCTTaoBaiTap form = new FormCTTaoBaiTap();
+                Program.OpenOrActivateForm(form);
+                form.SetSuaBT();
+            }
         }
     }
 }
