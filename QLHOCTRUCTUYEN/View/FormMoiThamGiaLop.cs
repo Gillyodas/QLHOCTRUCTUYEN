@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using QLHOCTRUCTUYEN.Model;
 
 namespace QLHOCTRUCTUYEN.View
 {
@@ -15,6 +16,14 @@ namespace QLHOCTRUCTUYEN.View
         public FormMoiThamGiaLop()
         {
             InitializeComponent();
+        }
+        private void tbn_MoiThamGiaPhongHoc_Click(object sender, EventArgs e)
+        {
+            string id_user = ManageUsers.FindUserByEmail(txt_MoiTG.Text);
+            if(!ManagePhongHocThamGia.ThamGiaPhongHoc(id_user, ManagePhongHoc.CurPhongHoc.ID_PHONGHOC, true))
+            {
+                MessageBox.Show("Mời tham gia thất bại!");
+            }
         }
     }
 }

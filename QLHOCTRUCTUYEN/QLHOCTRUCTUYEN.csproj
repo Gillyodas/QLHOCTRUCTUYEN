@@ -268,24 +268,6 @@
     <Compile Include="View\FormMoiThamGiaLop.Designer.cs">
       <DependentUpon>FormMoiThamGiaLop.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\FormPhanQuyenTVRoomG.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\FormPhanQuyenTVRoomG.Designer.cs">
-      <DependentUpon>FormPhanQuyenTVRoomG.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\FormPhanQuyenTVRoomS.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\FormPhanQuyenTVRoomS.Designer.cs">
-      <DependentUpon>FormPhanQuyenTVRoomS.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\FormQL_KQHT.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\FormQL_KQHT.Designer.cs">
-      <DependentUpon>FormQL_KQHT.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\FormTaoBaiTapTrongRoom.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -309,6 +291,12 @@
     </Compile>
     <Compile Include="View\FormThamGiaLop.Designer.cs">
       <DependentUpon>FormThamGiaLop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormThemKQHT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormThemKQHT.Designer.cs">
+      <DependentUpon>FormThemKQHT.cs</DependentUpon>
     </Compile>
     <Compile Include="View\FormTrangChu.cs">
       <SubType>Form</SubType>
@@ -365,15 +353,6 @@
     <EmbeddedResource Include="View\FormMoiThamGiaLop.resx">
       <DependentUpon>FormMoiThamGiaLop.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\FormPhanQuyenTVRoomG.resx">
-      <DependentUpon>FormPhanQuyenTVRoomG.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\FormPhanQuyenTVRoomS.resx">
-      <DependentUpon>FormPhanQuyenTVRoomS.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\FormQL_KQHT.resx">
-      <DependentUpon>FormQL_KQHT.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\FormTaoBaiTapTrongRoom.resx">
       <DependentUpon>FormTaoBaiTapTrongRoom.cs</DependentUpon>
     </EmbeddedResource>
@@ -385,6 +364,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormThamGiaLop.resx">
       <DependentUpon>FormThamGiaLop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormThemKQHT.resx">
+      <DependentUpon>FormThemKQHT.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormTrangChu.resx">
       <DependentUpon>FormTrangChu.cs</DependentUpon>

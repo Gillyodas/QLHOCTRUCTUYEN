@@ -30,13 +30,9 @@ namespace QLHOCTRUCTUYEN.View
         }
         private void btn_Them_Click(object sender, EventArgs e)
         {
-            lbl_DsLTN.Visible = true;
+            lbl_TieuDeThem.Visible = true;
             txt_LoaiTaiNguyen.Visible = true;
             btn_Luu.Visible = true;
-        }
-        private void btn_Sua_Click(object sender, EventArgs e)
-        {
-            
         }
         private void btn_Luu_Click(object sender, EventArgs e)
         {

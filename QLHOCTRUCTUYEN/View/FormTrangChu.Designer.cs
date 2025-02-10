@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormTrangChu));
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
             "",
             "Bùi Công Danh"}, 0);
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -64,7 +64,6 @@
             this.btn_TaoBT = new System.Windows.Forms.Button();
             this.tab_MoiNguoi = new System.Windows.Forms.TabPage();
             this.pic_addGV = new System.Windows.Forms.PictureBox();
-            this.pic_AddSV = new System.Windows.Forms.PictureBox();
             this.grp_SinhVien = new System.Windows.Forms.GroupBox();
             this.pnl_SinhVien = new System.Windows.Forms.Panel();
             this.lsv_SinhVien = new System.Windows.Forms.ListView();
@@ -79,7 +78,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.dgv_KQHT = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btn_SaveDgvKQHT_Change = new System.Windows.Forms.Button();
+            this.btn_Them = new System.Windows.Forms.Button();
             this.pnl_ManHinh = new System.Windows.Forms.Panel();
             this.panelHead = new System.Windows.Forms.Panel();
             this.label15 = new System.Windows.Forms.Label();
@@ -113,7 +112,6 @@
             this.panel1.SuspendLayout();
             this.tab_MoiNguoi.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_addGV)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_AddSV)).BeginInit();
             this.grp_SinhVien.SuspendLayout();
             this.pnl_SinhVien.SuspendLayout();
             this.grp_GiaoVien.SuspendLayout();
@@ -296,7 +294,7 @@
             this.flp_Messsage.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flp_Messsage.Location = new System.Drawing.Point(90, 301);
             this.flp_Messsage.Name = "flp_Messsage";
-            this.flp_Messsage.Size = new System.Drawing.Size(900, 452);
+            this.flp_Messsage.Size = new System.Drawing.Size(879, 452);
             this.flp_Messsage.TabIndex = 1;
             this.flp_Messsage.WrapContents = false;
             // 
@@ -311,7 +309,7 @@
             this.pnl_AnhNen.Controls.Add(this.pictureBox14);
             this.pnl_AnhNen.Location = new System.Drawing.Point(90, 60);
             this.pnl_AnhNen.Name = "pnl_AnhNen";
-            this.pnl_AnhNen.Size = new System.Drawing.Size(857, 181);
+            this.pnl_AnhNen.Size = new System.Drawing.Size(836, 181);
             this.pnl_AnhNen.TabIndex = 0;
             // 
             // ptb_SettingPhongHoc
@@ -449,7 +447,6 @@
             // tab_MoiNguoi
             // 
             this.tab_MoiNguoi.Controls.Add(this.pic_addGV);
-            this.tab_MoiNguoi.Controls.Add(this.pic_AddSV);
             this.tab_MoiNguoi.Controls.Add(this.grp_SinhVien);
             this.tab_MoiNguoi.Controls.Add(this.grp_GiaoVien);
             this.tab_MoiNguoi.Location = new System.Drawing.Point(4, 25);
@@ -470,17 +467,7 @@
             this.pic_addGV.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pic_addGV.TabIndex = 3;
             this.pic_addGV.TabStop = false;
-            // 
-            // pic_AddSV
-            // 
-            this.pic_AddSV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pic_AddSV.Image = global::QLHOCTRUCTUYEN.Properties.Resources.adduser;
-            this.pic_AddSV.Location = new System.Drawing.Point(928, 302);
-            this.pic_AddSV.Name = "pic_AddSV";
-            this.pic_AddSV.Size = new System.Drawing.Size(34, 34);
-            this.pic_AddSV.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pic_AddSV.TabIndex = 2;
-            this.pic_AddSV.TabStop = false;
+            this.pic_addGV.Click += new System.EventHandler(this.pic_addGV_Click);
             // 
             // grp_SinhVien
             // 
@@ -564,7 +551,7 @@
             this.lsv_GiaoVien.GridLines = true;
             this.lsv_GiaoVien.HideSelection = false;
             this.lsv_GiaoVien.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
+            listViewItem2});
             this.lsv_GiaoVien.Location = new System.Drawing.Point(0, 0);
             this.lsv_GiaoVien.Name = "lsv_GiaoVien";
             this.lsv_GiaoVien.Size = new System.Drawing.Size(879, 178);
@@ -608,6 +595,7 @@
             // 
             // dgv_KQHT
             // 
+            this.dgv_KQHT.AllowUserToAddRows = false;
             this.dgv_KQHT.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_KQHT.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_KQHT.GridColor = System.Drawing.SystemColors.HighlightText;
@@ -616,26 +604,26 @@
             this.dgv_KQHT.RowHeadersWidth = 51;
             this.dgv_KQHT.Size = new System.Drawing.Size(999, 689);
             this.dgv_KQHT.TabIndex = 0;
+            this.dgv_KQHT.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_KQHT_CellValueChanged);
             // 
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.btn_SaveDgvKQHT_Change);
+            this.panel2.Controls.Add(this.btn_Them);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1001, 55);
             this.panel2.TabIndex = 3;
             // 
-            // btn_SaveDgvKQHT_Change
+            // btn_Them
             // 
-            this.btn_SaveDgvKQHT_Change.Location = new System.Drawing.Point(2, 3);
-            this.btn_SaveDgvKQHT_Change.Name = "btn_SaveDgvKQHT_Change";
-            this.btn_SaveDgvKQHT_Change.Size = new System.Drawing.Size(75, 45);
-            this.btn_SaveDgvKQHT_Change.TabIndex = 0;
-            this.btn_SaveDgvKQHT_Change.Text = "Save";
-            this.btn_SaveDgvKQHT_Change.UseVisualStyleBackColor = true;
-            this.btn_SaveDgvKQHT_Change.Click += new System.EventHandler(this.btn_SaveDgvKQHT_Change_Click);
+            this.btn_Them.Location = new System.Drawing.Point(2, 3);
+            this.btn_Them.Name = "btn_Them";
+            this.btn_Them.Size = new System.Drawing.Size(75, 45);
+            this.btn_Them.TabIndex = 0;
+            this.btn_Them.Text = "Thêm";
+            this.btn_Them.UseVisualStyleBackColor = true;
             // 
             // pnl_ManHinh
             // 
@@ -847,7 +835,6 @@
             this.panel1.ResumeLayout(false);
             this.tab_MoiNguoi.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pic_addGV)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_AddSV)).EndInit();
             this.grp_SinhVien.ResumeLayout(false);
             this.pnl_SinhVien.ResumeLayout(false);
             this.grp_GiaoVien.ResumeLayout(false);
@@ -915,7 +902,6 @@
         private System.Windows.Forms.Button btn_TaoBT;
         private System.Windows.Forms.TabPage tab_MoiNguoi;
         private System.Windows.Forms.PictureBox pic_addGV;
-        private System.Windows.Forms.PictureBox pic_AddSV;
         private System.Windows.Forms.GroupBox grp_SinhVien;
         private System.Windows.Forms.Panel pnl_SinhVien;
         private System.Windows.Forms.ListView lsv_SinhVien;
@@ -932,12 +918,12 @@
         private System.Windows.Forms.Panel pan_ListPHTG;
         private System.Windows.Forms.ListView lsv_DanhSachPhongHocThamGia;
         private System.Windows.Forms.ColumnHeader colTenPhong;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button btn_SaveDgvKQHT_Change;
         private System.Windows.Forms.Panel pan_QLLTN;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel pan_QLRole;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button btn_Them;
     }
 }

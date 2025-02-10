@@ -39,5 +39,14 @@ namespace QLHOCTRUCTUYEN.View
             }
             else MessageBox.Show("Fail");
         }
+        private void btn_ThoatPhongHoc_Click(object sender, EventArgs e)
+        {
+            if(ManagePhongHocThamGia.ThoatPhong(UserLoginHandler.CurUser.ID_USER, ManagePhongHoc.CurPhongHoc.ID_PHONGHOC))
+            {
+                FormTrangChu form = Application.OpenForms["FormTrangChu"] as FormTrangChu;
+                form.LoadListPhongHocByPhongHocThamGiaCuaNguoiDung();
+                form.SetVisibleTab_QLPH(false);
+            }
+        }
     }
 }

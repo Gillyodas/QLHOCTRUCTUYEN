@@ -44,5 +44,33 @@ namespace QLHOCTRUCTUYEN.Model
         {
             return KQHTTableAdapter.GetDataKQHT_DgvKQHT_ByPhongHoc(id_phonghoc);
         }
+        public static bool UpdateKQHT(string id_user, string id_tainguyen, float kq, bool tientrinh)
+        {
+            int rowAffected = KQHTTableAdapter.UpdateKQHTQuery(kq, tientrinh, id_user, id_tainguyen);
+            return rowAffected > 0;
+        }
+        public static bool AutoCreateKQHT(string id_tainguyen)
+        {
+            bool success = true;
+
+            foreach (QLHOCTRUCTUYENDataSet.USERSRow row in ManageUsers.ListUserInPhongHocByVaiTro(ManagePhongHoc.CurPhongHoc.ID_PHONGHOC, false))
+            {
+                try
+                {
+                    int rowAffected = KQHTTableAdapter.Insert(row.ID_USER, id_tainguyen, 0, false);
+                    if (rowAffected == 0)
+                    {
+                        success = false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Lỗi khi thêm kết quả học tập: {ex.Message}");
+                    success = false;
+                }
+            }
+            return success;
+        }
+
     }
 }

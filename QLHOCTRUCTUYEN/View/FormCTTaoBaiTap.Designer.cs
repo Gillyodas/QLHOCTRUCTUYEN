@@ -35,6 +35,7 @@
             this.lbl_HanBT = new System.Windows.Forms.Label();
             this.lbl_MoTa = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_XoaBT = new System.Windows.Forms.Button();
             this.btn_Sua = new System.Windows.Forms.Button();
             this.btn_Huy = new System.Windows.Forms.Button();
             this.lbl_LoauTaiNguyen = new System.Windows.Forms.Label();
@@ -52,7 +53,7 @@
             this.txt_TieuDe.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_TieuDe.Location = new System.Drawing.Point(3, 18);
             this.txt_TieuDe.Name = "txt_TieuDe";
-            this.txt_TieuDe.Size = new System.Drawing.Size(695, 30);
+            this.txt_TieuDe.Size = new System.Drawing.Size(859, 30);
             this.txt_TieuDe.TabIndex = 0;
             // 
             // dtp_HanBT
@@ -70,7 +71,7 @@
             this.grp_TieuDe.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grp_TieuDe.Location = new System.Drawing.Point(0, 0);
             this.grp_TieuDe.Name = "grp_TieuDe";
-            this.grp_TieuDe.Size = new System.Drawing.Size(701, 58);
+            this.grp_TieuDe.Size = new System.Drawing.Size(865, 58);
             this.grp_TieuDe.TabIndex = 3;
             this.grp_TieuDe.TabStop = false;
             this.grp_TieuDe.Text = "Tiêu Đề";
@@ -105,6 +106,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.btn_XoaBT);
             this.panel1.Controls.Add(this.btn_Sua);
             this.panel1.Controls.Add(this.btn_Huy);
             this.panel1.Controls.Add(this.lbl_LoauTaiNguyen);
@@ -118,14 +120,24 @@
             this.panel1.Controls.Add(this.dtp_HanBT);
             this.panel1.Location = new System.Drawing.Point(19, 61);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(663, 281);
+            this.panel1.Size = new System.Drawing.Size(723, 281);
             this.panel1.TabIndex = 7;
+            // 
+            // btn_XoaBT
+            // 
+            this.btn_XoaBT.Location = new System.Drawing.Point(566, 202);
+            this.btn_XoaBT.Name = "btn_XoaBT";
+            this.btn_XoaBT.Size = new System.Drawing.Size(75, 68);
+            this.btn_XoaBT.TabIndex = 14;
+            this.btn_XoaBT.Text = "Xóa";
+            this.btn_XoaBT.UseVisualStyleBackColor = true;
+            this.btn_XoaBT.Click += new System.EventHandler(this.btn_XoaBT_Click);
             // 
             // btn_Sua
             // 
-            this.btn_Sua.Location = new System.Drawing.Point(566, 182);
+            this.btn_Sua.Location = new System.Drawing.Point(641, 139);
             this.btn_Sua.Name = "btn_Sua";
-            this.btn_Sua.Size = new System.Drawing.Size(75, 41);
+            this.btn_Sua.Size = new System.Drawing.Size(75, 57);
             this.btn_Sua.TabIndex = 13;
             this.btn_Sua.Text = "Sửa";
             this.btn_Sua.UseVisualStyleBackColor = true;
@@ -135,7 +147,7 @@
             // 
             this.btn_Huy.Location = new System.Drawing.Point(566, 139);
             this.btn_Huy.Name = "btn_Huy";
-            this.btn_Huy.Size = new System.Drawing.Size(75, 37);
+            this.btn_Huy.Size = new System.Drawing.Size(75, 57);
             this.btn_Huy.TabIndex = 12;
             this.btn_Huy.Text = "Hủy";
             this.btn_Huy.UseVisualStyleBackColor = true;
@@ -169,9 +181,9 @@
             // 
             // btn_XacNhanTaoBT
             // 
-            this.btn_XacNhanTaoBT.Location = new System.Drawing.Point(566, 229);
+            this.btn_XacNhanTaoBT.Location = new System.Drawing.Point(641, 202);
             this.btn_XacNhanTaoBT.Name = "btn_XacNhanTaoBT";
-            this.btn_XacNhanTaoBT.Size = new System.Drawing.Size(75, 41);
+            this.btn_XacNhanTaoBT.Size = new System.Drawing.Size(75, 68);
             this.btn_XacNhanTaoBT.TabIndex = 8;
             this.btn_XacNhanTaoBT.Text = "Xác nhận";
             this.btn_XacNhanTaoBT.UseVisualStyleBackColor = true;
@@ -189,7 +201,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(701, 356);
+            this.ClientSize = new System.Drawing.Size(865, 356);
             this.Controls.Add(this.grp_TieuDe);
             this.Controls.Add(this.panel1);
             this.Name = "FormCTTaoBaiTap";
@@ -218,5 +230,6 @@
         private System.Windows.Forms.ComboBox cbb_LoaiTaiNguyen;
         private System.Windows.Forms.Button btn_Huy;
         private System.Windows.Forms.Button btn_Sua;
+        private System.Windows.Forms.Button btn_XoaBT;
     }
 }

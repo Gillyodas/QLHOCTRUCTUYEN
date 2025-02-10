@@ -9,6 +9,7 @@ using System.Data.SqlTypes;
 using System.Data;
 using QLHOCTRUCTUYEN.View;
 using System.Windows.Forms;
+using QLHOCTRUCTUYEN.QLHOCTRUCTUYENDataSetTableAdapters;
 
 namespace QLHOCTRUCTUYEN.Model
 {
@@ -16,11 +17,19 @@ namespace QLHOCTRUCTUYEN.Model
     {
         private static QLHOCTRUCTUYENDataSetTableAdapters.PHONGHOCTHAMGIATableAdapter PHTGTableAdapter = new QLHOCTRUCTUYENDataSetTableAdapters.PHONGHOCTHAMGIATableAdapter();
 
-        public static void ThamGiaPhongHoc(string id_user, string id_phonghoc, bool vaitro)
+        public static bool ThamGiaPhongHoc(string id_user, string id_phonghoc, bool vaitro)
         {
-            PHTGTableAdapter.Insert(id_phonghoc, id_user, vaitro);
+            DataTable dt = PHTGTableAdapter.GetDataByID(id_phonghoc, id_user);
+
+            if (dt.Rows.Count > 0)
+            {
+                MessageBox.Show("Người dùng đã tham gia phòng học này!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            int rowAffected = PHTGTableAdapter.Insert(id_phonghoc, id_user, vaitro);
             FormTrangChu form = Application.OpenForms["FormTrangChu"] as FormTrangChu;
             form.LoadListPhongHocByPhongHocThamGiaCuaNguoiDung();
+            return rowAffected > 0;
         }
         public static QLHOCTRUCTUYENDataSet.PHONGHOCTHAMGIADataTable LoadListPHTGCuaUser(string id_user)
         {
@@ -31,9 +40,10 @@ namespace QLHOCTRUCTUYEN.Model
             var datarow = LoadListPHTGCuaUser(id_user).FindByID_PHONGHOCID_USER(id_phonghoc, id_user);
             return datarow.VAITRO;
         }
-        public static QLHOCTRUCTUYENDataSet.PHONGHOCTHAMGIADataTable LoadListUserInRoom(string id_phonghoc)
+        public static bool ThoatPhong(string id_user, string id_phonghoc)
         {
-            return PHTGTableAdapter.GetDataListUserInRoom(id_phonghoc);
+            int rowAffected = PHTGTableAdapter.UpdateTrangThaiQuery(id_user, id_phonghoc);
+            return rowAffected > 0;
         }
     }
 }

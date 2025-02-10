@@ -96,6 +96,7 @@
             this.dgv_DsRoles.RowTemplate.Height = 24;
             this.dgv_DsRoles.Size = new System.Drawing.Size(361, 126);
             this.dgv_DsRoles.TabIndex = 8;
+            this.dgv_DsRoles.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_DsRoles_CellValueChanged);
             // 
             // QL_Role
             // 

@@ -95,6 +95,7 @@
             this.Controls.Add(this.panel_ThamGiaLop);
             this.Name = "FormTaovaThamGiaLop";
             this.Text = "FormTaovaThamGiaLop";
+            this.Deactivate += new System.EventHandler(this.FormTaovaThamGiaLop_Deactivate);
             this.Load += new System.EventHandler(this.FormTaovaThamGiaLop_Load);
             this.panel_ThamGiaLop.ResumeLayout(false);
             this.panel_ThamGiaLop.PerformLayout();

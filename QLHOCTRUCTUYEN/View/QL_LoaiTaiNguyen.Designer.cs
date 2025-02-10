@@ -31,7 +31,7 @@
             this.lbl_DsLTN = new System.Windows.Forms.Label();
             this.btn_Them = new System.Windows.Forms.Button();
             this.btn_Luu = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbl_TieuDeThem = new System.Windows.Forms.Label();
             this.txt_LoaiTaiNguyen = new System.Windows.Forms.TextBox();
             this.dgv_DsLTN = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DsLTN)).BeginInit();
@@ -70,16 +70,16 @@
             this.btn_Luu.Visible = false;
             this.btn_Luu.Click += new System.EventHandler(this.btn_Luu_Click);
             // 
-            // label1
+            // lbl_TieuDeThem
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(423, 13);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(298, 24);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Nhập loại tài nguyên muốn thêm";
-            this.label1.Visible = false;
+            this.lbl_TieuDeThem.AutoSize = true;
+            this.lbl_TieuDeThem.Location = new System.Drawing.Point(423, 13);
+            this.lbl_TieuDeThem.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_TieuDeThem.Name = "lbl_TieuDeThem";
+            this.lbl_TieuDeThem.Size = new System.Drawing.Size(298, 24);
+            this.lbl_TieuDeThem.TabIndex = 6;
+            this.lbl_TieuDeThem.Text = "Nhập loại tài nguyên muốn thêm";
+            this.lbl_TieuDeThem.Visible = false;
             // 
             // txt_LoaiTaiNguyen
             // 
@@ -109,7 +109,7 @@
             this.ClientSize = new System.Drawing.Size(728, 248);
             this.Controls.Add(this.dgv_DsLTN);
             this.Controls.Add(this.txt_LoaiTaiNguyen);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbl_TieuDeThem);
             this.Controls.Add(this.btn_Luu);
             this.Controls.Add(this.btn_Them);
             this.Controls.Add(this.lbl_DsLTN);
@@ -128,7 +128,7 @@
         private System.Windows.Forms.Label lbl_DsLTN;
         private System.Windows.Forms.Button btn_Them;
         private System.Windows.Forms.Button btn_Luu;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_TieuDeThem;
         private System.Windows.Forms.TextBox txt_LoaiTaiNguyen;
         private System.Windows.Forms.DataGridView dgv_DsLTN;
     }

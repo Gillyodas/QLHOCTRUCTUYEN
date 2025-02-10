@@ -21,6 +21,10 @@ namespace QLHOCTRUCTUYEN.View
             LoadLoaiTaiNguyen();
             this.FormBorderStyle = FormBorderStyle.None;
         }
+        public void SetStateBtn_Xoa()
+        {
+            btn_XoaBT.Visible = false;
+        }
         public void SetSuaBT()
         {
             txt_TieuDe.Text = TaiNguyen.TENTAINGUYEN;
@@ -63,6 +67,16 @@ namespace QLHOCTRUCTUYEN.View
                 form.HienThiDanhSachTaiNguyenHocTapTrongPhongHoc();
             }
             else MessageBox.Show("Sửa thất bại");
+        }
+        private void btn_XoaBT_Click(object sender, EventArgs e)
+        {
+            if(ManageTaiNguyenHocTap.XoaTNHT(TaiNguyen.ID_TAINGUYEN))
+            {
+                FormTrangChu form = Application.OpenForms["FormTrangChu"] as FormTrangChu;
+                form.HienThiDanhSachTaiNguyenHocTapTrongPhongHoc();
+                this.Close();
+            }
+            else MessageBox.Show("Xóa thất bại");
         }
     }
 }

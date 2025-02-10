@@ -8,6 +8,8 @@ using System.Configuration;
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlTypes;
+using QLHOCTRUCTUYEN.View;
+using System.Windows.Forms;
 
 
 namespace QLHOCTRUCTUYEN.Model
@@ -31,7 +33,11 @@ namespace QLHOCTRUCTUYEN.Model
         }
         public static bool CreateTaiNguyenHocTap(string id_user, string ten, string mota, string id_loaitn, string id_phonghoc, DateTime ngaydang, DateTime thoihan)
         {
-            int rowsAffected = tainguyenhoctapTableAdapter.Insert(CreateID(), ten, mota, true, id_loaitn, id_phonghoc, id_user, ngaydang, thoihan);
+            string id_tainguyen = CreateID();
+            int rowsAffected = tainguyenhoctapTableAdapter.Insert(id_tainguyen, ten, mota, true, id_loaitn, id_phonghoc, id_user, ngaydang, thoihan);
+            ManageKQHT.AutoCreateKQHT(id_tainguyen);
+            FormTrangChu form = Application.OpenForms["FormTrangChu"] as FormTrangChu;
+            form.LoadDgvKQHT();
             return rowsAffected > 0;
         }
         public static QLHOCTRUCTUYENDataSet.TAINGUYENHOCTAPRow XemChiTietTaiNguyenHocTap(string id_tainguyen)
@@ -55,20 +61,10 @@ namespace QLHOCTRUCTUYEN.Model
             }
             return false;
         }
-        public void DeleteTNHT(string id_tainguyen)
+        public static bool XoaTNHT(string id_tainguyen)
         {
-            var row = tainguyenhoctapTableAdapter.GetData().FirstOrDefault(r => r.ID_TAINGUYEN == id_tainguyen);
-            if (row != null)
-            {
-                row.TRANGTHAI = false;
-                tainguyenhoctapTableAdapter.Update(row);
-            }
-        }
-        public DataTable LocTaiNguyenTheoLoai(string id_phonghoc, string id_loaitn)
-        {
-            var dataTable = new QLHOCTRUCTUYENDataSet.TAINGUYENHOCTAPDataTable();
-            tainguyenhoctapTableAdapter.Fill(dataTable);
-            return dataTable.AsEnumerable().Where(r => r.ID_PHONGHOC == id_phonghoc && r.ID_LOAITN == id_loaitn).CopyToDataTable();
+            int rowAffected = tainguyenhoctapTableAdapter.UpdateTrangThaiQuery(id_tainguyen);
+            return rowAffected > 0;
         }
     }
 }

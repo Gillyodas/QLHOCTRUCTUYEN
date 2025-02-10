@@ -108,6 +108,19 @@ namespace QLHOCTRUCTUYEN.Model
                 }
             }
         }
+        public static string FindUserByEmail(string email)
+        {
+            DataTable dt = UsersTableAdapter.FindUserByEmail(email);
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                return dt.Rows[0]["ID_USER"].ToString();
+            }
+            else
+            {
+                return null;
+            }
+        }
         public static bool CreateUser (string ten, string email, string pass)
         {
             if (EmailIsNotUsed(email))
@@ -161,14 +174,6 @@ namespace QLHOCTRUCTUYEN.Model
         public static void XoaNguoiDung(string id_user)
         {
             UsersTableAdapter.UpdateTrangThaiUser(id_user);
-        }
-        public QLHOCTRUCTUYENDataSet.USERSDataTable TimKiemTheoEmail(string email)
-        {
-            return UsersTableAdapter.GetDataByEmail(email);
-        }
-        public QLHOCTRUCTUYENDataSet.USERSDataTable LoadListUsersByPhongHocThamGia(string id_phonghoc)
-        {
-            return UsersTableAdapter.GetDataUsersByPhongHocThamGia(id_phonghoc);
         }
         public static QLHOCTRUCTUYENDataSet.USERSDataTable ListUserInPhongHocByVaiTro(string id_phonghoc, bool vaitro)
         {

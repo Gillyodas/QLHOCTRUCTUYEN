@@ -12,6 +12,8 @@ using QLHOCTRUCTUYEN.Model;
 using QLHOCTRUCTUYEN.View;
 using System.Configuration;
 using System.Runtime.CompilerServices;
+using Newtonsoft.Json.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 namespace QLHOCTRUCTUYEN.View
 {
     public partial class FormTrangChu : Form
@@ -19,8 +21,8 @@ namespace QLHOCTRUCTUYEN.View
         public FormTrangChu()
         {
             InitializeComponent();
-            
-            tab_QLPH.Visible = false;
+
+            SetVisibleTab_QLPH(false);
             LoadData();
         }
         public void LoadListPhongHocByPhongHocThamGiaCuaNguoiDung()
@@ -39,14 +41,29 @@ namespace QLHOCTRUCTUYEN.View
                 }
             }
         }
+        public void SetVisibleFeaturesTheoVaiTro()
+        {
+            if(!ManagePhongHocThamGia.CheckVaiTroPhongHocThamGia(UserLoginHandler.CurUser.ID_USER, ManagePhongHoc.CurPhongHoc.ID_PHONGHOC))
+            {
+                btn_TaoThongBao.Visible = false;
+                btn_TaoBT.Visible = false;
+                btn_Them.Visible = false;
+                pic_addGV.Visible = false;
+            }
+        }
+        public void SetVisibleTab_QLPH(bool visible)
+        {
+            tab_QLPH.Visible = visible;
+        }
         private void lsv_DanhSachPhongHocThamGia_ItemActivate(object sender, EventArgs e)
         {
             if (lsv_DanhSachPhongHocThamGia.SelectedItems.Count > 0)
             {
                 ListViewItem selectedItem = lsv_DanhSachPhongHocThamGia.SelectedItems[0];
                 string id_phonghoc = selectedItem.Tag.ToString();
-                tab_QLPH.Visible = true;
+                SetVisibleTab_QLPH(true);
                 ManagePhongHoc.CurrentPhongHoc(id_phonghoc);
+                SetVisibleFeaturesTheoVaiTro();
                 LoadHienThiThongTinPhongHoc(id_phonghoc);
                 HienThiDanhSachNguoiDungTrongPhongHoc();
                 HienThiDanhSachTaiNguyenHocTapTrongPhongHoc();
@@ -100,7 +117,7 @@ namespace QLHOCTRUCTUYEN.View
         // hàm tạo bảng tin
         // có thể thêm biến để lưu thời gian đăng
         //fen thêm nếu muốn
-        public static void CreateMessage(string STTMess, string TenNguoiDang, string TenTaiNguyen , FormTrangChu form)//******************************************************************************************
+        public void CreateMessage(string STTMess, string TenNguoiDang, string TenTaiNguyen , FormTrangChu form)//******************************************************************************************
         {
             Panel pnl_Mess = new Panel
             {
@@ -133,67 +150,6 @@ namespace QLHOCTRUCTUYEN.View
             // Thêm Panel nhỏ vào Panel_GiaoDien
             form.flp_Messsage.Controls.Add(pnl_Mess);  // Thêm control vào cuối
             form.flp_Messsage.Controls.SetChildIndex(pnl_Mess, 0);  // Di chuyển lên đầu
-        }
-        public static void CreateAssignment(string STTMess, string TenBT, FormTrangChu form)//***************************************************************************************************************
-        {
-            // Tạo Panel Assignment
-            Panel pnl_Asigment = new Panel
-            {
-                Anchor = AnchorStyles.Right,
-                Name = "panel_Mess" + STTMess,
-                Size = new Size(form.flp_Messsage.Width - 20, 50),
-                BackColor = Color.LightBlue,
-                BorderStyle = BorderStyle.FixedSingle,
-                Margin = new Padding(10) // Thêm margin 10 pixel mỗi bên
-            };
-
-            // Tạo PictureBox bên trái
-            PictureBox picLeft = new PictureBox
-            {
-                Name = "picLeft_Mess" + STTMess,
-                Size = new Size(40, 40), // Kích thước của icon
-                Image = Properties.Resources.checklist, // Thay bằng icon mong muốn
-                SizeMode = PictureBoxSizeMode.Zoom,
-                Location = new Point(5, 5) // Vị trí trong Panel
-            };
-
-            // Gán sự kiện Click cho PictureBox bên trái
-            picLeft.Click += (sender, e) => PicLeft_Click(sender, e, STTMess);
-
-            // Tạo PictureBox bên phải
-            PictureBox picRight = new PictureBox
-            {
-                Name = "picRight_Mess" + STTMess,
-                Size = new Size(40, 40), // Kích thước của icon
-                Image = Properties.Resources.more, // Thay bằng icon mong muốn
-                SizeMode = PictureBoxSizeMode.Zoom,
-                Location = new Point(pnl_Asigment.Width - 45, 5) // Vị trí trong Panel
-            };
-
-            // Gán sự kiện Click cho PictureBox bên phải
-            picRight.Click += (sender, e) => PicRight_Click(sender, e, STTMess);
-
-            // Tạo Label ở giữa
-            Label label = new Label
-            {
-                Name = "label_Mess" + STTMess,
-                Text = "Nộp kết quả bài " + TenBT, // Nội dung của Label
-                AutoSize = false,
-                ForeColor = Color.DarkBlue,
-                Font = new Font("Arial", 10, FontStyle.Bold),
-                TextAlign = ContentAlignment.MiddleCenter,
-                Dock = DockStyle.None, // Không chiếm toàn bộ Panel
-                Size = new Size(pnl_Asigment.Width - 100, 40), // Chiều rộng trừ hai icon (40 + 40 + khoảng cách)
-                Location = new Point(50, 5) // Vị trí chính giữa Panel (đã tính toán khoảng trống của icon)
-            };
-
-            // Thêm các thành phần vào Panel Assignment
-            pnl_Asigment.Controls.Add(picLeft);
-            pnl_Asigment.Controls.Add(picRight);
-            pnl_Asigment.Controls.Add(label);
-
-            // Thêm Panel Assignment vào FlowLayoutPanel
-            //form.flp_BaiTap.Controls.Add(pnl_Asigment);
         }
         // Hàm xử lý sự kiện Click cho PictureBox bên phải
         private static void PicRight_Click(object sender, EventArgs e, string STTMess)
@@ -229,57 +185,6 @@ namespace QLHOCTRUCTUYEN.View
                                          // Hiển thị form con
                 ChildForm.Show(); 
         }
-        private void lsv_GiaoVien_SelectedIndexChanged(object sender, EventArgs e)//*********************************************************************************
-        {
-            if (lsv_GiaoVien.SelectedItems.Count > 0) // Kiểm tra có hàng được chọn
-            {
-                // Lấy mục được chọn
-                ListViewItem selectedItem = lsv_GiaoVien.SelectedItems[0];
-
-                // Lấy tọa độ của mục đã chọn (không tính tiêu đề)
-                int x = selectedItem.Position.X;
-                int y = selectedItem.Position.Y;
-
-                // Tạo form mới
-                FormPhanQuyenTVRoomG form = new FormPhanQuyenTVRoomG();
-
-                // Mở form tại vị trí click của item
-                form.StartPosition = FormStartPosition.Manual; // Đặt vị trí thủ công
-                form.Location = new Point(x + this.Left + lsv_GiaoVien.Left, y + this.Top + lsv_GiaoVien.Top); // Cộng thêm offset nếu cần thiết
-                form.TopMost = true;
-                // Hiển thị form
-                form.Show();
-            }
-           
-        }
-        private void lsv_SinhVien_SelectedIndexChanged(object sender, EventArgs e)//**********************************************************************
-        {
-            if (lsv_SinhVien.SelectedItems.Count > 0) // Kiểm tra có hàng được chọn
-            {
-                // Lấy mục được chọn
-                ListViewItem selectedItem = lsv_SinhVien.SelectedItems[0];
-
-                // Lấy tọa độ của mục đã chọn (không tính tiêu đề)
-                int x = selectedItem.Position.X;
-                int y = selectedItem.Position.Y;
-
-                // Tạo form mới
-                FormPhanQuyenTVRoomS form = new FormPhanQuyenTVRoomS();
-                
-
-                // Mở form tại vị trí click của item
-                form.StartPosition = FormStartPosition.Manual; // Đặt vị trí thủ công
-                form.Location = new Point(x + this.Left + lsv_GiaoVien.Left, y + this.Top + lsv_GiaoVien.Top); // Cộng thêm offset nếu cần thiết
-                form.TopMost = true;
-                // Hiển thị form
-                form.Show();
-            }
-        }
-        private void pictureBox13_Click(object sender, EventArgs e)
-        {
-            FormCTTaiKhoan form = new FormCTTaiKhoan();
-            form.ShowDialog();
-        }
         private void panel_ManHinhChinh_MouseClick(object sender, MouseEventArgs e)
         {
             tab_QLPH.Visible = false;
@@ -294,7 +199,7 @@ namespace QLHOCTRUCTUYEN.View
                 item.SubItems.Add(row["NGAYDANG"].ToString());
                 item.SubItems.Add(row["THOIHAN"].ToString());
                 item.Tag = row["ID_TAINGUYEN"].ToString();
-                lsv_BaiTap.Items.Add(item);
+                lsv_BaiTap.Items.Insert(0, item);
             }
         }
         private void HienThiDanhSachNguoiDungTrongPhongHoc()
@@ -326,7 +231,7 @@ namespace QLHOCTRUCTUYEN.View
                 pan_QLRole.Visible = false;
             }
         }
-        private void LoadDgvKQHT()
+        public void LoadDgvKQHT()
         {
             dgv_KQHT.AutoGenerateColumns = true;
             dgv_KQHT.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -352,35 +257,42 @@ namespace QLHOCTRUCTUYEN.View
                 i++;
             }
         }
-        private void btn_SaveDgvKQHT_Change_Click(object sender, EventArgs e)
+        private void pictureBox13_Click(object sender, EventArgs e)
         {
-            //BindingSource bs = dgv_KQHT.DataSource as BindingSource;
-            //    ManageKQHT.UpdateKQHT(customTable);
+            FormCTTaiKhoan form = new FormCTTaiKhoan();
+            Program.OpenOrActivateForm(form);
         }
         private void pan_QLRole_Click(object sender, EventArgs e)
         {
-            QL_Role role = new QL_Role();
-            role.Show();
+            QL_Role form = new QL_Role();
+            Program.OpenOrActivateForm(form);
         }
         private void pan_QLLTN_Click(object sender, EventArgs e)
         {
-            QL_LoaiTaiNguyen ltn = new QL_LoaiTaiNguyen();
-            ltn.Show();
+            QL_LoaiTaiNguyen form = new QL_LoaiTaiNguyen();
+            Program.OpenOrActivateForm(form);
         }
         private void btn_TaoThongBao_Click(object sender, EventArgs e)
         {
             FormCTTaoBaiTap form = new FormCTTaoBaiTap();
             Program.OpenOrActivateForm(form);
+
         }
         private void btn_TaoBT_Click(object sender, EventArgs e)
         {
             FormCTTaoBaiTap form = new FormCTTaoBaiTap();
             Program.OpenOrActivateForm(form);
+            form.SetStateBtn_Xoa();
         }
 
         private void pictureBox15_Click(object sender, EventArgs e)
         {
             FormTTPhongHoc form = new FormTTPhongHoc();
+            Program.OpenOrActivateForm(form);
+        }
+        private void pic_addGV_Click(object sender, EventArgs e)
+        {
+            FormMoiThamGiaLop form = new FormMoiThamGiaLop();
             Program.OpenOrActivateForm(form);
         }
         private void lsv_BaiTap_DoubleClick(object sender, EventArgs e)
@@ -391,6 +303,26 @@ namespace QLHOCTRUCTUYEN.View
                 FormCTTaoBaiTap form = new FormCTTaoBaiTap();
                 Program.OpenOrActivateForm(form);
                 form.SetSuaBT();
+            }
+        }
+        private void dgv_KQHT_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                string id_tainguyen = dgv_KQHT.Rows[e.RowIndex].Cells["ID_TAINGUYEN"].Value.ToString();
+                string id_user = dgv_KQHT.Rows[e.RowIndex].Cells["ID_USER"].Value.ToString();
+                object value = dgv_KQHT.Rows[e.RowIndex].Cells["KETQUA"].Value;
+                float diem = (value != null && value != DBNull.Value) ? Convert.ToSingle(value) : 0f;
+                bool tientrinh = Convert.ToBoolean(dgv_KQHT.Rows[e.RowIndex].Cells["TIENTRINH"].Value);
+
+                if (ManageKQHT.UpdateKQHT(id_user, id_tainguyen, diem, tientrinh))
+                {
+                    LoadDgvKQHT();
+                }
+                else
+                {
+                    MessageBox.Show("Sửa kết quả học tập thất bại!");
+                }
             }
         }
     }

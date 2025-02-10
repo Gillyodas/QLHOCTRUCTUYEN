@@ -99,5 +99,10 @@ namespace QLHOCTRUCTUYEN.View
             FormTaoLop.StartPosition = FormStartPosition.CenterScreen;
             FormTaoLop.ShowDialog();
         }
+
+        private void FormTaovaThamGiaLop_Deactivate(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

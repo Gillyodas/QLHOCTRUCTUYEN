@@ -10,17 +10,11 @@ using System.Windows.Forms;
 
 namespace QLHOCTRUCTUYEN.View
 {
-    public partial class FormPhanQuyenTVRoomS : Form
+    public partial class FormThemKQHT : Form
     {
-        public FormPhanQuyenTVRoomS()
+        public FormThemKQHT()
         {
             InitializeComponent();
-        }
-
-        private void FormPhanQuyenTVRoomS_Load(object sender, EventArgs e)
-        {
-            this.MaximizeBox = false;  // Tắt icon phóng to  
-            this.MinimizeBox = false;  // Tắt icon thu nhỏ 
         }
     }
 }

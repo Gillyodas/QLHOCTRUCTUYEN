@@ -29,13 +29,14 @@
         private void InitializeComponent()
         {
             this.pnl_Main = new System.Windows.Forms.Panel();
+            this.txt_MoTa = new System.Windows.Forms.TextBox();
+            this.txt_Ten = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txt_MaPhong = new System.Windows.Forms.TextBox();
             this.btn_ThayDoi = new System.Windows.Forms.Button();
-            this.txt_Ten = new System.Windows.Forms.TextBox();
-            this.txt_MoTa = new System.Windows.Forms.TextBox();
+            this.btn_ThoatPhongHoc = new System.Windows.Forms.Button();
             this.pnl_Main.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,6 +54,20 @@
             this.pnl_Main.Name = "pnl_Main";
             this.pnl_Main.Size = new System.Drawing.Size(394, 263);
             this.pnl_Main.TabIndex = 0;
+            // 
+            // txt_MoTa
+            // 
+            this.txt_MoTa.Location = new System.Drawing.Point(145, 139);
+            this.txt_MoTa.Name = "txt_MoTa";
+            this.txt_MoTa.Size = new System.Drawing.Size(215, 22);
+            this.txt_MoTa.TabIndex = 5;
+            // 
+            // txt_Ten
+            // 
+            this.txt_Ten.Location = new System.Drawing.Point(145, 72);
+            this.txt_Ten.Name = "txt_Ten";
+            this.txt_Ten.Size = new System.Drawing.Size(215, 22);
+            this.txt_Ten.TabIndex = 4;
             // 
             // label3
             // 
@@ -96,7 +111,7 @@
             // 
             // btn_ThayDoi
             // 
-            this.btn_ThayDoi.Location = new System.Drawing.Point(283, 292);
+            this.btn_ThayDoi.Location = new System.Drawing.Point(283, 295);
             this.btn_ThayDoi.Name = "btn_ThayDoi";
             this.btn_ThayDoi.Size = new System.Drawing.Size(135, 38);
             this.btn_ThayDoi.TabIndex = 1;
@@ -104,25 +119,22 @@
             this.btn_ThayDoi.UseVisualStyleBackColor = true;
             this.btn_ThayDoi.Click += new System.EventHandler(this.btn_ThayDoi_Click);
             // 
-            // txt_Ten
+            // btn_ThoatPhongHoc
             // 
-            this.txt_Ten.Location = new System.Drawing.Point(145, 72);
-            this.txt_Ten.Name = "txt_Ten";
-            this.txt_Ten.Size = new System.Drawing.Size(215, 22);
-            this.txt_Ten.TabIndex = 4;
-            // 
-            // txt_MoTa
-            // 
-            this.txt_MoTa.Location = new System.Drawing.Point(145, 139);
-            this.txt_MoTa.Name = "txt_MoTa";
-            this.txt_MoTa.Size = new System.Drawing.Size(215, 22);
-            this.txt_MoTa.TabIndex = 5;
+            this.btn_ThoatPhongHoc.Location = new System.Drawing.Point(142, 295);
+            this.btn_ThoatPhongHoc.Name = "btn_ThoatPhongHoc";
+            this.btn_ThoatPhongHoc.Size = new System.Drawing.Size(135, 38);
+            this.btn_ThoatPhongHoc.TabIndex = 2;
+            this.btn_ThoatPhongHoc.Text = "Thoát";
+            this.btn_ThoatPhongHoc.UseVisualStyleBackColor = true;
+            this.btn_ThoatPhongHoc.Click += new System.EventHandler(this.btn_ThoatPhongHoc_Click);
             // 
             // FormTTPhongHoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(443, 345);
+            this.Controls.Add(this.btn_ThoatPhongHoc);
             this.Controls.Add(this.btn_ThayDoi);
             this.Controls.Add(this.pnl_Main);
             this.Name = "FormTTPhongHoc";
@@ -144,5 +156,6 @@
         private System.Windows.Forms.Button btn_ThayDoi;
         private System.Windows.Forms.TextBox txt_MoTa;
         private System.Windows.Forms.TextBox txt_Ten;
+        private System.Windows.Forms.Button btn_ThoatPhongHoc;
     }
 }
